@@ -1,4 +1,4 @@
-<x-app-layout>
+{{-- <x-app-layout>
     <x-slot name="header">
         <h2 class="font-semibold text-xl text-gray-800 leading-tight">
             {{ __('User Dashboard') }}
@@ -14,5 +14,15 @@
             </div>
         </div>
     </div>
-    <div>hello</div>
-</x-app-layout>
+
+</x-app-layout> --}}
+@extends('user.layout.userDashboard')
+@section('title', 'My Dashboard')
+
+@section('header', 'User Dashboard')
+
+@section('content')
+    <div class="bg-white p-6 rounded shadow">
+        User is logged in
+    </div>
+@endsection
