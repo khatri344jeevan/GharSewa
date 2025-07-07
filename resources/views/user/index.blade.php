@@ -16,7 +16,7 @@
     </div>
 
 </x-app-layout> --}}
-@extends('user.layout.userDashboard')
+@extends('user.layout.sidebar')
 @section('title', 'My Dashboard')
 
 @section('header', 'User Dashboard')
