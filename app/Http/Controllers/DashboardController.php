@@ -22,9 +22,11 @@ class DashboardController extends Controller
             case 'service_provider':
                 return view('service_provider.index');
 
-            case 'user':
+             case 'user':
             default:
-                return view('user.index');
+                $propertyCount = $user->properties()->count();
+                return view('user.dashboard', compact('propertyCount'));
         }
     }
+
 }

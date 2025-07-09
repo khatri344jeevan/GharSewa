@@ -14,7 +14,7 @@ class UserDashboardController extends Controller
         $propertyCount = $user->properties()->count();
 
         return view('user.dashboard', compact('propertyCount'));
-            return 'User dashboard controller is working';
+            // return 'User dashboard controller is working';
 
     }
 }
