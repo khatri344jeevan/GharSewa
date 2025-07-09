@@ -49,8 +49,16 @@ class User extends Authenticatable
             'password' => 'hashed',
         ];
     }
-        public function properties(): HasMany
-    {
-        return $this->hasMany(Property::class);
+
+    //properties eloquent
+        public function properties(): HasMany{
+           return $this->hasMany(Property::class);
     }
+
+    //booking eleoquent: One user can have multiple bookings
+    public function bookings(): HasMany{
+           return $this->hasMany(Booking::class);
+    }
+
+
 }
