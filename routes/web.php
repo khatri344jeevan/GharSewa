@@ -27,9 +27,14 @@ require __DIR__.'/frontend.php';
 
 
 //user routes start from here
-Route::middleware(['auth'])->group(function () {
-    Route::get('/dashboard', [UserDashboardController::class, 'index'])->name('user.dashboard.blade');
-});
+// Route::middleware(['auth'])->group(function () {
+//     Route::get('/dashboard', [UserDashboardController::class, 'index'])->name('user.dashboard');
+// });
+
+// Route::get('user.dashboard', [UserDashboardController::class, 'index'])
+//     ->middleware(['auth', 'verified'])
+//     ->name('dashboard');
+
 
 
 
