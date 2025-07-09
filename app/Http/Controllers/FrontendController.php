@@ -3,6 +3,9 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Mail;
+use App\Mail\ContactMail;
+use App\Models\Contact;
 
 class FrontendController extends Controller
 {
@@ -10,11 +13,9 @@ class FrontendController extends Controller
         return view("welcome");
     }
 
-
     public function Faq(){
         return view("Faq");
     }
-
 
     public function TermsAndCondition(){
         return view("TermsAndCondition");
@@ -27,7 +28,6 @@ class FrontendController extends Controller
     public function Home(){
         return view("Home");
     }
-
 
     public function Aboutus(){
         return view("Aboutus");
@@ -63,5 +63,40 @@ class FrontendController extends Controller
 
     public function register(){
         return view("auth.register");
+    }
+
+    // ✅ Contact form handler (Contact page)
+    public function submitContact(Request $request)
+    {
+        $validated = $request->validate([
+            'name' => 'required|string|max:255',
+            'email' => 'required|email',
+            'contactnumber' => 'required|numeric',
+            'message' => 'required|string',
+        ]);
+
+        Contact::create($validated);
+
+        Mail::to('gharsewa5@gmail.com')->send(new ContactMail($validated));
+
+        return redirect()->back()->with('success', 'Your message has been sent and saved successfully!');
+    }
+
+    // ✅ Landing page contact form handler (e.g., home or welcome page)
+    public function submitLandingForm(Request $request)
+    {
+        $validated = $request->validate([
+            'name' => 'required|string|max:255',
+            'email' => 'required|email',
+            'contactnumber' => 'required|numeric',
+            'message' => 'required|string',
+        ]);
+
+        Contact::create($validated);
+
+        Mail::to('gharsewa5@gmail.com')->send(new ContactMail($validated));
+
+        return redirect()->to(url()->previous() . '#contact-form-section')
+                         ->with('success', 'Your message has been sent and saved successfully!');
     }
 }

@@ -63,8 +63,8 @@
     <link rel="icon" href="{{ asset('images/Gharsewa.jpg') }}" type="image/jpeg" />
     <title>Gharsewa - Care for Your Property</title>
     @if (file_exists(public_path('build/manifest.json')) || file_exists(public_path('hot')))
-            @vite(['resources/css/app.css', 'resources/js/app.js'])
-        @endif
+        @vite(['resources/css/app.css', 'resources/js/app.js'])
+    @endif
 
     <style>
         @keyframes fade {
@@ -134,8 +134,8 @@
             <h1 class="text-5xl font-extrabold mb-4 drop-shadow-md">GharSewa </h1>
             <p class="text-2xl mb-6 font-light drop-shadow-sm">A Care for your Property</p>
             <a href="/"
-                class="inline-block bg-gray-700 hover:bg-gray-800 text-white font-semibold px-6 py-3 rounded shadow-lg transition duration-300">
-                Register Property
+                class="inline-block bg-gray-700 hover:bg-gray-800 text-white font-semibold px-6 py-6 rounded shadow-lg transition duration-300 text-xl">
+                Register Your Property
             </a>
         </div>
     </div>
