@@ -10,7 +10,7 @@
         @include('user.layout.header')
 
         <!-- Page Content -->
-        <main class="flex-1 mt-10">
+        <main class="flex-1 m-10">
             @yield('content')
         </main>
     </div>
