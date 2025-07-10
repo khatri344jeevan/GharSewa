@@ -25,7 +25,23 @@ class DashboardController extends Controller
              case 'user':
             default:
                 $propertyCount = $user->properties()->count();
-                return view('user.dashboard', compact('propertyCount'));
+                $upcomingServices = $user->bookings()->where('status', 'pending')->count();
+                // $pendingtask = $user->tasks()->where('status', 'pending')->count();
+                $pendingtask = \App\Models\Task::whereHas('booking', function($query) use ($user)
+                 {
+                     $query->where('user_id', $user->id);
+                     }) ->where('status', 'pending')->count();
+
+                $pendingPayments = $user->payments()->count();
+
+                // return view('user.dashboard', compact('propertyCount') , compact('upcomingServices'), compact('pendingtask'),compact('pendingPayments'));
+                return view('user.dashboard', compact(
+                                   'propertyCount',
+                                   'upcomingServices',
+                                   'pendingtask',
+                                   'pendingPayments'
+                                ));
+
         }
     }
 

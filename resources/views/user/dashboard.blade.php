@@ -32,7 +32,8 @@
                 </div>
                 <p class="text-gray-700 text-2xl font-extrabold">
                     <span class="block text-green-600 text-4xl">
-                        5
+                         {{ $upcomingServices }}
+
                     </span>
                     <span class="text-lg font-semibold tracking-wide">
                         Upcoming
@@ -52,7 +53,7 @@
                 </div>
                 <p class="text-gray-700 text-2xl font-extrabold">
                     <span class="block text-green-600 text-4xl">
-                        2
+                        {{$pendingtask}}
                     </span>
                     <span class="text-lg font-semibold tracking-wide">
                         Pending
@@ -72,7 +73,7 @@
                 </div>
                 <p class="text-gray-700 text-2xl font-extrabold">
                     <span class="block text-red-600 text-4xl">
-                        3
+                        {{$pendingPayments}}
                     </span>
                     <span class="text-lg font-semibold tracking-wide">
                         Pending

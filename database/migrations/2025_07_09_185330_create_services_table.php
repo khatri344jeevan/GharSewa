@@ -18,6 +18,8 @@ return new class extends Migration
             $table->float('base_price');
             $table->string('category');
             $table->timestamps();
+
+
         });
     }
 

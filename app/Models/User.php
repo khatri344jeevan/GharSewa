@@ -60,5 +60,17 @@ class User extends Authenticatable
            return $this->hasMany(Booking::class);
     }
 
+    //for counting the task
+    // public function tasks(){
+    //        return $this->hasMany(Task::class);
+    // }
+
+public function payments()
+{
+    return $this->hasMany(Payment::class);
+}
+
+
+
 
 }
