@@ -28,15 +28,15 @@ class AuthenticatedSessionController extends Controller
         $request->session()->regenerate();
 
         // Redirect all users to unified dashboard regardless of role
-        // return redirect()->intended(route('dashboard', absolute: false));
-        $authUserRole= Auth::user()->role;
-        if ($authUserRole === 'admin') {
-            return redirect()->intended(route('admin.dashboard', absolute: false));
-        } elseif ($authUserRole === 'service_provider') {
-            return redirect()->intended(route('service_provider.dashboard', absolute: false));
-        }else{
-            return redirect()->intended(route('user.dashboard', absolute: false));
-        }
+        return redirect()->intended(route('dashboard', absolute: false));
+        // $authUserRole= Auth::user()->role;
+        // if ($authUserRole === 'admin') {
+        //     return redirect()->intended(route('admin.dashboard', absolute: false));
+        // } elseif ($authUserRole === 'service_provider') {
+        //     return redirect()->intended(route('service_provider.dashboard', absolute: false));
+        // }else{
+        //     return redirect()->intended(route('user.dashboard', absolute: false));
+        // }
     }
 
     /**

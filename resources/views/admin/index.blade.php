@@ -1,8 +1,8 @@
-{{-- @extends('admin.layout.sidebar');
-<x-app-layout>
+
+{{-- <x-app-layout>
     <x-slot name="header">
         <h2 class="font-semibold text-xl text-gray-800 leading-tight">
-            {{ __('Admin Dashboard') }}
+            {{ __('User Dashboard') }}
         </h2>
     </x-slot>
 
@@ -16,12 +16,11 @@
         </div>
     </div>
 
+</x-app-layout>  --}}
+@extends('admin.layout.sidebar')
+@section('title', 'Admin Dashboard')
 
-</x-app-layout> --}}
-@extends('user.layout.sidebar')
-@section('title', 'My Dashboard')
-
-@section('header', 'User Dashboard')
+@section('header', 'Admin Dashboard')
 
 @section('content')
     <section class="mt-10">
@@ -66,4 +65,6 @@
             </div>
         </div> --}}
     </div>
+</section>
+
 @endsection
