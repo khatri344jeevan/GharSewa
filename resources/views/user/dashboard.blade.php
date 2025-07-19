@@ -92,7 +92,7 @@
             class="inline-block bg-gray-700 hover:bg-gray-800 text-white font-semibold px-6 py-3 rounded shadow-lg transition duration-300">
             Book Maintainence Package
         </a>
-        <a href="/"
+        <a href="{{route('user.Properties.p_create')}}"
             class="inline-block bg-gray-700 hover:bg-gray-800 text-white font-semibold px-6 py-3 rounded shadow-lg transition duration-300">
             Register Property
         </a>
