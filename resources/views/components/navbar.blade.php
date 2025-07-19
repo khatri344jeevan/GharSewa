@@ -60,9 +60,22 @@
                                 {{ __('Profile') }}
                             </x-dropdown-link>
 
-                            <x-dropdown-link :href="route('dashboard')">
+                            {{-- <x-dropdown-link :href="route('dashboard')">
                                 {{ __('Dashboard') }}
-                            </x-dropdown-link>
+                            </x-dropdown-link> --}}
+                            @if (Auth::user()->role === 'admin')
+                                <x-dropdown-link :href="route('admin.dashboard')">
+                                    {{ __('Dashboard') }}
+                                </x-dropdown-link>
+                            @elseif (Auth::user()->role === 'service_provider')
+                                <x-dropdown-link :href="route('service_provider.dashboard')">
+                                    {{ __('Dashboard') }}
+                                </x-dropdown-link>
+                            @elseif (Auth::user()->role === 'user')
+                                <x-dropdown-link :href="route('user.dashboard')">
+                                    {{ __('Dashboard') }}
+                                </x-dropdown-link>
+                            @endif
 
 
                             <!-- Authentication -->
@@ -91,5 +104,5 @@
                 @endif
             @endauth
         @endif
-    </div>
+    </div>
 </nav>

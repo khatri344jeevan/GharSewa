@@ -2,19 +2,26 @@
 
 use App\Http\Controllers\ProfileController;
 use Illuminate\Support\Facades\Route;
-use App\Http\Controllers\DashboardController;
-use App\Http\Controllers\FrontendController;
-use App\Http\Controllers\UserDashboardController;
-
-
+use App\Http\Controllers\HomeController;
 Route::get('/', function () {
     return view('welcome');
 });
 
-// Single dashboard route for all roles - content changes based on user role
-Route::get('/dashboard', [DashboardController::class, 'index'])
-    ->middleware(['auth', 'verified'])
-    ->name('dashboard');
+Route::get('/dashboard', function () {
+    return view('user.index');
+})->middleware(['auth', 'verified', 'rolemanager:user'])->name('user.dashboard');
+
+Route::prefix('admin')->middleware(['auth', 'verified', 'rolemanager:admin'])->group(function () {
+    Route::get('/dashboard', function () {
+        return view('admin.index');
+    })->name('admin.dashboard');
+});
+
+Route::prefix('service_provider')->middleware(['auth', 'verified', 'rolemanager:service_provider'])->group(function () {
+    Route::get('/dashboard', function () {
+        return view('service_provider.index');
+    })->name('service_provider.dashboard');
+});
 
 Route::middleware('auth')->group(function () {
     Route::get('/profile', [ProfileController::class, 'edit'])->name('profile.edit');
@@ -24,18 +31,4 @@ Route::middleware('auth')->group(function () {
 
 require __DIR__.'/auth.php';
 require __DIR__.'/frontend.php';
-
-
-//user routes start from here
-// Route::middleware(['auth'])->group(function () {
-//     Route::get('/dashboard', [UserDashboardController::class, 'index'])->name('user.dashboard');
-// });
-
-// Route::get('user.dashboard', [UserDashboardController::class, 'index'])
-//     ->middleware(['auth', 'verified'])
-//     ->name('dashboard');
-
-
-
-
-
+require __DIR__.'/user.php';
