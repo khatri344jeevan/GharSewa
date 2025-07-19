@@ -16,6 +16,7 @@ return new class extends Migration
             $table->unsignedBigInteger('user_id');
             $table->string('title');
             $table->string('address');
+            $table->string('type');
             $table->string('maplocation')->nullable();
 
     //  foreign key cosntraint
