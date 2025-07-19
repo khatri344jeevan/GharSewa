@@ -25,18 +25,32 @@ class AuthenticatedSessionController extends Controller
     public function store(LoginRequest $request): RedirectResponse
     {
         $request->authenticate();
+
         $request->session()->regenerate();
 
-        // Redirect all users to unified dashboard regardless of role
-        return redirect()->intended(route('dashboard', absolute: false));
-        // $authUserRole= Auth::user()->role;
-        // if ($authUserRole === 'admin') {
-        //     return redirect()->intended(route('admin.dashboard', absolute: false));
-        // } elseif ($authUserRole === 'service_provider') {
-        //     return redirect()->intended(route('service_provider.dashboard', absolute: false));
-        // }else{
-        //     return redirect()->intended(route('user.dashboard', absolute: false));
+
+
+        $authUserRole = Auth::user()->role;
+        // !Redirect based on user role
+        if ($authUserRole === 'admin') {
+            return redirect()->intended(route('admin.dashboard', absolute: false));
+        } elseif ($authUserRole === 'service_provider') {
+            return redirect()->intended(route('service_provider.dashboard', absolute: false));
+        }else{
+            return redirect()->intended(route('user.dashboard', absolute: false));
+        }
+
+        // if($request->user()->role === 'admin') {
+        //     return redirect('admin/dashboard');
+        //     // return redirect()->intended(route('admin.dashboard', absolute: false));
         // }
+        // if ($request->user()->role === 'admin') {
+        //     return redirect()->intended(route('admin.dashboard', absolute: false));
+        // } elseif ($request->user()->role === 'service_provider') {
+        //     return redirect()->intended(route('service_provider.dashboard', absolute: false));
+        // }
+
+
     }
 
     /**

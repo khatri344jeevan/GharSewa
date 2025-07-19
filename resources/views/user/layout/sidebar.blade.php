@@ -77,11 +77,20 @@
                     </a>
                 </li>
                 <li>
-                    <a href="/logout"
+                    {{-- <a href="/logout"
                         class="flex items-center gap-4 px-5 py-3 rounded text-red-600 hover:bg-red-400 hover:text-white transition font-semibold">
                         <i class="bi bi-box-arrow-right text-lg"></i>
                         Logout
-                    </a>
+                    </a> --}}
+                    <form method="POST" action="{{ route('logout') }}">
+                        @csrf
+                        <button type="submit"
+                            class="flex items-center gap-4 px-5 py-3 rounded text-red-600 hover:bg-red-400 hover:text-white transition font-semibold">
+                            <i class="bi bi-box-arrow-right text-lg"></i>
+                            Logout
+                        </button>
+                    </form>
+
                 </li>
             </ul>
         </nav>
