@@ -133,7 +133,7 @@
             <h1 class="text-5xl font-extrabold mb-4 drop-shadow-md">GharSewa </h1>
             <p class="text-2xl mb-6 font-light drop-shadow-sm">A Care for your Property</p>
             <a href="/RegisterProperty"
-                class="inline-block bg-gray-700 hover:bg-gray-800 text-white font-semibold px-6 py-6 rounded shadow-lg transition duration-300 text-xl">
+                class="inline-block bg-gray-700 hover:bg-gray-800 text-white font-semibold px-6 py-6 rounded shadow-lg transition duration-300 text-2xl">
                 Register Your Property
             </a>
         </div>
