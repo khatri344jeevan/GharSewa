@@ -48,7 +48,48 @@ class UserDashboardController extends Controller
             'pendingtask',
             'pendingPayments'
         ));
+
     }
+     //property controller starts here
+         public function p_index(){
+
+            return view('user.Properties.index');
+
+         }
+          public function p_create(){
+            return view('user.Properties.create');
+         }
+
+         public function p_update(){
+            return view('user.Properties.update');
+         }
+
+         public function p_edit(){
+            return view('user.Properties.edit');
+         }
+
+         public function p_store(Request $request)
+         {
+           //Validate the input
+            $request->validate([
+             'title' => 'required|string|max:255',
+             'address' => 'required|string',
+             'type' => 'required|string',
+             'maplocation' => 'nullable|string',
+    ]);
+
+    //Create a new property linked to the currently authenticated user
+    $request->user()->properties()->create([
+        'title' => $request->title,
+        'address' => $request->address,
+        'type' => $request->type,
+        'maplocation' => $request->maplocation,
+    ]);
+
+    // Redirect to the property listing with a success message
+    return redirect()->route('user.Properties.p_index')->with('success', 'Property registered successfully!');
+}
+
 
 }
 
