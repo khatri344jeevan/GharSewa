@@ -21,34 +21,29 @@
     <form method="POST" action="/maintenance/book" class="bg-white p-8 rounded shadow-md max-w-xl mx-auto">
         <h2 class="text-2xl font-bold mb-6 text-center text-gray-700">Book Maintenance Package</h2>
 
-        <!-- Select Property -->
         <div class="mb-4">
             <label for="property_id" class="block text-gray-700 font-medium mb-2">Select Property</label>
             <select id="property_id" name="property_id"
                 class="w-full px-4 py-2 border border-gray-300 rounded focus:outline-none focus:ring-2 focus:ring-gray-700"
                 required>
                 <option value="">Select Property</option>
-                <!-- You should populate this from backend -->
                 <option value="1">Flat in Kathmandu</option>
                 <option value="2">House in Bhaktapur</option>
             </select>
         </div>
 
-        <!-- Select Package -->
         <div class="mb-4">
             <label for="package_id" class="block text-gray-700 font-medium mb-2">Select Package</label>
             <select id="package_id" name="package_id"
                 class="w-full px-4 py-2 border border-gray-300 rounded focus:outline-none focus:ring-2 focus:ring-gray-700"
                 required>
                 <option value="">Choose Package</option>
-                <!-- You should populate this from backend -->
                 <option value="1">Monthly - Rs. 999</option>
                 <option value="2">6 Months - Rs. 4999</option>
                 <option value="3">Annual - Rs. 8999</option>
             </select>
         </div>
 
-        <!-- Booking Date -->
         <div class="mb-4">
             <label for="booking_date" class="block text-gray-700 font-medium mb-2">Preferred Booking Date</label>
             <input type="date" id="booking_date" name="booking_date"
@@ -56,7 +51,6 @@
                 required>
         </div>
 
-        <!-- Submit Button -->
         <button type="submit"
             class="w-full bg-gray-700 hover:bg-gray-800 text-white font-semibold py-3 rounded-xl shadow-md text-lg transition-all duration-300">
             Book Package
