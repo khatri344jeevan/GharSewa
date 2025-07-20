@@ -115,7 +115,7 @@ public function index()
             return view('service_provider.index');
         case 'user':
         default:
-            return view('user.index');
+            return view('user.dashboard');
     }
 }
 ```
