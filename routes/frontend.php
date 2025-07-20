@@ -7,6 +7,8 @@ use Illuminate\Support\Facades\Route;
 
 
 Route::get("/" , [FrontendController::class , "welcome"]);
+Route::get("/RegisterProperty" , [FrontendController::class , "RegisterProperty"]);
+Route::get("/BookPackage" , [FrontendController::class , "BookPackage"]);
 
 Route::post('/landing-contact-submit', [FrontendController::class, 'submitLandingForm'])->name('landing.contact.submit');
 
