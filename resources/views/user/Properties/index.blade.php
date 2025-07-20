@@ -4,15 +4,16 @@
 
 @section('content')
 
-<div class="flex items-center justify-between space-x-4 ">
+    <div class="flex items-center justify-between space-x-4 ">
 
-    <!-- Add Record Button -->
-    <button class="bg-gray-700 hover:bg-gray-800 text-white font-semibold px-6 py-3 rounded transition duration-300">
-       <a href="{{route('user.Properties.p_create')}}">Add record</a>
-    </button>
+        <!-- Add Record Button -->
+        <button
+            class="bg-gray-700 hover:bg-gray-800 text-white font-semibold px-6 py-3 rounded transition duration-300 shadow-md">
+            <a href="{{ route('user.Properties.p_create') }}">Add record</a>
+        </button>
 
-    <!-- Search Bar -->
-    {{-- <div class="flex items-center bg-gray-100 rounded-lg">
+        <!-- Search Bar -->
+        {{-- <div class="flex items-center bg-gray-100 rounded-lg">
         <input
             type="text"
             placeholder="Search..."
@@ -25,27 +26,37 @@
         </button>
     </div> --}}
 
-</div>
-{{-- <div class="card-body">
-<table>
-    <thead>
-        <th>Id</th>
-        <th>Property Title</th>
-        <th>Address</th>
-        <th>Coordinates of Map</th>
+    </div>
 
-    </thead>
-
-    <tr>
-        <td></td>
-        <td></td>
-        <td></td>
-        <td></td>
-    </tr>
-
-</table> --}}
-</div>
-
-
+    <div class="mt-6 bg-white shadow-lg rounded-lg overflow-hidden">
+        <table class="min-w-full divide-y divide-gray-200 text-sm text-gray-700">
+            <thead class="bg-gray-100 text-gray-700 uppercase text-xs">
+                <tr>
+                    <th class="px-6 py-3 text-left">Id</th>
+                    <th class="px-6 py-3 text-left">Property Title</th>
+                    <th class="px-6 py-3 text-left">Address</th>
+                    <th class="px-6 py-3 text-left">Type</th>
+                    <th class="px-6 py-3 text-left">Coordinates of Map</th>
+                    <th class="px-6 py-3 text-left">Actions</th>
+                </tr>
+            </thead>
+            <tbody class="bg-white divide-y divide-gray-200">
+                @foreach ($properties as $property)
+                    <tr class="hover:bg-gray-50 transition duration-200">
+                        <td class="px-6 py-4">{{ $property->id }}</td>
+                        <td class="px-6 py-4">{{ $property->title }}</td>
+                        <td class="px-6 py-4">{{ $property->address }}</td>
+                        <td class="px-6 py-4">{{ $property->type }}</td>
+                        <td class="px-6 py-4">{{ $property->maplocation }}</td>
+                        <td class="px-6 py-4">
+                            <a href="{{ route('user.Properties.p_edit', $property->id) }}"
+                                class="text-blue-800 hover:underline font-medium mr-10">Edit</a>
+                            <a href="/" class="text-red-800 hover:underline font-medium ml-10">Delete</a>
+                        </td>
+                    </tr>
+                @endforeach
+            </tbody>
+        </table>
+    </div>
 
 @endsection
