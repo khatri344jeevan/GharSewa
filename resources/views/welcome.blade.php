@@ -133,7 +133,7 @@
         <div class="absolute left-10 top-1/2 -translate-y-1/2 z-10 text-white max-w-md">
             <h1 class="text-5xl font-extrabold mb-4 drop-shadow-md">GharSewa </h1>
             <p class="text-2xl mb-6 font-light drop-shadow-sm">A Care for your Property</p>
-            <a href="/"
+            <a href="/RegisterProperty"
                 class="inline-block bg-gray-700 hover:bg-gray-800 text-white font-semibold px-6 py-6 rounded shadow-lg transition duration-300 text-xl">
                 Register Your Property
             </a>

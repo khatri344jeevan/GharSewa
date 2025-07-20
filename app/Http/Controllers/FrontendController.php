@@ -13,6 +13,14 @@ class FrontendController extends Controller
         return view("welcome");
     }
 
+    public function RegisterProperty(){
+        return view("RegisterProperty");
+    }
+
+    public function BookPackage(){
+        return view("BookPackage");
+    }
+
     public function Faq(){
         return view("Faq");
     }
@@ -65,7 +73,8 @@ class FrontendController extends Controller
         return view("auth.register");
     }
 
-    // ✅ Contact form handler (Contact page)
+
+    // Contact us
     public function submitContact(Request $request)
     {
         $validated = $request->validate([
@@ -82,7 +91,7 @@ class FrontendController extends Controller
         return redirect()->back()->with('success', 'Your message has been sent and saved successfully!');
     }
 
-    // ✅ Landing page contact form handler (e.g., home or welcome page)
+    //  Landing page contact us
     public function submitLandingForm(Request $request)
     {
         $validated = $request->validate([
