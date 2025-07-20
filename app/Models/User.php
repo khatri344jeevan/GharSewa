@@ -6,6 +6,8 @@ namespace App\Models;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Foundation\Auth\User as Authenticatable;
 use Illuminate\Notifications\Notifiable;
+use Illuminate\Database\Eloquent\Relations\HasMany;
+
 
 class User extends Authenticatable
 {
@@ -47,4 +49,28 @@ class User extends Authenticatable
             'password' => 'hashed',
         ];
     }
+
+    //properties eloquent
+        public function properties(): HasMany{
+           return $this->hasMany(Property::class);
+    }
+
+    //booking eleoquent: One user can have multiple bookings
+    public function bookings(): HasMany{
+           return $this->hasMany(Booking::class);
+    }
+
+    //for counting the task
+    // public function tasks(){
+    //        return $this->hasMany(Task::class);
+    // }
+
+public function payments()
+{
+    return $this->hasMany(Payment::class);
+}
+
+
+
+
 }
