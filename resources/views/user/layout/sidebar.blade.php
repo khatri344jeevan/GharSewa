@@ -14,11 +14,8 @@
     <nav class="flex-1 overflow-y-auto mt-6">
         <ul class="space-y-3 px-6">
             <li>
-<<<<<<< HEAD
+
                 <a href="{{ route('user.dashboard') }}"
-=======
-                <a href="#"
->>>>>>> e9be0e031013f9144e7fdc3e0b6922196de33974
                     class="flex items-center gap-4 px-5 py-3 rounded-lg hover:bg-gray-400 hover:text-gray-900 transition font-semibold">
                     <i class="bi bi-speedometer2 text-lg"></i>
                     Dashboard

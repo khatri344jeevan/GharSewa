@@ -26,7 +26,7 @@
     </div> --}}
 
 </div>
-<div class="card-body">
+{{-- <div class="card-body">
 <table>
     <thead>
         <th>Id</th>
@@ -43,7 +43,7 @@
         <td></td>
     </tr>
 
-</table>
+</table> --}}
 </div>
 
 
