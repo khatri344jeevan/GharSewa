@@ -1,6 +1,7 @@
 <?php
 use App\Http\Controllers\UserDashboardController;
 
+<<<<<<< HEAD
 Route::get('/dashboard', [UserDashboardController::class, 'index'])
     ->middleware(['auth', 'verified', 'rolemanager:user'])
     ->name('user.dashboard');
@@ -19,3 +20,20 @@ Route::get('/properties',[UserDashboardController:: class, 'p_index'])
 
  Route::post('/properties/store', [UserDashboardController::class, 'p_store'])
 ->name('user.Properties.p_store');
+=======
+
+// Route::get('/dashboard', [UserDashboardController::class, 'index'])
+//     ->middleware(['auth', 'verified', 'rolemanager:user'])
+//     ->name('user.dashboard');
+
+Route::middleware(['auth', 'verified', 'rolemanager:user'])->group(function () {
+    Route::controller(UserDashboardController::class)->group(function () {
+        Route::prefix('user')->group(function () {
+            Route::get('/dashboard', 'index')->name('user.dashboard');
+            // Route::get('/profile', 'profile')->name('user.profile');
+
+
+        });
+    });
+});
+>>>>>>> e9be0e031013f9144e7fdc3e0b6922196de33974

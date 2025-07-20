@@ -1,3 +1,4 @@
+
 <?php
 
 namespace App\Http\Controllers;
@@ -22,27 +23,9 @@ class DashboardController extends Controller
             case 'service_provider':
                 return view('service_provider.index');
 
-             case 'user':
+            case 'user':
             default:
-                $propertyCount = $user->properties()->count();
-                $upcomingServices = $user->bookings()->where('status', 'pending')->count();
-                // $pendingtask = $user->tasks()->where('status', 'pending')->count();
-                $pendingtask = \App\Models\Task::whereHas('booking', function($query) use ($user)
-                 {
-                     $query->where('user_id', $user->id);
-                     }) ->where('status', 'pending')->count();
-
-                $pendingPayments = $user->payments()->count();
-
-                // return view('user.dashboard', compact('propertyCount') , compact('upcomingServices'), compact('pendingtask'),compact('pendingPayments'));
-                return view('user.dashboard', compact(
-                                   'propertyCount',
-                                   'upcomingServices',
-                                   'pendingtask',
-                                   'pendingPayments'
-                                ));
-
+                return view('user.index');
         }
     }
-
 }

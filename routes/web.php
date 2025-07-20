@@ -7,9 +7,9 @@ Route::get('/', function () {
     return view('welcome');
 });
 
-Route::get('/dashboard', function () {
-    return view('user.index');
-})->middleware(['auth', 'verified', 'rolemanager:user'])->name('user.dashboard');
+// Route::get('/dashboard', function () {
+//     return view('user.index');
+// })->middleware(['auth', 'verified', 'rolemanager:user'])->name('user.dashboard');
 
 Route::prefix('admin')->middleware(['auth', 'verified', 'rolemanager:admin'])->group(function () {
     Route::get('/dashboard', function () {
