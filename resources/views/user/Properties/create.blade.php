@@ -106,6 +106,9 @@
                     <label for="title" class="block text-gray-700 font-medium mb-1">Property Title</label>
                     <input type="text" id="title" name="title" required
                         class="w-full px-4 py-2 border border-gray-300 rounded focus:outline-none focus:ring-2 focus:ring-blue-500" />
+                        {{-- @error('title') {{$messsage}} --}}
+
+                        @enderror
                 </div>
 
                 <!-- Address -->

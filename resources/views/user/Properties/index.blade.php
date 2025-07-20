@@ -12,7 +12,7 @@
     </button>
 
     <!-- Search Bar -->
-    <div class="flex items-center bg-gray-100 rounded-lg">
+    {{-- <div class="flex items-center bg-gray-100 rounded-lg">
         <input
             type="text"
             placeholder="Search..."
@@ -23,8 +23,27 @@
         >
             🔍
         </button>
-    </div>
+    </div> --}}
 
+</div>
+<div class="card-body">
+<table>
+    <thead>
+        <th>Id</th>
+        <th>Property Title</th>
+        <th>Address</th>
+        <th>Coordinates of Map</th>
+
+    </thead>
+
+    <tr>
+        <td></td>
+        <td></td>
+        <td></td>
+        <td></td>
+    </tr>
+
+</table>
 </div>
 
 

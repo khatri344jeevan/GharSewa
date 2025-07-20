@@ -68,16 +68,16 @@ class UserDashboardController extends Controller
          }
 
          public function p_store(Request $request)
-{
-    // 1. Validate the input
-    $request->validate([
-        'title' => 'required|string|max:255',
-        'address' => 'required|string',
-        'type' => 'required|string',
-        'maplocation' => 'nullable|string',
+         {
+           //Validate the input
+            $request->validate([
+             'title' => 'required|string|max:255',
+             'address' => 'required|string',
+             'type' => 'required|string',
+             'maplocation' => 'nullable|string',
     ]);
 
-    // 2. Create a new property linked to the currently authenticated user
+    //Create a new property linked to the currently authenticated user
     $request->user()->properties()->create([
         'title' => $request->title,
         'address' => $request->address,
@@ -85,7 +85,7 @@ class UserDashboardController extends Controller
         'maplocation' => $request->maplocation,
     ]);
 
-    // 3. Redirect to the property listing with a success message
+    // Redirect to the property listing with a success message
     return redirect()->route('user.Properties.p_index')->with('success', 'Property registered successfully!');
 }
 
