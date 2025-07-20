@@ -3,22 +3,13 @@
 namespace App\Http\Controllers;
 
 use App\Models\Task;
+use App\Models\Property;
+
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 
-
-
 class UserDashboardController extends Controller
 {
-    // public function index()
-    // {
-    //     $user = Auth::user();
-    //     $propertyCount = $user->properties()->count();
-
-    //     return view('user.dashboard', compact('propertyCount'));
-    //         // return 'User dashboard controller is working';
-
-    // }
     public function index()
     {
         $user = Auth::user();
@@ -48,48 +39,69 @@ class UserDashboardController extends Controller
             'pendingtask',
             'pendingPayments'
         ));
-
     }
-     //property controller starts here
-         public function p_index(){
 
-            return view('user.Properties.index');
+    // Property controller starts here
+    public function p_index(){
+        $properties = Property::paginate(10);
+        return view('user.Properties.index', [
+            'properties' => $properties
+        ]);
+    }
 
-         }
-          public function p_create(){
-            return view('user.Properties.create');
-         }
+    public function p_create(){
+        return view('user.Properties.create');
+    }
 
-         public function p_update(){
-            return view('user.Properties.update');
-         }
+    public function p_edit(Property $property){
+        return view('user.Properties.edit', compact('property'));
+    }
 
-         public function p_edit(){
-            return view('user.Properties.edit');
-         }
+    public function update(Request $request, Property $property)
+    {
+        // Validate the input
+        $request->validate([
+            'title' => 'required|string|max:255',
+            'address' => 'required|string',
+            'type' => 'required|string',
+            'maplocation' => 'nullable|string',
+        ]);
 
-         public function p_store(Request $request)
-         {
-           //Validate the input
-            $request->validate([
-             'title' => 'required|string|max:255',
-             'address' => 'required|string',
-             'type' => 'required|string',
-             'maplocation' => 'nullable|string',
-    ]);
+        // Update the existing properties (corrected method)
+        $property->update([
+            'title' => $request->title,
+            'address' => $request->address,
+            'type' => $request->type,
+            'maplocation' => $request->maplocation,
+        ]);
 
-    //Create a new property linked to the currently authenticated user
-    $request->user()->properties()->create([
-        'title' => $request->title,
-        'address' => $request->address,
-        'type' => $request->type,
-        'maplocation' => $request->maplocation,
-    ]);
+        // Redirect to the property listing with a success message
+        return redirect()->route('user.Properties.p_index')->with('success', 'Property updated successfully!');
+    }
 
-    // Redirect to the property listing with a success message
-    return redirect()->route('user.Properties.p_index')->with('success', 'Property registered successfully!');
+    public function p_delete(){
+        return view('user.Properties.delete');
+    }
+
+    public function p_store(Request $request)
+    {
+        // Validate the input
+        $request->validate([
+            'title' => 'required|string|max:255',
+            'address' => 'required|string',
+            'type' => 'required|string',
+            'maplocation' => 'nullable|string',
+        ]);
+
+        // Create a new property linked to the currently authenticated user
+        $request->user()->properties()->create([
+            'title' => $request->title,
+            'address' => $request->address,
+            'type' => $request->type,
+            'maplocation' => $request->maplocation,
+        ]);
+
+        // Redirect to the property listing with a success message
+        return redirect()->route('user.Properties.p_index')->with('success', 'Property registered successfully!');
+    }
 }
-
-
-}
-

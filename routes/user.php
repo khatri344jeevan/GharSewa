@@ -12,11 +12,24 @@ Route::get('/properties',[UserDashboardController:: class, 'p_index'])
  Route::get('/properties/create',[UserDashboardController:: class, 'p_create'])
  ->name('user.Properties.p_create');
 
- Route::get('/properties/edit',[UserDashboardController:: class, 'p_edit'])
- ->name('user.Properties.p_edit');
+ Route::get('/properties/delete',[UserDashboardController:: class, 'p_delete'])
+ ->name('user.Properties.p_delete');
 
- Route::get('/properties/update',[UserDashboardController:: class, 'p_update'])
- ->name('user.Properties.p_update');
+//  Route::get('/properties/edit',[UserDashboardController:: class, 'p_edit'])
+//  ->name('user.Properties.p_edit');
+
+//   Route::put('/properties/update',[UserDashboardController:: class, 'p_update'])
+//  ->name('user.Properties.p_update');
+
+// Show the form
+Route::get('/properties/{property}/edit', [UserDashboardController::class, 'p_edit'])
+    ->name('user.Properties.p_edit');
+
+// Handle the update
+Route::put('/properties/{property}', [UserDashboardController::class, 'update'])
+    ->name('user.Properties.update');
+
+
 
  Route::post('/properties/store', [UserDashboardController::class, 'p_store'])
 ->name('user.Properties.p_store');
