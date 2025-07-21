@@ -1,40 +1,43 @@
 <?php
-use App\Http\Controllers\UserDashboardController;
+use App\Http\Controllers\User\UserDashboardController;
+use App\Http\Controllers\User\UserPropertyController;
+
+
 
 
 Route::get('/dashboard', [UserDashboardController::class, 'index'])
     ->middleware(['auth', 'verified', 'rolemanager:user'])
     ->name('user.dashboard');
 
-Route::get('/properties',[UserDashboardController:: class, 'p_index'])
+Route::get('/properties',[UserPropertyController:: class, 'p_index'])
  ->name('user.Properties.p_index');
 
- Route::get('/properties/create',[UserDashboardController:: class, 'p_create'])
+ Route::get('/properties/create',[UserPropertyController:: class, 'p_create'])
  ->name('user.Properties.p_create');
 
-//  Route::get('/properties/delete',[UserDashboardController:: class, 'p_delete'])
+//  Route::get('/properties/delete',[UserPropertyController:: class, 'p_delete'])
 //  ->name('user.Properties.p_delete');
 
-//  Route::get('/properties/edit',[UserDashboardController:: class, 'p_edit'])
+//  Route::get('/properties/edit',[UserPropertyController:: class, 'p_edit'])
 //  ->name('user.Properties.p_edit');
 
-//   Route::put('/properties/update',[UserDashboardController:: class, 'p_update'])
+//   Route::put('/properties/update',[UserPropertyController:: class, 'p_update'])
 //  ->name('user.Properties.p_update');
 
 // Show the form
-Route::get('/properties/{property}/edit', [UserDashboardController::class, 'p_edit'])
+Route::get('/properties/{property}/edit', [UserPropertyController::class, 'p_edit'])
     ->name('user.Properties.p_edit');
 
 // Handle the update
-Route::put('/properties/{property}', [UserDashboardController::class, 'update'])
+Route::put('/properties/{property}', [UserPropertyController::class, 'update'])
     ->name('user.Properties.update');
 
 
 
- Route::post('/properties/store', [UserDashboardController::class, 'p_store'])
+ Route::post('/properties/store', [UserPropertyController::class, 'p_store'])
 ->name('user.Properties.p_store');
 
 // web.php
-Route::delete('/properties/{property}', [UserDashboardController::class, 'destroy'])
+Route::delete('/properties/{property}', [UserPropertyController::class, 'destroy'])
     ->name('user.Properties.destroy');
 

@@ -42,4 +42,11 @@ class Booking extends Model
     {
         return $this->hasMany(Payment::class);
     }
+
+    //realtion with BookignPakage
+    public function bookingPackages()
+    {
+    return $this->hasMany(BookingPackage::class);
+    }
+
 }
