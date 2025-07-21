@@ -100,7 +100,7 @@
                     <div class="w-full">
                         <h3 class="text-3xl font-extrabold text-gray-700 mb-6 tracking-wide">Plumbing Service</h3>
                         <p class="text-gray-600 text-lg mb-6 leading-relaxed">
-                            Leaky taps or major repairs — our skilled plumbers deliver reliable service on time.
+                            Leaky taps or major repairs , our skilled plumbers deliver reliable service on time.
                             Available
                             on-demand or with a care plan.
                         </p>

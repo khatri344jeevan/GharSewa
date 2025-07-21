@@ -75,10 +75,10 @@
                     <p>We reserve the right to update these Terms. Changes will be communicated through the platform or email notifications.</p>
                 </div>
 
-                <div>
+                {{-- <div>
                     <h2 class=" text-2xl font-semibold text-gray-800 mb-2">9. Governing Law</h2>
                     <p>These Terms are governed by the laws of Nepal. Disputes shall be handled in the courts of Kathmandu.</p>
-                </div>
+                </div> --}}
             </div>
         </div>
     </div>

@@ -1,5 +1,5 @@
 <section  class=" relative bg-gradient-to-b from-white via-slate-50 to-white py-24 px-6 md:px-16 text-black overflow-hidden">
-  <div class="max-w-7xl mx-auto flex flex-col md:flex-row items-center gap-20">
+  <div class="max-w-7xl  flex flex-col md:flex-row items-center gap-20">
 
     <!-- Left Content -->
     <div class="md:w-1/2 text-left relative z-10">
@@ -8,7 +8,7 @@
       </h2>
 
       <p class="text-lg text-gray-700 leading-relaxed mb-12 bg-white/60 backdrop-blur-sm p-6 rounded-xl shadow-lg border border-gray-100">
-        Ghar Sewa is your trusted platform for professional and affordable home services. Whether you need a plumber, electrician, cleaner, or appliance repair expert — we bring verified service providers right to your doorstep. Book easily, get fast support, and enjoy peace of mind with our reliable team.
+        Ghar Sewa is your trusted platform for professional and affordable home services. Whether you need a plumber, electrician, cleaner, or appliance repair expert . we bring verified service providers right to your doorstep. Book easily, get fast support, and enjoy peace of mind with our reliable team.
       </p>
 
       <h3 class="text-2xl text-gray-700 font-bold mb-6 uppercase tracking-widest">Why Us?</h3>
