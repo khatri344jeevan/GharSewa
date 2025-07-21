@@ -1,45 +1,16 @@
 <?php
 
-namespace App\Http\Controllers;
+namespace App\Http\Controllers\User;
 
+use App\Http\Controllers\Controller;
 use App\Models\Task;
 use App\Models\Property;
 
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 
-class UserDashboardController extends Controller
+class UserPropertyController extends Controller
 {
-    public function index()
-    {
-        $user = Auth::user();
-
-        // Property count
-        $propertyCount = $user->properties()->count();
-
-        // Upcoming services with status 'pending'
-        $upcomingServices = $user->bookings()
-            ->where('status', 'pending')
-            ->count();
-
-        // Pending tasks where related booking belongs to this user
-        $pendingtask = Task::whereHas('booking', function($query) use ($user) {
-                $query->where('user_id', $user->id);
-            })
-            ->where('status', 'pending')
-            ->count();
-
-        // Count of payments
-        $pendingPayments = $user->payments()->count();
-
-        // Pass all data to the view
-        return view('user.dashboard', compact(
-            'propertyCount',
-            'upcomingServices',
-            'pendingtask',
-            'pendingPayments'
-        ));
-    }
 
     // Property controller starts here
     public function p_index(){

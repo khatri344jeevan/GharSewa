@@ -27,4 +27,11 @@ class Package extends Model
     {
         return $this->hasMany(Payment::class);
     }
+
+    //bookingPackage realtion
+    public function bookingPackages()
+    {
+    return $this->hasMany(BookingPackage::class);
+    }
+
 }
