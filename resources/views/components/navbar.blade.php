@@ -21,7 +21,7 @@
     </a>
 
     <div class="flex space-x-12 text-lg font-medium text-gray-700">
-        <a href="/Home" class="hover:text-gray-500 transition-colors duration-300">Home</a>
+        <a href="/" class="hover:text-gray-500 transition-colors duration-300">Home</a>
         <a href="/Aboutus" class="hover:text-gray-500 transition-colors duration-300">About Us</a>
         <a href="/Service" class="hover:text-gray-500 transition-colors duration-300">Services</a>
         <a href="/Contactus" class="hover:text-gray-500 transition-colors duration-300">Contact Us</a>
