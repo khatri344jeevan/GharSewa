@@ -1,41 +1,39 @@
 <?php
-// database/migrations/xxxx_xx_xx_xxxxxx_add_profile_fields_to_users_table.php
 
 use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\Schema;
 
-return new class extends Migration
-{
-    /**
-     * Run the migrations.
-     * This method is called when we run "php artisan migrate".
-     * It adds new columns to our 'users' table.
-     */
-    public function up(): void
-    {
+return new class extends Migration {
+    public function up(): void {
         Schema::table('users', function (Blueprint $table) {
-            // A place to store the path to the user's profile picture.
-            // It can be null because a new user won't have a photo.
-            $table->string('avatar')->nullable()->after('email');
+            if (!Schema::hasColumn('users', 'role')) {
+                $table->string('role')->default('user')->after('email');
+            }
 
-            // A text field for the user's phone number.
-            $table->string('phone_number')->nullable()->after('avatar');
+            if (!Schema::hasColumn('users', 'phone_number')) {
+                $table->string('phone_number')->nullable()->after('role');
+            }
 
-            // A longer text field for the user's professional bio.
-            $table->text('bio')->nullable()->after('phone_number');
+            if (!Schema::hasColumn('users', 'address')) {
+                $table->string('address')->nullable()->after('phone_number');
+            }
         });
     }
 
-    /**
-     * Reverse the migrations.
-     * This method is called if we ever need to undo the migration.
-     */
-    public function down(): void
-    {
+    public function down(): void {
         Schema::table('users', function (Blueprint $table) {
-            // This removes the columns if we roll back.
-            $table->dropColumn(['avatar', 'phone_number', 'bio']);
+            if (Schema::hasColumn('users', 'role')) {
+                $table->dropColumn('role');
+            }
+
+            if (Schema::hasColumn('users', 'phone_number')) {
+                $table->dropColumn('phone_number');
+            }
+
+            if (Schema::hasColumn('users', 'address')) {
+                $table->dropColumn('address');
+            }
         });
     }
 };

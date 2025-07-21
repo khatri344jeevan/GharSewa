@@ -50,6 +50,11 @@ class User extends Authenticatable
         ];
     }
 
+        public function serviceProviderProfile(): HasOne
+    {
+        return $this->hasOne(ServiceProvider::class);
+    }
+
     //properties eloquent
         public function properties(): HasMany{
            return $this->hasMany(Property::class);
@@ -64,6 +69,9 @@ class User extends Authenticatable
     // public function tasks(){
     //        return $this->hasMany(Task::class);
     // }
+
+
+    
 
 public function payments()
 {
