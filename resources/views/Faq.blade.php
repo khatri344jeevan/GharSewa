@@ -18,17 +18,17 @@
 <div x-data="{ openIndex: null }" class="max-w-2xl mx-auto mb-20 mt-10 bg-white shadow-md rounded-2xl p-8 ">
   <h2 class="text-2xl font-bold mb-6">Frequently Asked Questions</h2>
 
-  <!-- Q1 -->
+  {{-- Q1  --}}
   <div class="border-b py-4">
     <button @click="openIndex === 1 ? openIndex = null : openIndex = 1" class="w-full text-left font-medium text-lg">
       What is GharSewa?
     </button>
     <div x-show="openIndex === 1" x-collapse class="mt-2 text-gray-700">
-      GharSewa is a digital property management platform that helps property owners—especially those living abroad—manage and maintain their buildings, apartments, or homes in Nepal.
+      GharSewa is a digital property management platform that helps property owners, especially those living abroad, manage and maintain their buildings, apartments, or homes in Nepal.
     </div>
   </div>
 
-  <!-- Q2 -->
+  {{-- Q2  --}}
   <div class="border-b py-4">
     <button @click="openIndex === 2 ? openIndex = null : openIndex = 2" class="w-full text-left font-medium text-lg">
       How can I book a service?
@@ -38,7 +38,7 @@
     </div>
   </div>
 
-  <!-- Q3 -->
+  {{-- Q3 --}}
   <div class="border-b py-4">
     <button @click="openIndex === 3 ? openIndex = null : openIndex = 3" class="w-full text-left font-medium text-lg">
       What types of services are available?
@@ -48,7 +48,7 @@
     </div>
   </div>
 
-  <!-- Q4 -->
+  {{-- Q4 --}}
   <div class="border-b py-4">
     <button @click="openIndex === 4 ? openIndex = null : openIndex = 4" class="w-full text-left font-medium text-lg">
       How are the service providers selected?
@@ -58,7 +58,7 @@
     </div>
   </div>
 
-  <!-- Q5 -->
+  {{-- Q5 --}}
   <div class="border-b py-4">
     <button @click="openIndex === 5 ? openIndex = null : openIndex = 5" class="w-full text-left font-medium text-lg">
       What locations does GharSewa provide its services?
@@ -68,7 +68,7 @@
     </div>
   </div>
 
-  <!-- Q6 -->
+  {{-- Q6 --}}
   <div class="border-b py-4">
     <button @click="openIndex === 6 ? openIndex = null : openIndex = 6" class="w-full text-left font-medium text-lg">
       What are the costs associated with the services?
@@ -78,7 +78,7 @@
     </div>
   </div>
 
-  <!-- Q7 -->
+  {{-- Q7 --}}
   <div class="border-b py-4">
     <button @click="openIndex === 7 ? openIndex = null : openIndex = 7" class="w-full text-left font-medium text-lg">
       Can I get an annual maintenance contract (AMC)?
@@ -88,7 +88,7 @@
     </div>
   </div>
 
-  <!-- Q8 -->
+  {{-- Q8 --}}
   <div class="border-b py-4">
     <button @click="openIndex === 8 ? openIndex = null : openIndex = 8" class="w-full text-left font-medium text-lg">
       How do I contact GharSewa?
