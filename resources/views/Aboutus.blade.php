@@ -83,41 +83,48 @@
             class="absolute bottom-0 right-0 w-72 h-72 bg-gray-300 rounded-full opacity-20 blur-3xl animate-pulse -z-10">
         </div>
 
-        {{-- Who is GharSewa for --}}
-        <div class="max-w-7xl">
-            <div class="mt-12 ml-12 md:w-1/2">
+
+        <div class="max-w-7xl mx-auto flex flex-col md:flex-row justify-between gap-8 ">
+
+            <!-- Left: Need Help -->
+            <div class="md:w-1/2 pt-10">
+                <h1 class="text-2xl text-gray-700 font-bold mb-4 uppercase tracking-widest">
+                    Need Help?
+                </h1>
+                <div>
+                    <p class="border rounded-lg shadow hover:shadow-lg px-5 py-5 bg-gray-100 font-medium text-gray-800">
+                        If you need any help, feel free to contact us through the number or email provided below.
+                    </p>
+                </div>
+            </div>
+
+            <!-- Right: Who is GharSewa for? -->
+            <div class="md:w-1/2 mt-4 ">
                 <h1 class="text-2xl text-gray-700 font-bold mb-6 uppercase tracking-widest">
                     Who is GharSewa for?
                 </h1>
                 <ul class="space-y-5">
-                    <li class="flex items-start bg-gray-100  p-4 rounded-lg shadow hover:shadow-lg transition ml-2.5 ">
-                        <span class=" text-2xl mr-4 mt-1">✔️</span>
+                    <li class="flex items-start bg-gray-100 p-4 rounded-lg shadow hover:shadow-lg transition">
+                        <span class="text-2xl mr-4 mt-1">✔️</span>
                         <p class="text-gray-800 font-medium">Nepalese living abroad</p>
                     </li>
-                    <li class="flex items-start bg-gray-100  p-4 rounded-lg shadow hover:shadow-lg transition ml-2.5">
-                        <span class=" text-2xl mr-4 mt-1">✔️</span>
+                    <li class="flex items-start bg-gray-100 p-4 rounded-lg shadow hover:shadow-lg transition">
+                        <span class="text-2xl mr-4 mt-1">✔️</span>
                         <p class="text-gray-800 font-medium">Busy professionals with no time for property upkeep</p>
                     </li>
-                    <li class="flex items-start bg-gray-100 p-4 rounded-lg  shadow hover:shadow-lg transition ml-2.5 ">
-                        <span class="mt-1 mr-4 text-2xl">✔️</span>
-                        <p class="font-medium text-gray-800">Landlords and real estate investors</p>
+                    <li class="flex items-start bg-gray-100 p-4 rounded-lg shadow hover:shadow-lg transition">
+                        <span class="text-2xl mr-4 mt-1">✔️</span>
+                        <p class="text-gray-800 font-medium">Landlords and real estate investors</p>
                     </li>
-                    <li class="flex items-start bg-gray-100 p-4 rounded-lg shadow hover:shadow-lg transition ml-2.5">
-                        <span class="mt-1 mr-4 text-2xl">✔️</span>
-                        <p class="font-medium text-gray-800">Organizations managing multiple properties</p>
+                    <li class="flex items-start bg-gray-100 p-4 rounded-lg shadow hover:shadow-lg transition">
+                        <span class="text-2xl mr-4 mt-1">✔️</span>
+                        <p class="text-gray-800 font-medium">Organizations managing multiple properties</p>
                     </li>
                 </ul>
             </div>
+
         </div>
 
-        {{-- Need Help --}}
-        <div class="pt-8">
-            <h1 class="text-2xl text-gray-700 font-bold mb-4 uppercase tracking-widest pl-12 ">Need Help?</h1>
-            <div class="pl-14 w-1/2">
-                <p class="border rounded-lg shadow hover:shadow-lg px-6 py-5 bg-gray-100  font-medium text-gray-800">If you need any help, feel free to
-                contact us through the number or email provided below.</p>
-            </div>
-        </div>
 
     </section>
 
