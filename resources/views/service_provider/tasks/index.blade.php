@@ -1,39 +1,34 @@
 @extends('service_provider.layouts.layout')
 @section('title', 'My Tasks')
 @section('content')
-    <h1 class="text-3xl font-bold text-gray-800 mb-6">My Tasks</h1>
-    <div class="space-y-8">
-        @php
-            $statuses = ['pending', 'confirmed', 'in_progress', 'completed', 'upcoming', 'canceled'];
-        @endphp
-        @foreach ($statuses as $status)
-            <div class="mb-8">
-                <h2 class="text-2xl font-semibold text-gray-700 mb-4 border-b pb-2">
-                    {{ ucfirst(str_replace('_', ' ', $status)) }}
-                </h2>
-                <div class="space-y-4">
-                    {{-- We filter the collection of tasks for the current status in the loop --}}
-                    @forelse ($tasks->where('status', $status) as $task)
-                        <div class="bg-white p-4 rounded-lg shadow-md">
-                            {{-- Task Title from the related 'services' table --}}
-                            <p class="font-bold text-lg text-gray-800">{{ $task->service->name ?? 'N/A' }}</p>
-                            {{-- Customer and Date from the related 'bookings' table --}}
+    <h1 class="text-3xl font-bold text-gray-800 mb-6">My Assigned Tasks</h1>
+    <div class="bg-white p-8 rounded-lg shadow-md">
+        <div class="space-y-6">
+            @forelse ($tasks as $task)
+                <div class="border-b pb-4 last:border-b-0">
+                    <div class="flex justify-between items-start">
+                        <div class="flex-grow">
+                            <p class="font-bold text-lg text-gray-800">{{ $task->service->name ?? 'Service Not Specified' }}</p>
                             <p class="text-sm text-gray-600 mt-1">
                                 Customer: <span class="font-semibold">{{ $task->booking->customer->name ?? 'N/A' }}</span>
-                                | Scheduled: <span class="font-semibold">{{ \Carbon\Carbon::parse($task->scheduled_date)->format('M d, Y, h:i A') }}</span>
                             </p>
-                            {{-- Notes from the 'booking_details' table itself --}}
-                            @if($task->note)
-                                <p class="mt-2 text-gray-500 border-l-4 border-gray-200 pl-3">
-                                    <strong>Note:</strong> {{ $task->note }}
-                                </p>
-                            @endif
+                            <p class="text-sm text-gray-600">
+                                Scheduled: <span class="font-semibold">{{ \Carbon\Carbon::parse($task->scheduled_date)->format('M d, Y, h:i A') }}</span>
+                            </p>
                         </div>
-                    @empty
-                        <p class="text-gray-500 italic">No tasks with status '{{ $status }}'.</p>
-                    @endforelse
+                        <span class="text-sm font-medium bg-blue-100 text-blue-800 py-1 px-3 rounded-full capitalize">
+                            {{ str_replace('_', ' ', $task->status) }}
+                        </span>
+                    </div>
+                    @if($task->note)
+                        <p class="mt-3 text-gray-600 border-l-4 border-gray-200 pl-4 text-sm">
+                            <strong>Notes:</strong> {{ $task->note }}
+                        </p>
+                    @endif
                 </div>
-            </div>
-        @endforeach
+            @empty
+                <p class="text-gray-500 italic">You have no tasks assigned to you yet.</p>
+            @endforelse
+        </div>
     </div>
 @endsection
