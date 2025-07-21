@@ -12,8 +12,8 @@ Route::get('/properties',[UserDashboardController:: class, 'p_index'])
  Route::get('/properties/create',[UserDashboardController:: class, 'p_create'])
  ->name('user.Properties.p_create');
 
- Route::get('/properties/delete',[UserDashboardController:: class, 'p_delete'])
- ->name('user.Properties.p_delete');
+//  Route::get('/properties/delete',[UserDashboardController:: class, 'p_delete'])
+//  ->name('user.Properties.p_delete');
 
 //  Route::get('/properties/edit',[UserDashboardController:: class, 'p_edit'])
 //  ->name('user.Properties.p_edit');
@@ -33,3 +33,8 @@ Route::put('/properties/{property}', [UserDashboardController::class, 'update'])
 
  Route::post('/properties/store', [UserDashboardController::class, 'p_store'])
 ->name('user.Properties.p_store');
+
+// web.php
+Route::delete('/properties/{property}', [UserDashboardController::class, 'destroy'])
+    ->name('user.Properties.destroy');
+

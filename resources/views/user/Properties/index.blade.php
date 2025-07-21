@@ -22,7 +22,7 @@
         <button
             class="flex items-center px-4 text-white bg-blue-500 rounded-r-lg hover:bg-blue-600 focus:outline-none focus:ring-2 focus:ring-blue-500"
         >
-            🔍
+
         </button>
     </div> --}}
 
@@ -51,7 +51,13 @@
                         <td class="px-6 py-4">
                             <a href="{{ route('user.Properties.p_edit', $property->id) }}"
                                 class="text-blue-800 hover:underline font-medium mr-10">Edit</a>
-                            <a href="/" class="text-red-800 hover:underline font-medium ml-10">Delete</a>
+                            {{-- //delete --}}
+                            <form action="{{ route('user.Properties.destroy', $property->id) }}" method="POST"
+                                onsubmit="return confirm('Are you sure you want to delete this property?');">
+                                @csrf
+                                @method('DELETE')
+                                <button type="submit" class="text-red-800 hover:underline font-medium">Delete</button>
+                            </form>
                         </td>
                     </tr>
                 @endforeach

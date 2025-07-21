@@ -44,17 +44,30 @@ class UserDashboardController extends Controller
     // Property controller starts here
     public function p_index(){
         $properties = Property::paginate(10);
+        $user=Auth::user();
+
+            $properties = $user->properties()->latest()->get();
+
         return view('user.Properties.index', [
             'properties' => $properties
         ]);
     }
 
     public function p_create(){
+
+    //     if ($property->user_id !== Auth::id()){
+    //     abort(403, 'Unauthorized action.');
+    //  }
         return view('user.Properties.create');
     }
 
     public function p_edit(Property $property){
+
+        if ($property->user_id !== Auth::id()){
+        abort(403, 'Unauthorized action.');
+     }
         return view('user.Properties.edit', compact('property'));
+
     }
 
     public function update(Request $request, Property $property)
@@ -79,8 +92,13 @@ class UserDashboardController extends Controller
         return redirect()->route('user.Properties.p_index')->with('success', 'Property updated successfully!');
     }
 
-    public function p_delete(){
-        return view('user.Properties.delete');
+    public function destroy(Property $property){
+
+
+         $property->delete();
+
+         return redirect()->route('user.Properties.p_index')->with('sucess','Deleted Successfully!');
+
     }
 
     public function p_store(Request $request)
