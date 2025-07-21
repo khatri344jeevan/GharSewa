@@ -6,7 +6,7 @@
                 <span class="font-semibold">Contact us:</span> <a href="tel:9745619727">9745619727</a>
             </p>
             <p >
-                <span class="font-semibold">Email:</span> <a href="#">support@gharsewa.com</a>
+                <span class="font-semibold">Email:</span> <a href="#">gharsewa5@gmail.com</a>
             </p>
 
             <p class="mt-1">Kathmandu, Nepal</p>

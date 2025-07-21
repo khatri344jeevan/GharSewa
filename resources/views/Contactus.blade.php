@@ -178,7 +178,7 @@
                         </div>
                         <div class="flex items-center gap-2">
                             <ion-icon name="mail-outline" class="w-6 h-6"></ion-icon>
-                            <span>support@gharsewa.com</span>
+                            <span>gharsewa5@gmail.com</span>
                         </div>
                     </div>
                 </div>
