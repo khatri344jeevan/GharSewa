@@ -20,7 +20,7 @@
         <div class="flex flex-col md:flex-row items-center md:items-start gap-8">
             <!-- Profile Picture -->
             <img src="{{ $user->avatar ? asset('storage/' . $user->avatar) : 'https://ui-avatars.com/api/?name=' . urlencode($user->name) . '&background=random' }}" alt="Profile Avatar" class="w-32 h-32 rounded-full object-cover ring-4 ring-indigo-200">
-            
+
             <!-- Profile Information -->
             <div class="flex-grow">
                 <h2 class="text-2xl font-bold text-gray-900">{{ $user->name }}</h2>
@@ -28,7 +28,7 @@
                 <p class="text-md text-gray-500 mt-1">{{ $user->phone_number ?? 'No phone number provided.' }}</p>
 
                 <hr class="my-4">
-                
+
                 <h3 class="text-lg font-semibold text-gray-800">Bio</h3>
                 <p class="mt-1 text-gray-600 whitespace-pre-wrap">{{ $user->bio ?? 'You have not added a bio yet. Click Edit Profile to add one.' }}</p>
             </div>
