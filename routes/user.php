@@ -1,6 +1,8 @@
 <?php
 use App\Http\Controllers\User\UserDashboardController;
 use App\Http\Controllers\User\UserPropertyController;
+use App\Http\Controllers\User\UserBookingController;
+
 
 
 
@@ -8,6 +10,9 @@ use App\Http\Controllers\User\UserPropertyController;
 Route::get('/dashboard', [UserDashboardController::class, 'index'])
     ->middleware(['auth', 'verified', 'rolemanager:user'])
     ->name('user.dashboard');
+
+    //property routing starts from here
+
 
 Route::get('/properties',[UserPropertyController:: class, 'p_index'])
  ->name('user.Properties.p_index');
@@ -40,4 +45,17 @@ Route::put('/properties/{property}', [UserPropertyController::class, 'update'])
 // web.php
 Route::delete('/properties/{property}', [UserPropertyController::class, 'destroy'])
     ->name('user.Properties.destroy');
+
+//booking ko routing starts from here
+
+
+Route::get('/booking',[UserBookingController::class, 'b_index'])
+ ->name('user.Bookings.b_index');
+
+  Route::get('/booking/create',[UserBookingController:: class, 'b_create'])
+ ->name('user.Bookings.b_create');
+
+
+ Route::post('/booking/store', [UserBookingController::class, 'b_store'])
+->name('user.Bookings.b_store');
 

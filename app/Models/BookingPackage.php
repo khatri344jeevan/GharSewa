@@ -10,7 +10,7 @@ class BookingPackage extends Model
     use HasFactory;
 
     // Explicitly define the table name (since it's not plural)
-    protected $table = 'booking_package';
+    protected $table = 'booking_packages';
 
     protected $fillable = [
         'booking_id',
