@@ -1,39 +1,54 @@
-@extends('service_provider.layouts.layout')
-@section('title', 'Edit Profile')
+@extends('service_provider.layouts.sidenav')
 
 @section('content')
-    <h1 class="text-3xl font-bold text-gray-800 mb-6">Edit Profile</h1>
-    
-    <form action="{{ route('service-provider.profile.update') }}" method="POST" enctype="multipart/form-data">
-        @csrf
-        @method('PATCH')
+    <h1 class="text-3xl font-bold text-gray-800 mb-6">Edit My Profile</h1>
 
-        <div class="bg-white p-8 rounded-lg shadow-md">
-            <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
-                <div>
-                    <label for="name" class="block text-sm font-medium text-gray-700">Full Name</label>
-                    <input type="text" name="name" id="name" value="{{ old('name', $user->name) }}" class="mt-1 block w-full rounded-md border-gray-300 shadow-sm focus:border-indigo-500 focus:ring-indigo-500">
+    <div class="max-w-2xl bg-white p-8 rounded-xl shadow-md border border-gray-200">
+        {{-- For a static view, the action can be '#' --}}
+        <form action="#" method="POST" class="space-y-6">
+            {{-- Personal Information Section --}}
+            <div>
+                <h2 class="text-xl font-semibold text-gray-700">Personal Information</h2>
+                <div class="mt-4 space-y-4">
+                    <div>
+                        <label for="name" class="block font-medium text-sm text-gray-700">Full Name</label>
+                        <input id="name" type="text" name="name" value="Sample Provider" class="w-full mt-1 border-gray-300 rounded-md shadow-sm focus:border-blue-500 focus:ring-blue-500">
+                    </div>
+                    <div>
+                        <label for="email" class="block font-medium text-sm text-gray-700">Email Address</label>
+                        <input id="email" type="email" name="email" value="provider@ghar-sewa.com" class="w-full mt-1 border-gray-300 rounded-md shadow-sm focus:border-blue-500 focus:ring-blue-500">
+                    </div>
                 </div>
-                <div>
-                    <label for="phone_number" class="block text-sm font-medium text-gray-700">Phone Number</label>
-                    <input type="text" name="phone_number" id="phone_number" value="{{ old('phone_number', $user->phone_number) }}" class="mt-1 block w-full rounded-md border-gray-300 shadow-sm focus:border-indigo-500 focus:ring-indigo-500">
+            </div>
+
+            <hr class="my-6">
+
+            {{-- Password Section --}}
+            <div>
+                <h2 class="text-xl font-semibold text-gray-700">Change Password</h2>
+                <p class="text-sm text-gray-500 mt-1">Leave these fields blank to keep your current password.</p>
+                <div class="mt-4 space-y-4">
+                    <div>
+                        <label for="password" class="block font-medium text-sm text-gray-700">New Password</label>
+                        <input id="password" type="password" name="password" placeholder="••••••••" class="w-full mt-1 border-gray-300 rounded-md shadow-sm focus:border-blue-500 focus:ring-blue-500">
+                    </div>
+                    <div>
+                        <label for="password_confirmation" class="block font-medium text-sm text-gray-700">Confirm New Password</label>
+                        <input id="password_confirmation" type="password" name="password_confirmation" placeholder="••••••••" class="w-full mt-1 border-gray-300 rounded-md shadow-sm focus:border-blue-500 focus:ring-blue-500">
+                    </div>
                 </div>
             </div>
 
-            <div class="mt-6">
-                <label for="bio" class="block text-sm font-medium text-gray-700">Bio / Description</label>
-                <textarea name="bio" id="bio" rows="5" class="mt-1 block w-full rounded-md border-gray-300 shadow-sm focus:border-indigo-500 focus:ring-indigo-500">{{ old('bio', $user->bio) }}</textarea>
+            {{-- Form Actions --}}
+            <div class="flex items-center justify-between mt-8">
+                {{-- This links to Laravel's default "forgot password" page --}}
+                <a href="{{ route('password.request') }}" class="text-sm text-blue-600 hover:underline">
+                    Forgot Password?
+                </a>
+                <button type="submit" class="px-6 py-2 bg-blue-600 text-white font-semibold rounded-lg shadow-md hover:bg-blue-700 focus:outline-none focus:ring-2 focus:ring-blue-500 focus:ring-offset-2">
+                    Save Changes
+                </button>
             </div>
-
-            <div class="mt-6">
-                <label for="avatar" class="block text-sm font-medium text-gray-700">Profile Photo</label>
-                <input type="file" name="avatar" id="avatar" class="mt-1 block w-full text-sm text-gray-500 file:mr-4 file:py-2 file:px-4 file:rounded-full file:border-0 file:font-semibold file:bg-indigo-50 file:text-indigo-600 hover:file:bg-indigo-100">
-            </div>
-
-            <div class="mt-8 flex justify-end gap-4">
-                <a href="{{ route('service-provider.profile.show') }}" class="bg-gray-200 text-gray-800 font-semibold py-2 px-6 rounded-lg hover:bg-gray-300">Cancel</a>
-                <button type="submit" class="bg-indigo-600 text-white font-semibold py-2 px-6 rounded-lg hover:bg-indigo-700">Save Changes</button>
-            </div>
-        </div>
-    </form>
+        </form>
+    </div>
 @endsection

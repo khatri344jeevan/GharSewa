@@ -1,42 +1,21 @@
 <?php
-// routes/web.php
-
 use Illuminate\Support\Facades\Route;
-use App\Http\Controllers\ServiceProvider\ProfileController;
+use App\Http\Controllers\ServiceProvider\ServiceProviderDashboardController;
 
-/*
-|--------------------------------------------------------------------------
-| Web Routes
-|--------------------------------------------------------------------------
-*/
 
-// A simple welcome page
-Route::get('/', function () {
-    return view('welcome');
-});
+Route::get('/service_provider/dashboard', [ServiceProviderDashboardController::class, 'index'])
+    ->middleware(['auth', 'verified', 'rolemanager:service_provider'])
+    ->name('service_provider.dashboard');
 
-// All authentication routes (login, register, etc.) are included here.
-require __DIR__.'/auth.php';
 
-// --- SERVICE PROVIDER ROUTES ---
-// We group all service provider routes together for better organization.
-// They all require the user to be logged in ('auth').
-// Their URLs will all start with '/service-provider'.
-// Their route names will all start with 'service-provider.'.
-Route::middleware(['auth'])->prefix('service-provider')->name('service-provider.')->group(function () {
+// Route::get('service-provider', function(){
+//     return view('service_provider.layouts.sidebar');
+// });
 
-    // The main dashboard page.
-    Route::get('/dashboard', function () {
-        return view('service_provider.dashboard'); // We will create this view next.
-    })->name('dashboard');
+// Route::get('service-provider/dashboard', function(){
+//     return view('service_provider.dashboard');
+// })->name('service_provider.dashboard');
 
-    // The route to SHOW the profile.
-    Route::get('/profile', [ProfileController::class, 'show'])->name('profile.show');
-
-    // The route to show the EDIT form.
-    Route::get('/profile/edit', [ProfileController::class, 'edit'])->name('profile.edit');
-
-    // The route to handle the UPDATE form submission.
-    Route::patch('/profile', [ProfileController::class, 'update'])->name('profile.update');
-
-});
+// Route::get('service-provider/myTasks', function(){
+//     return view('service_provider.tasks.task');
+// })->name('service_provider.myTasks');

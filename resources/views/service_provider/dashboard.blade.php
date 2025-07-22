@@ -1,12 +1,7 @@
-@extends('service_provider.layouts.layout')
-@section('title', 'Dashboard')
+@extends('service_provider.layouts.master');
 
 @section('content')
-    <h1 class="text-3xl font-bold text-gray-800 mb-6">Dashboard</h1>
-    <div class="grid grid-cols-1 md:grid-cols-3 gap-6">
-        <div class="bg-white p-6 rounded-lg shadow-md">
-            <h2 class="text-lg font-semibold text-gray-700">Welcome!</h2>
-            <p class="mt-2 text-gray-600">This is your mission control. You can manage your bookings and profile from here.</p>
-        </div>
-    </div>
+<div class="ml-64 p-8">
+    <h1 class="text-2xl font-bold">Dashboard</h1>
+</div>
 @endsection
