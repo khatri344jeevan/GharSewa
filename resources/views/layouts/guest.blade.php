@@ -4,7 +4,7 @@
         <meta charset="utf-8">
         <meta name="viewport" content="width=device-width, initial-scale=1">
         <meta name="csrf-token" content="{{ csrf_token() }}">
-
+        <script src="https://cdn.tailwindcss.com"></script>
         <title>GharSewa</title>
 
         <!-- Fonts -->
@@ -41,7 +41,8 @@
             <div class="mb-8">
                 <a href="/" class="flex items-center space-x-3">
                     <x-application-logo class="w-10 h-10 fill-current" style="color: #1F284F;" />
-                    <h1 class="text-xl font-semibold text-gray-900">GharSewa</h1>
+                    {{-- <h1 class="text-xl font-semibold text-gray-900">GharSewa</h1> --}}
+                    <img src="{{ asset('images/Gharsewaicon.jpg') }}" alt="image of gharsewa" class="w-28 mt-10">
                 </a>
             </div>
 
