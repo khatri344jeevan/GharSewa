@@ -46,9 +46,9 @@ class Booking extends Model
     }
 
     //realtion with BookignPakage
-    public function bookingPackages()
-    {
-    return $this->hasMany(BookingPackage::class);
-    }
+    // public function bookingPackages()
+    // {
+    // return $this->hasMany(BookingPackage::class);
+    // }
 
 }

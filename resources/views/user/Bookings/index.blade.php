@@ -8,8 +8,8 @@
 
         <!-- Add Record Button -->
         <a href="{{ route('user.Bookings.b_create') }}"
-           class="bg-gray-500 hover:bg-gray-600 text-white font-semibold px-6 py-3 rounded shadow-md mt-20">
-           Add Booking
+            class="bg-gray-500 hover:bg-gray-600 text-white font-semibold px-6 py-3 rounded shadow-md mt-20">
+            Add Booking
         </a>
     </div>
 
@@ -23,6 +23,8 @@
                     <th class="px-6 py-3 text-left">Total Days</th>
                     <th class="px-6 py-3 text-left">Number of visits</th>
                     <th class="px-6 py-3 text-left">Details</th>
+                    <th class="px-6 py-3 text-left">Action</th>
+
                     {{-- <th class="px-6 py-3 text-left">Actions</th> --}}
                 </tr>
             </thead>
@@ -40,13 +42,13 @@
                             <!-- Edit -->
                             <div>
                                 {{-- <a href="//{{ route('user.Bookings.b_edit', $booking->id) }}" --}}
-                                    {{-- <a href="/"
+                        {{-- <a href="/"
                                     class="hover:underline hover:bg-blue-600 font-medium border bg-blue-500 text-white py-2 px-6 rounded transition duration-200">
                                     Edit
                                 </a>
                             </div>  --}}
-                            <!-- Delete -->
-                            {{-- <div>
+                        <!-- Delete -->
+                        {{-- <div>
                                 <form action="{{ route('user.Bookings.destroy', $booking->id) }}" method="POST"
                                       onsubmit="return confirm('Are you sure you want to delete this booking?');">
                                     @csrf
@@ -57,6 +59,12 @@
                                     </button>
                                 </form>
                             </div> --}}
+                        <td>
+                            <div class="border bg-gray-300 px-2 py-3 ">
+                                <a href="{{route('user.Bookings.b_show', $booking->id)}}">
+                                    <button>VIEW</button>
+                                </a>
+                            </div>
                         </td>
                     </tr>
                 @endforeach

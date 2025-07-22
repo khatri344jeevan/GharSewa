@@ -59,3 +59,7 @@ Route::get('/booking',[UserBookingController::class, 'b_index'])
  Route::post('/booking/store', [UserBookingController::class, 'b_store'])
 ->name('user.Bookings.b_store');
 
+ Route::get('/booking/{id}', [UserBookingController::class, 'b_show'])->name('user.Bookings.b_show');
+
+
+

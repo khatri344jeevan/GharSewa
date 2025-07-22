@@ -1,6 +1,5 @@
 <?php
 
-
 namespace App\Http\Controllers\User;
 
 use App\Http\Controllers\Controller;
@@ -18,17 +17,17 @@ class UserBookingController extends Controller
     public function b_index()
     {
         $user = Auth::user();
-        $bookings = $user->bookings()->with('package')->latest()->paginate(10);
+        $bookings = $user->bookings()->with('bookingDetails')->latest()->paginate(10);
 
         return view('user.Bookings.index', compact('bookings'));
     }
-     //booking creation display
 
+    /**
+     * Show form to create a new booking.
+     */
     public function b_create()
     {
         $user = Auth::user();
-
-        //to verify that user must have one property
 
         $properties = $user->properties()->get();
 
@@ -37,7 +36,6 @@ class UserBookingController extends Controller
                 ->with('error', 'You must add a property before booking a package.');
         }
 
-        // Get all available packages from the 'packages' table
         $packages = Package::all();
 
         return view('user.Bookings.create', compact('properties', 'packages'));
@@ -66,9 +64,24 @@ class UserBookingController extends Controller
             'property_id'   => $request->property_id,
             'package_id'    => $request->package_id,
             'booking_date'  => $request->booking_date,
-            'status'        => 'pending', // default status
+            'status'        => 'pending',
         ]);
 
         return redirect()->route('user.Bookings.b_index')->with('success', 'Booking successfully created!');
+    }
+
+    /**
+     * Show detailed view of a specific booking with provider info.
+     */
+    public function b_show($id)
+    {
+        $user = Auth::user();
+
+        $booking = Booking::with('bookingDetails.provider')
+                    ->where('user_id', $user->id)
+                    ->where('id', $id)
+                    ->firstOrFail();
+
+        return view('user.Bookings.show', compact('booking'));
     }
 }

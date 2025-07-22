@@ -88,7 +88,7 @@
     </div>
 
     <div class="flex gap-10">
-        <a href="/"
+        <a href="{{route('user.Bookings.b_create')}}"
             class="inline-block bg-gray-700 hover:bg-gray-800 text-white font-semibold px-6 py-3 rounded shadow-lg transition duration-300">
             Book Maintainence Package
         </a>
