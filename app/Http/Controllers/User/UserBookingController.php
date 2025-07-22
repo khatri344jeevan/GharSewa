@@ -18,7 +18,7 @@ class UserBookingController extends Controller
     public function b_index()
     {
         $user = Auth::user();
-        $bookings = $user->bookings()->latest()->paginate(10);
+        $bookings = $user->bookings()->with('package')->latest()->paginate(10);
 
         return view('user.Bookings.index', compact('bookings'));
     }
