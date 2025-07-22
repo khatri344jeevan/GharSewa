@@ -20,7 +20,7 @@
             <ul class="flex flex-col space-y-2 px-4">
                 <li>
                     <a href="{{ route('service-provider.dashboard') }}"
-                       class="flex items-center py-2.5 px-4 rounded-lg text-base font-semibold transition-colors hover:bg-indigo-100 hover:text-indigo-600 
+                       class="flex items-center py-2.5 px-4 rounded-lg text-base font-semibold transition-colors hover:bg-indigo-100 hover:text-indigo-600
                               {{ request()->routeIs('service-provider.dashboard') ? 'bg-indigo-500 text-white' : 'text-gray-600' }}">
                         <i class="bi bi-grid-1x2-fill w-6"></i>
                         <span class="ml-3">Dashboard</span>

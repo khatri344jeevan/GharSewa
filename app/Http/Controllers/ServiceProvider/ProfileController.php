@@ -17,7 +17,7 @@ class ProfileController extends Controller
     {
         // Get the currently authenticated user.
         $user = Auth::user();
-        
+
         // Return the view and pass the user data to it.
         return view('service_provider.profile.profile', compact('user'));
     }
@@ -58,7 +58,7 @@ class ProfileController extends Controller
         $user->name = $request->name;
         $user->phone_number = $request->phone_number;
         $user->bio = $request->bio;
-        
+
         // Save all the changes to the database.
         $user->save();
 
