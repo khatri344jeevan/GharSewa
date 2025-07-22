@@ -139,7 +139,6 @@
                             </option>
                             <option value="Commercial" {{ $property->type == 'Commercial' ? 'selected' : '' }}>Commercial
                             </option>
-                            <option value="Land" {{ $property->type == 'Land' ? 'selected' : '' }}>Land</option>
                         </select>
 
                         @error('type')

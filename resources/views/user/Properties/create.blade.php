@@ -131,7 +131,6 @@
                         <option value="">-- Select Type --</option>
                         <option value="Residential">Residential</option>
                         <option value="Commercial">Commercial</option>
-                        <option value="Land">Land</option>
                     </select>
                     @error('type')
                         <span class="text-red-500 text-sm">{{ $message }}</span>

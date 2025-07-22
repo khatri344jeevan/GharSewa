@@ -25,13 +25,15 @@ class Booking extends Model
 
     public function property()
     {
-        return $this->belongsTo(Property::class);
+        return $this->belongsTo(Property::class,'property_id');
     }
 
     public function package()
     {
-        return $this->belongsTo(Package::class);
+        return $this->belongsTo(Package::class,'package_id');
     }
+
+
 
     public function bookingDetails()
     {
