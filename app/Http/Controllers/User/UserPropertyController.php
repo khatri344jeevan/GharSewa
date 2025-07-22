@@ -3,6 +3,7 @@
 namespace App\Http\Controllers\User;
 
 use App\Http\Controllers\Controller;
+
 use App\Models\Task;
 use App\Models\Property;
 
@@ -17,7 +18,7 @@ class UserPropertyController extends Controller
         $properties = Property::paginate(10);
         $user=Auth::user();
 
-            $properties = $user->properties()->latest()->get();
+        $properties = $user->properties()->latest()->get();
 
         return view('user.Properties.index', [
             'properties' => $properties
