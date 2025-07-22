@@ -1,7 +1,7 @@
 <?php
 
 namespace App\Http\Controllers\ServiceProvider;
-
+use App\Models\Task;
 use App\Http\Controllers\Controller;
 use Illuminate\Support\Facades\Auth;
 
@@ -15,6 +15,13 @@ class ServiceProviderDashboardController extends Controller
 
 
         return view('service_provider.dashboard', compact('user'));
+    }
+
+    public function myTask(){
+        $providerId = auth()->id(); //we can also use auth()->users() not in this case but just saying
+        $tasks = Task::where('service_provider_id', $providerId)->get();
+
+        return view('service_provider.tasks.task', compact('tasks')); //compact takes a variable named as string and converts it into array like ['tasks'(key)=>$tasks(value)]
     }
 }
 
