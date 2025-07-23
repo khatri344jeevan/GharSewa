@@ -15,7 +15,7 @@
 
         {{-- Property Selection --}}
         <div class="mb-4">
-            <label for="property_id" class="block font-semibold mb-1">Select Property</label>
+            <label for="property_id" class="block font-semibold mb-2">Select Property</label>
             <select name="property_id" id="property_id" class="w-full border-gray-300 rounded p-2" required>
                 <option value="" disabled selected>-- Choose Property --</option>
                 @foreach($properties as $property)
@@ -26,7 +26,7 @@
 
         {{-- Package Selection --}}
         <div class="mb-4">
-            <label for="package_id" class="block font-semibold mb-1">Select Package</label>
+            <label for="package_id" class="block font-semibold mb-2">Select Package</label>
             <select name="package_id" id="package_id" class="w-full border-gray-300 rounded p-2" required>
                 <option value="" disabled selected>-- Choose Package --</option>
                 @foreach($packages as $package)
@@ -39,13 +39,13 @@
 
         {{-- Booking Date --}}
         <div class="mb-4">
-            <label for="booking_date" class="block font-semibold mb-1">Booking Date</label>
+            <label for="booking_date" class="block font-semibold mb-2">Booking Date</label>
             <input type="date" name="booking_date" id="booking_date" class="w-full border-gray-300 rounded p-2" required>
         </div>
 
         {{-- Submit --}}
         <div class="text-right">
-            <button type="submit" class="bg-blue-600 text-white px-4 py-2 rounded hover:bg-blue-700">
+            <button type="submit" class="bg-gray-600 text-white px-4 py-2 rounded hover:bg-gray-800">
                 Confirm Booking
             </button>
         </div>

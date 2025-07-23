@@ -115,8 +115,8 @@
 
                 <!-- Address -->
                 <div>
-                    <label for="address" class="block text-gray-700 font-medium mb-1">Address</label>
-                    <input type="text" id="address" name="address" required
+                    <label for="address" class="block text-gray-700 font-medium mb-1">Full Address</label>
+                    <input type="text" id="address" name="address" required placeholder="eg:street name and number, city, state"
                         class="w-full px-4 py-2 border border-gray-300 rounded focus:outline-none focus:ring-2 focus:ring-blue-500" />
                     @error('address')
                         <span class="text-red-500 text-sm">{{ $message }}</span>
@@ -140,7 +140,7 @@
                 <!-- Map Location -->
                 <div>
                     <label for="maplocation" class="block text-gray-700 font-medium mb-1">Map Location (Link or
-                        coordinates)</label>
+                        coordinates, URL of location)</label>
                     <input type="text" id="maplocation" name="maplocation"
                         class="w-full px-4 py-2 border border-gray-300 rounded focus:outline-none focus:ring-2 focus:ring-blue-500" />
                     @error('maplocation')
