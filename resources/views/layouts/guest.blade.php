@@ -6,13 +6,14 @@
         <meta name="csrf-token" content="{{ csrf_token() }}">
         <script src="https://cdn.tailwindcss.com"></script>
         <title>GharSewa</title>
+        <link rel="icon" href="{{ asset('images/Gharsewa.jpg') }}" type="image/jpeg" />
 
         <!-- Fonts -->
         <link rel="preconnect" href="https://fonts.bunny.net">
         <link href="https://fonts.bunny.net/css?family=figtree:400,500,600&display=swap" rel="stylesheet" />
 
         <!-- Scripts -->
-        @vite(['resources/css/app.css', 'resources/js/app.js'])
+        {{-- @vite(['resources/css/app.css', 'resources/js/app.js']) --}}
 
         <!-- Fallback styles for browser compatibility -->
         <style>
@@ -42,11 +43,11 @@
                 <a href="/" class="flex items-center space-x-3">
                     <x-application-logo class="w-10 h-10 fill-current" style="color: #1F284F;" />
                     {{-- <h1 class="text-xl font-semibold text-gray-900">GharSewa</h1> --}}
-                    <img src="{{ asset('images/Gharsewaicon.jpg') }}" alt="image of gharsewa" class="w-28 mt-10">
+                    <img src="{{ asset('images/Gharsewaicon.jpg') }}" alt="image of gharsewa" class="w-28 mb-2 mt-10 ">
                 </a>
             </div>
 
-            <div class="w-full sm:max-w-md bg-white shadow-lg border border-gray-100 overflow-hidden sm:rounded-2xl">
+            <div class="w-full sm:max-w-md bg-white shadow-lg border border-gray-100 mb-20 sm:rounded-2xl">
                 <div class="px-8 py-10">
                     {{ $slot }}
                 </div>
