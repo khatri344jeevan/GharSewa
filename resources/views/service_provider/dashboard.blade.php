@@ -4,7 +4,8 @@
 <div class="ml-64 p-8 min-h-screen">
     <div class="container mx-auto px-4">
         <!-- Task Statistics Boxes -->
-        <div class="flex justify-start -ml-20 mt-20 mb-8">
+        <div class="flex justify-start  mb-8"> 
+            <!-- -ml-20 mt-20 -->
             <div class="grid grid-cols-1 md:grid-cols-3 gap-6">
                 <!-- Total Tasks Box -->
                 <div class="bg-white border border-gray-300 rounded-lg p-6 shadow-sm">

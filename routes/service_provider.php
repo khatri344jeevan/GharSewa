@@ -1,36 +1,37 @@
-<?php
-use Illuminate\Support\Facades\Route;
-use App\Http\Controllers\ServiceProvider\ServiceProviderDashboardController;
+<?php 
+use Illuminate\Support\Facades\Route; 
+use App\Http\Controllers\ServiceProvider\ServiceProviderDashboardController; 
+use App\Http\Controllers\ServiceProvider\ServiceProviderProfileController;   
 
-//main dashboard route
-Route::get('/service_provider/dashboard', [ServiceProviderDashboardController::class, 'index'])
-    ->middleware(['auth', 'verified', 'rolemanager:service_provider'])
-    ->name('service_provider.dashboard');
+//main dashboard route 
+Route::get('/service_provider/dashboard', [ServiceProviderDashboardController::class, 'index'])     
+    ->middleware(['auth', 'verified', 'rolemanager:service_provider'])     
+    ->name('service_provider.dashboard');   
 
-
-//show() function call garna ko lagi route
-Route::get('/service_provider/profile/{id}', [ServiceProviderDashboardController::class, 'show'])
-    ->middleware(['auth', 'verified', 'rolemanager:service_provider'])
-    ->name('service_provider.profile');
+// Profile routes
+Route::middleware(['auth', 'verified', 'rolemanager:service_provider'])->group(function () {
+    // Show profile
+    Route::get('/service_provider/profile', [ServiceProviderProfileController::class, 'show'])
+        ->name('service_provider.profile');
     
-Route::get('/service_provider/profile/edit', [ServiceProviderDashboardController::class, 'edit'])
-    ->middleware(['auth', 'verified', 'rolemanager:service_provider'])
-    ->name('service_provider.profile.edit');
+    // Edit profile form
+    Route::get('/service_provider/profile/edit', [ServiceProviderProfileController::class, 'edit'])
+        ->name('service_provider.profile.edit');
     
-Route::get('/service_provider/profile/{id}', [ServiceProviderDashboardController::class, 'update'])
-    ->middleware(['auth', 'verified', 'rolemanager:service_provider'])
-    ->name('service_provider.profile.update');    
+    // Update profile
+    Route::put('/service_provider/profile', [ServiceProviderProfileController::class, 'update'])
+        ->name('service_provider.profile.update');
+});
 
+// Commented routes (keeping as requested)
+// Route::get('service-provider', function(){ 
+//     return view('service_provider.layouts.sidebar'); 
+// }); 
 
+// Route::get('service-provider/dashboard', function(){ 
+//     return view('service_provider.dashboard'); 
+// })->name('service_provider.dashboard'); 
 
-// Route::get('service-provider', function(){
-//     return view('service_provider.layouts.sidebar');
-// });
-
-// Route::get('service-provider/dashboard', function(){
-//     return view('service_provider.dashboard');
-// })->name('service_provider.dashboard');
-
-// Route::get('service-provider/myTasks', function(){
-//     return view('service_provider.tasks.task');
+// Route::get('service-provider/myTasks', function(){ 
+//     return view('service_provider.tasks.task'); 
 // })->name('service_provider.myTasks');

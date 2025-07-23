@@ -18,7 +18,7 @@ class ServiceProviderDashboardController extends Controller
     }
 
     public function myTask(){
-        $providerId = auth()->id(); //we can also use auth()->users() not in this case but just saying
+        $providerId = Auth::id(); //we can also use auth()->users() not in this case but just saying
         $tasks = Task::where('service_provider_id', $providerId)->get();
 
         return view('service_provider.tasks.task', compact('tasks')); //compact takes a variable named as string and converts it into array like ['tasks'(key)=>$tasks(value)]
