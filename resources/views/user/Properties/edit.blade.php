@@ -93,11 +93,12 @@
 
 
         <!-- Right side: Form -->
-    <div class="container mx-auto m-10">
+        <div class="container mx-auto m-10">
             <div class="flex-1 max-w-xl">
                 <h2 class="font-bold text-4xl mb-8 text-gray-800 text-center">Edit Property</h2>
 
-                <form action="{{ route('user.Properties.update', $property->id) }}" method="POST">
+                <form action="{{ route('user.Properties.update', $property->id) }}" method="POST"
+                    enctype="multipart/form-data">
                     @csrf
                     @method('PUT')
 
@@ -157,6 +158,22 @@
                         @enderror
                     </div>
 
+                    <div>
+                        @if ($property->image)
+                            <div class="mb-4">
+                                <p class="text-gray-700 font-medium mb-1">Current Image:</p>
+                                <img src="{{ asset('uploads/properties/' . $property->image) }}" alt="Property Image"
+                                    class="w-48 h-32 object-cover rounded">
+                            </div>
+                        @endif
+                        <label for="image" class="block text-gray-700 font-medium mb-1">Image of the Property</label>
+                        <input type="file" id="image" name="image" value="{{ $property->image }}"
+                            class="w-full px-4 py-2 border border-gray-300 rounded focus:outline-none focus:ring-2 focus:ring-blue-500" />
+                        @error('image')
+                            <span class="text-red-500 text-sm">{{ $message }}</span>
+                        @enderror
+                    </div>
+
                     <!-- Submit Button -->
                     <div class="flex gap-4 items-center">
                         <button type="submit"
@@ -173,5 +190,5 @@
 
 
 
-    </div>
-@endsection
+        </div>
+    @endsection

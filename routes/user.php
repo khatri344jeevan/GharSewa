@@ -2,6 +2,8 @@
 use App\Http\Controllers\User\UserDashboardController;
 use App\Http\Controllers\User\UserPropertyController;
 use App\Http\Controllers\User\UserBookingController;
+use App\Http\Controllers\User\UserPaymentController;
+
 
 
 
@@ -59,7 +61,10 @@ Route::get('/booking',[UserBookingController::class, 'b_index'])
  Route::post('/booking/store', [UserBookingController::class, 'b_store'])
 ->name('user.Bookings.b_store');
 
- Route::get('/booking/{id}', [UserBookingController::class, 'b_show'])->name('user.Bookings.b_show');
+ Route::get('/booking/{id}', [UserBookingController::class, 'b_show'])
+ ->name('user.Bookings.b_show');
 
+ Route::get('/payment',[User\UserPaymentController::class,'p_index'])
+ ->name('user.Payment.index');
 
 
