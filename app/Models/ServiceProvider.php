@@ -15,10 +15,15 @@ class ServiceProvider extends Model
         'phone',
         'specialization',
         'bio',
+        'user_id',        // Add this field - CRITICAL
     ];
 
     public function bookingDetails()
     {
         return $this->hasMany(BookingDetail::class, 'provider_id');
+    }
+    public function user()
+    {
+        return $this->belongsTo(User::class);
     }
 }

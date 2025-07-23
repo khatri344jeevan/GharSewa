@@ -29,27 +29,27 @@
                 </a>
             </li>
             <li>
-                <a href="/properties"
+                <a href="{{ route('admin.packages.index') }}"
                     class="flex items-center gap-4 px-5 py-3 rounded-lg hover:bg-gray-400 hover:text-gray-900 transition font-semibold">
-                   <i class="bi bi-tools mr-2"></i> Services
+                   <i class="bi bi-tools mr-2"></i> Maintenance Package
                 </a>
             </li>
              <li>
-                <a href="/properties"
+                <a href=""
                     class="flex items-center gap-4 px-5 py-3 rounded-lg hover:bg-gray-400 hover:text-gray-900 transition font-semibold">
                    <i class="bi bi-building mr-2"></i> Manage Properties
                 </a>
             </li>
             <li>
-                <a href="/bookings"
+                <a href=""
                     class="flex items-center gap-4 px-5 py-3 rounded-lg hover:bg-gray-400 hover:text-gray-900 transition font-semibold">
                      <i class="bi bi-calendar-check mr-2"></i> Service Bookings
                 </a>
             </li>
             <li>
-                <a href="/service-providers"
+                <a href="{{ route('admin.service_providers.index') }}"
                     class="flex items-center gap-4 px-5 py-3 rounded-lg hover:bg-gray-400 hover:text-gray-900 transition font-semibold">
-                            <i class="bi bi-person-badge mr-2"></i> Service Providers
+                            <i class="bi bi-person-badge mr-2"></i> Manage Service Providers
 
                 </a>
             </li>
