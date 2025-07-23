@@ -69,11 +69,37 @@
             </div>
 
             <!-- Success Message -->
-            @if(session('success'))
-                <div class="bg-green-100 border border-green-400 text-green-700 px-4 py-3 rounded mb-6">
-                    {{ session('success') }}
-                </div>
-            @endif
+            @if (session('success'))
+        <div id="success-toast"
+            class="fixed top-6 right-6 z-50 bg-green-600 text-white px-4 py-2 rounded shadow-md animate-fade-in">
+            {{ session('success') }}
+        </div>
+
+        <script>
+            setTimeout(function() {
+                let toast = document.getElementById('success-toast');
+                if (toast) toast.remove();
+            }, 3000);
+        </script>
+
+        <style>
+            @keyframes fade-in {
+                from {
+                    opacity: 0;
+                    transform: translateY(-20px);
+                }
+
+                to {
+                    opacity: 1;
+                    transform: translateY(0);
+                }
+            }
+
+            .animate-fade-in {
+                animation: fade-in 0.4s ease-out;
+            }
+        </style>
+    @endif
 
             <!-- Profile Information -->
             <div class="bg-white rounded-lg shadow-md overflow-hidden">

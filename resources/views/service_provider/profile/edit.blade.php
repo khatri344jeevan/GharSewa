@@ -130,15 +130,15 @@
                                     class="w-full px-4 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-transparent @error('specialization') border-red-500 @enderror"
                                     required>
                                 <option value="">Select your specialization</option>
-                                <option value="Plumbing" {{ old('specialization', $serviceProvider->specialization) == 'Plumbing' ? 'selected' : '' }}>Plumbing</option>
-                                <option value="Electrical" {{ old('specialization', $serviceProvider->specialization) == 'Electrical' ? 'selected' : '' }}>Electrical</option>
-                                <option value="Carpentry" {{ old('specialization', $serviceProvider->specialization) == 'Carpentry' ? 'selected' : '' }}>Carpentry</option>
-                                <option value="Painting" {{ old('specialization', $serviceProvider->specialization) == 'Painting' ? 'selected' : '' }}>Painting</option>
-                                <option value="Cleaning" {{ old('specialization', $serviceProvider->specialization) == 'Cleaning' ? 'selected' : '' }}>Cleaning</option>
-                                <option value="HVAC" {{ old('specialization', $serviceProvider->specialization) == 'HVAC' ? 'selected' : '' }}>HVAC</option>
-                                <option value="Gardening" {{ old('specialization', $serviceProvider->specialization) == 'Gardening' ? 'selected' : '' }}>Gardening</option>
-                                <option value="Appliance Repair" {{ old('specialization', $serviceProvider->specialization) == 'Appliance Repair' ? 'selected' : '' }}>Appliance Repair</option>
-                                <option value="Other" {{ old('specialization', $serviceProvider->specialization) == 'Other' ? 'selected' : '' }}>Other</option>
+                                <option value="Plumbing Service" {{ old('specialization', $serviceProvider->specialization) == 'Plumbing' ? 'selected' : '' }}>Plumbing Service</option>
+                                <option value="Electrical Service" {{ old('specialization', $serviceProvider->specialization) == 'Electrical' ? 'selected' : '' }}>Electrical Service</option>
+                                <!-- <option value="Carpentry" {{ old('specialization', $serviceProvider->specialization) == 'Carpentry' ? 'selected' : '' }}>Carpentry</option> -->
+                                <!-- <option value="Painting" {{ old('specialization', $serviceProvider->specialization) == 'Painting' ? 'selected' : '' }}>Painting</option> -->
+                                <option value="Cleaning Service" {{ old('specialization', $serviceProvider->specialization) == 'Cleaning' ? 'selected' : '' }}>Cleaning Service</option>
+                                <!-- <option value="HVAC" {{ old('specialization', $serviceProvider->specialization) == 'HVAC' ? 'selected' : '' }}>HVAC</option> -->
+                                <!-- <option value="Gardening" {{ old('specialization', $serviceProvider->specialization) == 'Gardening' ? 'selected' : '' }}>Gardening</option> -->
+                                <option value="Device & Appliance" {{ old('specialization', $serviceProvider->specialization) == 'Appliance Repair' ? 'selected' : '' }}>Device & Appliance Support</option>
+                                <!-- <option value="Other" {{ old('specialization', $serviceProvider->specialization) == 'Other' ? 'selected' : '' }}>Other</option> -->
                             </select>
                             @error('specialization')
                                 <p class="text-red-500 text-sm mt-1">{{ $message }}</p>
