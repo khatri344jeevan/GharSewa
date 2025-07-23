@@ -100,7 +100,7 @@
         <div class="flex-1 max-w-xl">
             <h2 class="font-bold text-4xl mb-8 text-gray-800 text-center">Register New Property</h2>
 
-            <form action="{{ route('user.Properties.p_store') }}" method="POST" class="space-y-6">
+            <form action="{{ route('user.Properties.p_store') }}" method="POST" class="space-y-6" enctype="multipart/form-data">
                 @csrf
 
                 <!-- Title -->
@@ -148,6 +148,16 @@
                     @enderror
                 </div>
 
+                <!--image -->
+                <div>
+                    <label for="image" class="block text-gray-700 font-medium mb-1">Image of the Property</label>
+                    <input type="file" id="image" name="image"
+                        class="w-full px-4 py-2 border border-gray-300 rounded focus:outline-none focus:ring-2 focus:ring-blue-500" />
+                    @error('image')
+                        <span class="text-red-500 text-sm">{{ $message }}</span>
+                    @enderror
+                </div>
+
                 <!-- Submit Button -->
                 <div class="flex gap-4 items-center">
                     <button type="submit"
@@ -163,5 +173,6 @@
     </div>
 
 </body>
+
 
 </html>

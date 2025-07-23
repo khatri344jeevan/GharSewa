@@ -50,15 +50,32 @@ class UserPropertyController extends Controller
             'address' => 'required|string',
             'type' => 'required|string',
             'maplocation' => 'nullable|string',
+            'image' => 'nullable|image|mimes:jpeg,png,jpg,gif|max:2048',
         ]);
 
-        // Update the existing properties (corrected method)
+         $imageName = $property->image; // Keep old image by default
+
+        if ($request->hasFile('image')) {
+        // Optional: delete old image
+        if ($property->image && file_exists(public_path('uploads/properties/' . $property->image))) {
+            unlink(public_path('uploads/properties/' . $property->image));
+        }
+
+        $imageName = time() . '.' . $request->image->extension();
+        $request->image->move(public_path('uploads/properties'), $imageName);
+      }
+
+       // Update the existing properties
         $property->update([
             'title' => $request->title,
             'address' => $request->address,
             'type' => $request->type,
             'maplocation' => $request->maplocation,
+         'image' => $imageName,
+
         ]);
+
+
 
         // Redirect to the property listing with a success message
         return redirect()->route('user.Properties.p_index')->with('success', 'Property updated successfully!');
@@ -73,25 +90,33 @@ class UserPropertyController extends Controller
 
     }
 
-    public function p_store(Request $request)
-    {
-        // Validate the input
-        $request->validate([
-            'title' => 'required|string|max:255',
-            'address' => 'required|string',
-            'type' => 'required|string',
-            'maplocation' => 'nullable|string',
-        ]);
+   public function p_store(Request $request)
+{
+    $request->validate([
+        'title' => 'required|string|max:255',
+        'address' => 'required|string',
+        'type' => 'required|string',
+        'maplocation' => 'nullable|string',
+        'image' => 'nullable|image|mimes:jpeg,png,jpg,gif|max:2048',
+    ]);
 
-        // Create a new property linked to the currently authenticated user
-        $request->user()->properties()->create([
-            'title' => $request->title,
-            'address' => $request->address,
-            'type' => $request->type,
-            'maplocation' => $request->maplocation,
-        ]);
+    $imageName = null;
 
-        // Redirect to the property listing with a success message
-        return redirect()->route('user.Properties.p_index')->with('success', 'Property registered successfully!');
+    if ($request->hasFile('image')) {
+        $imageName = time() . '.' . $request->image->extension();
+        $request->image->move(public_path('uploads/properties'), $imageName);
     }
+
+    $request->user()->properties()->create([
+        'title' => $request->title,
+        'address' => $request->address,
+        'type' => $request->type,
+        'maplocation' => $request->maplocation,
+        'image' => $imageName,
+    ]);
+
+    return redirect()->route('user.Properties.p_index')->with('success', 'Property registered successfully!');
+}
+
+
 }
