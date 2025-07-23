@@ -4,9 +4,10 @@ namespace App\Http\Controllers\Admin;
 
 use App\Models\User;
 use Illuminate\Http\Request;
+use App\Models\ServiceProvider;
 use App\Http\Controllers\Controller;
 
-              class UsersController extends Controller
+class UsersController extends Controller
 {
     //
     public function index()
@@ -146,4 +147,64 @@ use App\Http\Controllers\Controller;
 
         return redirect()->route('admin.users.index')->with('success', 'User deleted successfully.');
     }
+
+
+
+
+
+
+
+    //! service providers
+//     public function serviceProvidersIndex()
+//     {
+//         // Fetch all service providers
+//         $serviceProviders = User::where('role', 'service_provider')->paginate(5);
+//         return view('admin.service_provider.index', compact('serviceProviders'));
+//     }
+//     public function createServiceProvider()
+//     {
+//         return view('admin.service_provider.create');
+//     }
+//     public function storeServiceProvider(Request $request)
+//     {
+//         // Validate the request data
+//         $request->validate([
+//             'name' => 'required|string|max:255',
+//             'email' => 'required|string|email|max:255|unique:service_providers,email',
+//             'phone' => 'nullable|string|max:20',
+//             'specialization' => 'required|string|max:255',
+//             'bio' => 'nullable|string',
+//         ]);
+
+//         // Create the service provider
+//         $serviceProvider = new ServiceProvider($request->all());
+//         $serviceProvider->user_id = auth()->id(); // Assuming the admin is creating the service provider
+//         $serviceProvider->save();
+
+//         return redirect()->route('admin.service_providers.index')->with('success', 'Service Provider created successfully.');
+//     }
+//     public function editServiceProvider($id)
+//     {
+//         // Find the service provider by ID
+//         $serviceProvider = User::findOrFail($id);
+//         return view('admin.service_provider.edit', compact('serviceProvider'));
+//     }
+//     public function updateServiceProvider(Request $request, $id)
+//     {
+//         // Find the service provider by ID
+//         $serviceProvider = User::findOrFail($id);
+//         // Validate the request data
+//         $request->validate([
+//             'name' => 'required|string|max:255',
+//             'email' => 'required|string|email|max:255|unique:service_providers
+// ,email,' . $serviceProvider->id,
+//             'phone' => 'nullable|string|max:20',
+//             'specialization' => 'required|string|max:255',
+//             'bio' => 'nullable|string',
+//         ]);
+//         // Update the service provider
+//         $serviceProvider->update($request->all());
+//         return redirect()->route('admin.service_providers.index')->with('success', 'Service Provider updated successfully.');
+//     }
+
 }

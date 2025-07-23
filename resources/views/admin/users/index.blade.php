@@ -4,17 +4,18 @@
 @section('content')
     <div class="container py-4">
         <!-- Success/Error Messages -->
-        {{-- @if (session('success'))
-            <div class="bg-green-100 border border-green-400 text-green-700 px-4 py-3 rounded-lg relative mb-6" role="alert">
+        @if (session('success'))
+            <div class="bg-green-100 border border-green-400 text-green-700 px-4 py-3 rounded-lg relative mb-6"
+                role="alert">
                 <span class="block sm:inline">{{ session('success') }}</span>
             </div>
-        @endif --}}
+        @endif
 
-        {{-- @if (session('error'))
+        @if (session('error'))
             <div class="bg-red-100 border border-red-400 text-red-700 px-4 py-3 rounded-lg relative mb-6" role="alert">
                 <span class="block sm:inline">{{ session('error') }}</span>
             </div>
-        @endif --}}
+        @endif
 
         <div class="mb-3 bg-inherit rounded-lg shadow p-4 flex justify-between items-center">
             <h4 class="text-gray-800 float-start text-bold text-2xl">Users List</h4>
@@ -60,11 +61,12 @@
                                         <i class="bi bi-eye"></i> Show
                                     </a>
                                     <form method="POST" action="{{ route('admin.users.destroy', $user->id) }}"
-                                          style="display: inline-block"
-                                          onsubmit="return confirm('Are you sure you want to delete this user?')">
+                                        style="display: inline-block"
+                                        onsubmit="return confirm('Are you sure you want to delete this user?')">
                                         @csrf
                                         @method('DELETE')
-                                        <button type="submit" class="bg-red-700 hover:bg-red-800 text-white text-xs px-3 py-1 rounded shadow">
+                                        <button type="submit"
+                                            class="bg-red-700 hover:bg-red-800 text-white text-xs px-3 py-1 rounded shadow">
                                             <i class="bi bi-trash"></i> Delete
                                         </button>
                                     </form>
