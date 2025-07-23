@@ -18,7 +18,7 @@ return new class extends Migration
             $table->foreignId('user_id')->constrained()->onDelete('cascade');
             $table->foreignId('property_id')->constrained()->onDelete('cascade');
             $table->foreignId('package_id')->constrained()->onDelete('cascade');
-
+            // $table->foreignId('service_provider_id')->constrained()->onDelete('cascade');
             $table->dateTime('booking_date');
 
             //status will include pending,confirmed, upcoming , canceled

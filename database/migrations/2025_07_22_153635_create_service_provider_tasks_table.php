@@ -14,7 +14,7 @@ return new class extends Migration
         Schema::create('service_provider_tasks', function (Blueprint $table) {
             $table->id();
             $table->unsignedBigInteger('service_provider_id'); //unsignedBigInteger - only takes positive values
-            $table->string('status');
+            $table->string('status')->default('pending');
             $table->timestamps();
 
             $table->foreign('service_provider_id')->references('id')->on('users')->onDelete('cascade');
