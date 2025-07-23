@@ -4,10 +4,10 @@
 
 @section('content')
     <div class="p-6 bg-white rounded shadow mt-20">
-        <h2 class="text-4xl font-semibold mb-4">Booking Details</h2>
+        <h2 class="text-4xl font-semibold mb-4 text-gray-700">Booking Details</h2>
 
         {{-- <p><strong>Booking ID:</strong> {{ $booking->id }}</p> --}}
-        <p class="px-1 py-1 text-md">Status : {{ucfirst(($booking->status))}}</p>
+        <p class="px-1 py-1 text-md ">Status : {{ucfirst(($booking->status))}}</p>
         <p class="px-1 py-1 text-md">Booking Date : {{$booking->booking_date}}</p>
 
         <h3 class="mt-6 text-xl font-bold">Scheduled Services</h3>
@@ -19,7 +19,7 @@
                 <thead>
                     <tr class="bg-gray-200">
                         <th class="p-2 border">Scheduled Date</th>
-                        <th class="p-2 border">Status</th>
+                        <th class="p-2 border">Details</th>
                         <th class="p-2 border">Note</th>
                         <th class="p-2 border">Assigned Provider</th>
                         <th class="p-2 border">Action</th>
@@ -29,7 +29,7 @@
                     @foreach ($booking->bookingDetails as $detail)
                         <tr>
                             <td class="p-2 border">{{ $detail->scheduled_date }}</td>
-                            <td class="p-2 border">{{ ucfirst($detail->status) }}</td>
+                            <td class="p-2 border">{{ $booking->package->description}}</td>
                             <td class="p-2 border">{{ $detail->note ?? 'N/A' }}</td>
                             <td class="p-2 border">
                                 @if ($detail->provider)
@@ -57,8 +57,9 @@
             </table>
         @endif
 
-        <div class="mt-6">
-            <a href="{{ route('user.Bookings.b_index') }}" class="text-gray-800 text-md hover:underline"> Back to Bookings</a>
+        <div class="mt-10">
+            <a href="{{ route('user.Bookings.b_index') }}" class="text-white text-md hover:underline border bg-gray-600 px-4 py-4 rounded">
+                <i class="bi bi-chevron-double-left">Bookings</i></a>
         </div>
     </div>
 @endsection
