@@ -1,39 +1,181 @@
-@extends('service_provider.layouts.layout')
-@section('title', 'Edit Profile')
+@include('user.layout.header')
+@include('user.layout.head')
 
-@section('content')
-    <h1 class="text-3xl font-bold text-gray-800 mb-6">Edit Profile</h1>
-    
-    <form action="{{ route('service-provider.profile.update') }}" method="POST" enctype="multipart/form-data">
-        @csrf
-        @method('PATCH')
+<body class="bg-gray-100 flex font-sans">
+    <!-- Sidebar -->
+    <aside class="w-64 bg-gray-300 text-gray-700 h-screen fixed top-0 left-0 flex flex-col shadow-lg z-30">
+        <a href="/">
+            <div class="py-3 px-4 flex items-center text-2xl font-extrabold text-gray-800">
+                <img src="{{ asset('images/transparentlogo.png') }}" alt="" class="w-12 h-12 mr-2">
+                GharSewa
+            </div>
+        </a>
 
-        <div class="bg-white p-8 rounded-lg shadow-md">
-            <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
-                <div>
-                    <label for="name" class="block text-sm font-medium text-gray-700">Full Name</label>
-                    <input type="text" name="name" id="name" value="{{ old('name', $user->name) }}" class="mt-1 block w-full rounded-md border-gray-300 shadow-sm focus:border-indigo-500 focus:ring-indigo-500">
+        <nav class="flex-1 overflow-y-auto mt-6">
+            <ul class="space-y-3 px-6">
+                <li>
+                    <a href="{{ route('service_provider.dashboard') }}"
+                        class="flex items-center gap-4 px-5 py-3 rounded-lg hover:bg-gray-400 hover:text-gray-900 transition font-semibold">
+                        <i class="bi bi-speedometer2 text-lg"></i>
+                        Dashboard
+                    </a>
+                </li>
+
+                <li>
+                    <a href="{{ route('service_provider.profile') }}"
+                        class="flex items-center gap-4 px-5 py-3 rounded-lg bg-gray-400 text-gray-900 font-semibold">
+                        <i class="bi bi-person-circle text-lg"></i>
+                        Profile
+                    </a>
+                </li>
+
+                <li>
+                    <a href="#"
+                        class="flex items-center gap-4 px-5 py-3 rounded-lg hover:bg-gray-400 hover:text-gray-900 transition font-semibold">
+                        <i class="bi bi-calendar-check text-lg"></i>
+                        My Tasks
+                    </a>
+                </li>
+
+                <li>
+                    <form method="POST" action="{{ route('logout') }}">
+                        @csrf
+                        <button type="submit"
+                            class="w-full flex items-center gap-4 px-5 py-3 rounded text-red-600 hover:bg-red-400 hover:text-white transition font-semibold">
+                            <i class="bi bi-box-arrow-right text-lg"></i>
+                            Logout
+                        </button>
+                    </form>
+                </li>
+            </ul>
+        </nav>
+    </aside>
+
+    <!-- Main Content -->
+<main class="flex-1 ml-64 pt-20 pb-8 px-8">  <!-- Changed p-8 to pt-20 pb-8 px-8 -->
+    <div class="max-w-4xl mx-auto">
+            <!-- Header Section -->
+            <div class="bg-white rounded-lg shadow-md p-6 mb-6">
+                <div class="flex justify-between items-center">
+                    <div>
+                        <h1 class="text-3xl font-bold text-gray-800">Edit Profile</h1>
+                        <p class="text-gray-600 mt-2">Update your service provider information</p>
+                    </div>
+                    <a href="{{ route('service_provider.profile') }}" 
+                       class="bg-gray-600 hover:bg-gray-700 text-white px-6 py-2 rounded-lg font-semibold transition">
+                        <i class="bi bi-arrow-left mr-2"></i>Back to Profile
+                    </a>
                 </div>
-                <div>
-                    <label for="phone_number" class="block text-sm font-medium text-gray-700">Phone Number</label>
-                    <input type="text" name="phone_number" id="phone_number" value="{{ old('phone_number', $user->phone_number) }}" class="mt-1 block w-full rounded-md border-gray-300 shadow-sm focus:border-indigo-500 focus:ring-indigo-500">
-                </div>
             </div>
 
-            <div class="mt-6">
-                <label for="bio" class="block text-sm font-medium text-gray-700">Bio / Description</label>
-                <textarea name="bio" id="bio" rows="5" class="mt-1 block w-full rounded-md border-gray-300 shadow-sm focus:border-indigo-500 focus:ring-indigo-500">{{ old('bio', $user->bio) }}</textarea>
-            </div>
+            <!-- Edit Form -->
+            <div class="bg-white rounded-lg shadow-md p-8">
+                <form method="POST" action="{{ route('service_provider.profile.update') }}">
+                    @csrf
+                    @method('PUT')
 
-            <div class="mt-6">
-                <label for="avatar" class="block text-sm font-medium text-gray-700">Profile Photo</label>
-                <input type="file" name="avatar" id="avatar" class="mt-1 block w-full text-sm text-gray-500 file:mr-4 file:py-2 file:px-4 file:rounded-full file:border-0 file:font-semibold file:bg-indigo-50 file:text-indigo-600 hover:file:bg-indigo-100">
-            </div>
+                    <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+                        <!-- Name Field -->
+                        <div class="md:col-span-2">
+                            <label for="name" class="block text-sm font-medium text-gray-700 mb-2">
+                                Full Name <span class="text-red-500">*</span>
+                            </label>
+                            <input type="text" 
+                                   id="name" 
+                                   name="name" 
+                                   value="{{ old('name', $serviceProvider->name) }}"
+                                   class="w-full px-4 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-transparent @error('name') border-red-500 @enderror"
+                                   required>
+                            @error('name')
+                                <p class="text-red-500 text-sm mt-1">{{ $message }}</p>
+                            @enderror
+                        </div>
 
-            <div class="mt-8 flex justify-end gap-4">
-                <a href="{{ route('service-provider.profile.show') }}" class="bg-gray-200 text-gray-800 font-semibold py-2 px-6 rounded-lg hover:bg-gray-300">Cancel</a>
-                <button type="submit" class="bg-indigo-600 text-white font-semibold py-2 px-6 rounded-lg hover:bg-indigo-700">Save Changes</button>
+                        <!-- Email Field (Read-only) -->
+                        <div>
+                            <label for="email" class="block text-sm font-medium text-gray-700 mb-2">
+                                Email Address
+                            </label>
+                            <input type="email" 
+                                   id="email" 
+                                   value="{{ $serviceProvider->email }}"
+                                   class="w-full px-4 py-2 border border-gray-300 rounded-lg bg-gray-100 cursor-not-allowed"
+                                   readonly>
+                            <p class="text-sm text-gray-500 mt-1">Email cannot be changed</p>
+                        </div>
+
+                        <!-- Phone Field -->
+                        <div>
+                            <label for="phone" class="block text-sm font-medium text-gray-700 mb-2">
+                                Phone Number
+                            </label>
+                            <input type="tel" 
+                                   id="phone" 
+                                   name="phone" 
+                                   value="{{ old('phone', $serviceProvider->phone) }}"
+                                   class="w-full px-4 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-transparent @error('phone') border-red-500 @enderror"
+                                   placeholder="e.g., +977-9841234567">
+                            @error('phone')
+                                <p class="text-red-500 text-sm mt-1">{{ $message }}</p>
+                            @enderror
+                        </div>
+
+                        <!-- Specialization Field -->
+                        <div class="md:col-span-2">
+                            <label for="specialization" class="block text-sm font-medium text-gray-700 mb-2">
+                                Specialization <span class="text-red-500">*</span>
+                            </label>
+                            <select id="specialization" 
+                                    name="specialization" 
+                                    class="w-full px-4 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-transparent @error('specialization') border-red-500 @enderror"
+                                    required>
+                                <option value="">Select your specialization</option>
+                                <option value="Plumbing Service" {{ old('specialization', $serviceProvider->specialization) == 'Plumbing' ? 'selected' : '' }}>Plumbing Service</option>
+                                <option value="Electrical Service" {{ old('specialization', $serviceProvider->specialization) == 'Electrical' ? 'selected' : '' }}>Electrical Service</option>
+                                <!-- <option value="Carpentry" {{ old('specialization', $serviceProvider->specialization) == 'Carpentry' ? 'selected' : '' }}>Carpentry</option> -->
+                                <!-- <option value="Painting" {{ old('specialization', $serviceProvider->specialization) == 'Painting' ? 'selected' : '' }}>Painting</option> -->
+                                <option value="Cleaning Service" {{ old('specialization', $serviceProvider->specialization) == 'Cleaning' ? 'selected' : '' }}>Cleaning Service</option>
+                                <!-- <option value="HVAC" {{ old('specialization', $serviceProvider->specialization) == 'HVAC' ? 'selected' : '' }}>HVAC</option> -->
+                                <!-- <option value="Gardening" {{ old('specialization', $serviceProvider->specialization) == 'Gardening' ? 'selected' : '' }}>Gardening</option> -->
+                                <option value="Device & Appliance" {{ old('specialization', $serviceProvider->specialization) == 'Appliance Repair' ? 'selected' : '' }}>Device & Appliance Support</option>
+                                <!-- <option value="Other" {{ old('specialization', $serviceProvider->specialization) == 'Other' ? 'selected' : '' }}>Other</option> -->
+                            </select>
+                            @error('specialization')
+                                <p class="text-red-500 text-sm mt-1">{{ $message }}</p>
+                            @enderror
+                        </div>
+
+                        <!-- Bio Field -->
+                        <div class="md:col-span-2">
+                            <label for="bio" class="block text-sm font-medium text-gray-700 mb-2">
+                                Bio / About Me
+                            </label>
+                            <textarea id="bio" 
+                                      name="bio" 
+                                      rows="5"
+                                      class="w-full px-4 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-transparent @error('bio') border-red-500 @enderror"
+                                      placeholder="Tell us about yourself, your experience, and what makes you special...">{{ old('bio', $serviceProvider->bio) }}</textarea>
+                            @error('bio')
+                                <p class="text-red-500 text-sm mt-1">{{ $message }}</p>
+                            @enderror
+                            <p class="text-sm text-gray-500 mt-1">Maximum 1000 characters</p>
+                        </div>
+                    </div>
+
+                    <!-- Action Buttons -->
+                    <div class="flex items-center justify-end space-x-4 mt-8 pt-6 border-t">
+                        <a href="{{ route('service_provider.profile') }}" 
+                           class="px-6 py-2 text-gray-600 border border-gray-300 rounded-lg hover:bg-gray-50 font-semibold transition">
+                            Cancel
+                        </a>
+                        <button type="submit" 
+                                class="px-6 py-2 bg-gray-700 hover:bg-gray-800 text-white rounded-lg font-semibold transition">
+                            <i class="bi bi-check-circle mr-2"></i>Update Profile
+                        </button>
+                    </div>
+                </form>
             </div>
         </div>
-    </form>
-@endsection
+    </main>
+</body>
+</html>
