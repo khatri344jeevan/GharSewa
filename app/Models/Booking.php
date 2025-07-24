@@ -14,7 +14,7 @@ class Booking extends Model
         'property_id',
         'package_id',
         'booking_date',
-        'status',
+
     ];
 
     // Relationships
