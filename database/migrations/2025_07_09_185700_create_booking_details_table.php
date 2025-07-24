@@ -17,7 +17,7 @@ return new class extends Migration
             //foreign key
 
              $table->foreignId('booking_id')->constrained()->onDelete('cascade');
-             $table->foreignId('service_id')->constrained()->onDelete('cascade');
+             
              $table->foreignId('provider_id')->constrained('service_providers')->onDelete('cascade');
 
              // Detail info

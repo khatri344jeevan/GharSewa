@@ -3,7 +3,7 @@
 @section('content')
     <div class="container py-8">
         <!-- Success/Error Messages -->
-        @if (session('success'))
+        {{-- @if (session('success'))
             <div class="bg-green-100 border border-green-400 text-green-700 px-4 py-3 rounded-lg relative mb-6"
                 role="alert">
                 <span class="block sm:inline">{{ session('success') }}</span>
@@ -14,7 +14,7 @@
             <div class="bg-red-100 border border-red-400 text-red-700 px-4 py-3 rounded-lg relative mb-6" role="alert">
                 <span class="block sm:inline">{{ session('error') }}</span>
             </div>
-        @endif
+        @endif --}}
         <div class="flex flex-col md:flex-row md:justify-between md:items-center mb-6">
             <h4 class="text-gray-900 font-bold text-2xl mb-4 md:mb-0">Package List</h4>
             <a href="{{ route('admin.packages.create') }}"
