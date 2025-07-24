@@ -21,7 +21,7 @@ return new class extends Migration
 
              // Detail info
             $table->dateTime('scheduled_date');
-            $table->string('status')->default('pending');
+            // $table->string('status')->default('pending');
             $table->text('note')->nullable();
 
             $table->timestamps();

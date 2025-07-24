@@ -14,14 +14,13 @@ class BookingDetail extends Model
         'service_id',
         'provider_id',
         'scheduled_date',
-        'status',
         'note',
     ];
 
     // Relationships
-    public function booking()
+     public function booking()
     {
-        return $this->belongsTo(Booking::class);
+        return $this->belongsTo(Booking::class, 'booking_id', 'id');
     }
 
     public function provider()

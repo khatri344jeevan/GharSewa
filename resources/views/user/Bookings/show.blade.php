@@ -39,7 +39,7 @@
                                 @endif
                             </td>
                             <td class="p-2 border text-center">
-                                @if ($detail->status === 'approved')
+                                @if ($booking->status === 'approved')
                                     <form action="/" method="POST">
                                         @csrf
                                         <button type="submit"

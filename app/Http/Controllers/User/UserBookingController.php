@@ -14,14 +14,18 @@ class UserBookingController extends Controller
     /**
      * Display a list of user bookings.
      */
-    public function b_index()
-    {
-        $user = Auth::user();
-        $bookings = $user->bookings()->with('bookingDetails','property')->latest()->paginate(10);
+  public function b_index()
+{
+    $user = Auth::user();
 
-        return view('user.Bookings.index', compact('bookings'));
+    // Get all bookings of the logged-in user along with related models
+    $bookings = Booking::with(['package', 'property'])
+        ->where('user_id', $user->id)
+        ->latest()
+        ->get();
 
-    }
+    return view('user.Bookings.index', compact('bookings'));
+}
 
     /**
      * Show form to create a new booking.
@@ -65,7 +69,7 @@ class UserBookingController extends Controller
             'property_id'   => $request->property_id,
             'package_id'    => $request->package_id,
             'booking_date'  => $request->booking_date,
-            'status'        => 'pending',
+            'status'        => 'pending2',
         ]);
 
         return redirect()->route('user.Bookings.b_index')->with('success', 'Booking successfully created!');
@@ -80,10 +84,10 @@ class UserBookingController extends Controller
 
 
 
-        $booking = Booking::with('bookingDetails.provider')
-                    ->where('user_id', $user->id)
-                    ->where('id', $id)
-                    ->firstOrFail();
+        $booking = Booking::with('bookingDetails.provider', 'package') // eager loading
+        ->where('user_id', $user->id)
+        ->where('id', $id)
+        ->firstOrFail();
 
         return view('user.Bookings.show', compact('booking'));
     }
