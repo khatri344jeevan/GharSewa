@@ -16,7 +16,7 @@ return new class extends Migration
 
             $table->foreignId('booking_id')->constrained()->onDelete('cascade');
             $table->foreignId('provider_id')->constrained('service_providers')->onDelete('cascade');
-            $table->foreignId('service_id')->constrained()->onDelete('cascade');
+            
 
         // Task details
             $table->dateTime('scheduled_time');

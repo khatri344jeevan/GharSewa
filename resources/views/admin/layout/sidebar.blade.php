@@ -76,7 +76,7 @@
                     </a>
                 </li> --}}
             <li>
-                <a href="/profile"
+                <a href="{{ route('admin.profile.edit') }}"
                     class="flex items-center gap-4 px-5 py-3 rounded-lg hover:bg-gray-400 hover:text-gray-900 transition font-semibold">
                     <i class="bi bi-person-circle text-lg"></i>
                     Profile
