@@ -65,7 +65,7 @@ class UserBookingController extends Controller
             'property_id'   => $request->property_id,
             'package_id'    => $request->package_id,
             'booking_date'  => $request->booking_date,
-            'status'        => 'pending',
+            // 'status'        => 'pending',
         ]);
 
         return redirect()->route('user.Bookings.b_index')->with('success', 'Booking successfully created!');
