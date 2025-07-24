@@ -5,7 +5,7 @@ use Illuminate\Support\Facades\Route;
 
 
 
-
+Route::get("/error" , [FrontendController::class , "error"]);
 Route::get("/" , [FrontendController::class , "welcome"]);
 Route::get("/RegisterProperty" , [FrontendController::class , "RegisterProperty"]);
 Route::get("/BookPackage" , [FrontendController::class , "BookPackage"]);
