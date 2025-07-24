@@ -24,13 +24,10 @@ class BookingDetail extends Model
         return $this->belongsTo(Booking::class);
     }
 
-    public function service()
-    {
-        return $this->belongsTo(Service::class);
-    }
-
     public function provider()
     {
         return $this->belongsTo(ServiceProvider::class, 'provider_id');
     }
+
+
 }

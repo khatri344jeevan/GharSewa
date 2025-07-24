@@ -22,7 +22,6 @@ return new class extends Migration
             $table->dateTime('booking_date');
 
             //status will include pending,confirmed, upcoming , canceled
-            $table->string('status')->default('pending');
 
 
             $table->timestamps();
