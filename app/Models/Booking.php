@@ -14,6 +14,7 @@ class Booking extends Model
         'property_id',
         'package_id',
         'booking_date',
+        'status',
     ];
 
     // Relationships
@@ -34,15 +35,18 @@ class Booking extends Model
 
 
 
-    public function bookingDetails()
-    {
-        return $this->hasMany(BookingDetail::class);
-    }
+  public function bookingDetails() // plural
+{
+    return $this->hasMany(BookingDetail::class, 'booking_id', 'id');
+}
+
 
     public function payments()
     {
         return $this->hasMany(Payment::class);
     }
+
+
 
     //realtion with BookignPakage
     // public function bookingPackages()
