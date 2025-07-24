@@ -1,3 +1,4 @@
+
 <?php
 
 use Illuminate\Support\Facades\Route;
@@ -48,3 +49,4 @@ Route::middleware('auth')->group(function () {
 require __DIR__.'/auth.php';
 require __DIR__.'/frontend.php';
 require __DIR__.'/user.php';
+require __DIR__.'/service_provider.php';
