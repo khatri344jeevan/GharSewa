@@ -16,7 +16,7 @@
                         {{ $propertyCount }}
                     </span>
                     <span class="text-lg font-semibold tracking-wide">
-                        Registered
+                        <a href="{{ route('user.Properties.p_index') }}">Registered</a>
                     </span>
                     <span class="italic block text-md">
                         propert{{ $propertyCount == 1 ? '' : 'ies' }}
@@ -32,7 +32,7 @@
                 </div>
                 <p class="text-gray-700 text-2xl font-extrabold">
                     <span class="block text-green-600 text-4xl">
-                         {{ $upcomingServices }}
+                        {{ $upcomingServices }}
 
                     </span>
                     <span class="text-lg font-semibold tracking-wide">
@@ -53,7 +53,7 @@
                 </div>
                 <p class="text-gray-700 text-2xl font-extrabold">
                     <span class="block text-green-600 text-4xl">
-                        {{$pendingtask}}
+                        {{ $pendingtask }}
                     </span>
                     <span class="text-lg font-semibold tracking-wide">
                         Pending
@@ -73,7 +73,7 @@
                 </div>
                 <p class="text-gray-700 text-2xl font-extrabold">
                     <span class="block text-red-600 text-4xl">
-                        {{$pendingPayments}}
+                        {{ $pendingPayments }}
                     </span>
                     <span class="text-lg font-semibold tracking-wide">
                         Pending
@@ -88,11 +88,11 @@
     </div>
 
     <div class="flex gap-10">
-        <a href="/"
+        <a href="{{route('user.Bookings.b_create')}}"
             class="inline-block bg-gray-700 hover:bg-gray-800 text-white font-semibold px-6 py-3 rounded shadow-lg transition duration-300">
             Book Maintainence Package
         </a>
-        <a href="{{route('user.Properties.p_create')}}"
+        <a href="{{ route('user.Properties.p_create') }}"
             class="inline-block bg-gray-700 hover:bg-gray-800 text-white font-semibold px-6 py-3 rounded shadow-lg transition duration-300">
             Register Property
         </a>

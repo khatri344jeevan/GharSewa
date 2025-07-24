@@ -14,7 +14,6 @@ class Booking extends Model
         'property_id',
         'package_id',
         'booking_date',
-
     ];
 
     // Relationships
@@ -25,13 +24,15 @@ class Booking extends Model
 
     public function property()
     {
-        return $this->belongsTo(Property::class);
+        return $this->belongsTo(Property::class,'property_id');
     }
 
     public function package()
     {
-        return $this->belongsTo(Package::class);
+        return $this->belongsTo(Package::class,'package_id');
     }
+
+
 
     public function bookingDetails()
     {
@@ -42,4 +43,11 @@ class Booking extends Model
     {
         return $this->hasMany(Payment::class);
     }
+
+    //realtion with BookignPakage
+    // public function bookingPackages()
+    // {
+    // return $this->hasMany(BookingPackage::class);
+    // }
+
 }

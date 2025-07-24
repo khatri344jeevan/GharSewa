@@ -22,14 +22,14 @@
                 </a>
             </li>
             <li>
-                <a href="/properties"
+                <a href="{{route('user.Properties.p_index')}}"
                     class="flex items-center gap-4 px-5 py-3 rounded-lg hover:bg-gray-400 hover:text-gray-900 transition font-semibold">
                     <i class="bi bi-building text-lg"></i>
                     My Properties
                 </a>
             </li>
             <li>
-                <a href="/bookings"
+                <a href="{{route('user.Bookings.b_index')}}"
                     class="flex items-center gap-4 px-5 py-3 rounded-lg hover:bg-gray-400 hover:text-gray-900 transition font-semibold">
                     <i class="bi bi-calendar-check text-lg"></i>
                     My Bookings

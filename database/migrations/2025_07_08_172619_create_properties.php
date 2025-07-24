@@ -18,6 +18,7 @@ return new class extends Migration
             $table->string('address');
             $table->string('type');
             $table->string('maplocation')->nullable();
+            $table->string('image')->nullable();
 
     //  foreign key cosntraint
             $table->foreign('user_id')->references('id')->on('users')->onDelete('cascade');

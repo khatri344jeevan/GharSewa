@@ -15,6 +15,7 @@ class Property extends Model
         'type',
         'maplocation',
         'user_id',
+        'image'
     ];
 
     public function user()
