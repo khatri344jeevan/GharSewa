@@ -13,8 +13,7 @@ Route::get('/dashboard', [UserDashboardController::class, 'index'])
     ->middleware(['auth', 'verified', 'rolemanager:user'])
     ->name('user.dashboard');
 
-    //property routing starts from here
-
+Route::middleware(['auth', 'verified','rolemanager:user'])->group(function () {
 
 Route::get('/properties',[UserPropertyController:: class, 'p_index'])
  ->name('user.Properties.p_index');
@@ -66,5 +65,8 @@ Route::get('/booking',[UserBookingController::class, 'b_index'])
 
  Route::get('/payment',[User\UserPaymentController::class,'p_index'])
  ->name('user.Payment.index');
+});
+
+
 
 

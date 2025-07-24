@@ -20,11 +20,17 @@ class UserDashboardController extends Controller
         //     ->where('status', 'pending')
         //     ->count();
 
-        $upcomingServices = Task::whereHas('booking', function ($query) use ($user) {
-        $query->where('user_id', $user->id);
-         })
-           ->where('status', 'pending')
-           ->count();
+        // $upcomingServices = Task::whereHas('booking', function ($query) use ($user) {
+        // $query->where('user_id', $user->id);
+        //  })
+        //    ->where('status', 'pending')
+        //    ->count();
+
+           $upcomingServices = Task::whereHas('booking', function ($query) use ($user) {
+              $query->where('user_id', $user->id)
+                ->where('status', 'pending');
+            })->count();
+
 
 
         $pendingtask = Task::whereHas('booking', function($query) use ($user) {
@@ -35,11 +41,18 @@ class UserDashboardController extends Controller
 
         $pendingPayments = $user->payments()->count();
 
+        // Fetch all notifications, unread first
+        $notifications = $user->notifications()->take(10)->get();
+
+        // Optionally, mark as read when dashboard is visited
+        // $user->unreadNotifications->markAsRead();
+
         return view('user.dashboard', compact(
             'propertyCount',
             'upcomingServices',
             'pendingtask',
-            'pendingPayments'
+            'pendingPayments',
+            'notifications' ,
         ));
     }
 }
