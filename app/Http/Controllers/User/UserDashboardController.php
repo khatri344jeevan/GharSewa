@@ -16,9 +16,16 @@ class UserDashboardController extends Controller
 
         $propertyCount = $user->properties()->count();
 
-        $upcomingServices = $user->bookings()
-            ->where('status', 'pending')
-            ->count();
+        // $upcomingServices = $user->booking_details()
+        //     ->where('status', 'pending')
+        //     ->count();
+
+        $upcomingServices = Task::whereHas('booking', function ($query) use ($user) {
+        $query->where('user_id', $user->id);
+         })
+           ->where('status', 'pending')
+           ->count();
+
 
         $pendingtask = Task::whereHas('booking', function($query) use ($user) {
                 $query->where('user_id', $user->id);
