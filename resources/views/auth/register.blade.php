@@ -3,9 +3,9 @@
         Create account
     </div>
 
-    <div class="auth-subtitle">
+    {{-- <div class="auth-subtitle">
         Let's get started with your 30 days free trial
-    </div>
+    </div> --}}
 
     <form method="POST" action="{{ route('register') }}" class="auth-form space-y-4">
         @csrf

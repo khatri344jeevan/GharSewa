@@ -36,10 +36,12 @@
                     <tr class="hover:bg-gray-50 transition duration-200">
                         <td class="px-6 py-4 text-center">{{ $loop->iteration }}</td>
                         <td class="px-6 py-4 text-center">{{ $booking->package->name }}</td>
-                        <td class="px-6 py-4 text-center">{{ $booking->property->title ?? 'N/A'}}</td>
+                        <td class="px-6 py-4 text-center">{{ $booking->property->title ?? 'N/A' }}</td>
                         <td class="px-6 py-4 text-center">{{ $booking->package->price }}</td>
                         <td class="px-6 py-4 text-center">{{ $booking->package->duration_days }}</td>
-                        <td class="px-6 py-4 text-center">{{ ucfirst($booking->$booking_details->status) }}</td>
+                        {{-- <td class="px-6 py-4 text-center">{{ ucfirst($booking->booking_details->status) }}</td> --}}
+                        <td class="px-6 py-4 text-center">
+                            {{ $booking->booking_details ? ucfirst($booking->booking_details->status) : 'N/A' }}</td>
                         <td class="px-6 py-4 text-center">{{ $booking->package->service_limit }}</td>
                         {{-- <td class="px-6 py-4">{{ $booking->package->description }}</td> --}}
                         {{-- <td class="px-6 py-4 flex space-x-3">
