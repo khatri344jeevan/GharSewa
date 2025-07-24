@@ -7,6 +7,7 @@ use App\Http\Controllers\Admin\UsersController;
 use App\Http\Controllers\Admin\AdminMainController;
 use App\Http\Controllers\Admin\MaintenancePackageController;
 use App\Http\Controllers\Admin\ServiceProvidersController;
+use Illuminate\Http\Request;
 Route::get('/', function () {
     return view('welcome');
 });
@@ -72,6 +73,17 @@ Route::middleware('auth')->group(function () {
     Route::patch('/profile', [ProfileController::class, 'update'])->name('profile.update');
     Route::delete('/profile', [ProfileController::class, 'destroy'])->name('profile.destroy');
 });
+
+Route::post('/user/notifications/{id}/mark-read', function ($id) {
+    $notification = auth()->user()->notifications()->findOrFail($id);
+    $notification->markAsRead();
+    return back();
+})->name('user.notifications.markRead')->middleware('auth');
+
+Route::post('/user/notifications/mark-all-read', function () {
+    auth()->user()->unreadNotifications->markAsRead();
+    return back();
+})->name('user.notifications.markAllRead')->middleware('auth');
 
 require __DIR__.'/auth.php';
 require __DIR__.'/frontend.php';
