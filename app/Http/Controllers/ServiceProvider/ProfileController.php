@@ -11,6 +11,20 @@ use Illuminate\Validation\Rules;
 class ProfileController extends Controller
 {
     /**
+     * Show the user's main profile page.
+     * This method gets the logged-in user's data and passes it to the view.
+     */
+    public function show()
+    {
+        // Get the currently authenticated user.
+        $user = Auth::user();
+
+        // Return the view and pass the user data to it.
+        return view('service_provider.profile.profile', compact('user'));
+    }
+
+    /**
+     * Show the form for editing the user's profile.
      * Show the form for editing the profile.
      */
     public function edit()
@@ -41,6 +55,10 @@ class ProfileController extends Controller
 
         // Update the user's name and email
         $user->name = $request->name;
+        $user->phone_number = $request->phone_number;
+        $user->bio = $request->bio;
+
+        // Save all the changes to the database.
         $user->email = $request->email;
 
         // If a new password was entered, update it
