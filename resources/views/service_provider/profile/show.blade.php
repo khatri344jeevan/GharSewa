@@ -1,5 +1,6 @@
 @include('user.layout.header')
 @include('user.layout.head')
+<!-- @include('profile.partials.update-password-form') -->
 
 <body class="bg-gray-100 flex font-sans">
     <!-- Sidebar -->
@@ -52,8 +53,8 @@
     </aside>
 
     <!-- Main Content -->
-<main class="flex-1 ml-64 pt-20 pb-8 px-8">  <!-- Changed p-8 to pt-20 pb-8 px-8 -->
-    <div class="max-w-4xl mx-auto">
+    <main class="flex-1 ml-64 pt-20 pb-8 px-8"> <!-- Changed p-8 to pt-20 pb-8 px-8 -->
+        <div class="max-w-4xl mx-auto">
             <!-- Header Section -->
             <div class="bg-white rounded-lg shadow-md p-6 mb-6">
                 <div class="flex justify-between items-center">
@@ -61,8 +62,8 @@
                         <h1 class="text-3xl font-bold text-gray-800">My Profile</h1>
                         <p class="text-gray-600 mt-2">Manage your service provider information</p>
                     </div>
-                    <a href="{{ route('service_provider.profile.edit') }}" 
-                       class="bg-gray-700 hover:bg-gray-800 text-white px-6 py-2 rounded-lg font-semibold transition">
+                    <a href="{{ route('service_provider.profile.edit') }}"
+                        class="bg-gray-700 hover:bg-gray-800 text-white px-6 py-2 rounded-lg font-semibold transition">
                         <i class="bi bi-pencil-square mr-2"></i>Edit Profile
                     </a>
                 </div>
@@ -70,36 +71,36 @@
 
             <!-- Success Message -->
             @if (session('success'))
-        <div id="success-toast"
-            class="fixed top-6 right-6 z-50 bg-green-600 text-white px-4 py-2 rounded shadow-md animate-fade-in">
-            {{ session('success') }}
-        </div>
+            <div id="success-toast"
+                class="fixed top-6 right-6 z-50 bg-green-600 text-white px-4 py-2 rounded shadow-md animate-fade-in">
+                {{ session('success') }}
+            </div>
 
-        <script>
-            setTimeout(function() {
-                let toast = document.getElementById('success-toast');
-                if (toast) toast.remove();
-            }, 3000);
-        </script>
+            <script>
+                setTimeout(function() {
+                    let toast = document.getElementById('success-toast');
+                    if (toast) toast.remove();
+                }, 3000);
+            </script>
 
-        <style>
-            @keyframes fade-in {
-                from {
-                    opacity: 0;
-                    transform: translateY(-20px);
+            <style>
+                @keyframes fade-in {
+                    from {
+                        opacity: 0;
+                        transform: translateY(-20px);
+                    }
+
+                    to {
+                        opacity: 1;
+                        transform: translateY(0);
+                    }
                 }
 
-                to {
-                    opacity: 1;
-                    transform: translateY(0);
+                .animate-fade-in {
+                    animation: fade-in 0.4s ease-out;
                 }
-            }
-
-            .animate-fade-in {
-                animation: fade-in 0.4s ease-out;
-            }
-        </style>
-    @endif
+            </style>
+            @endif
 
             <!-- Profile Information -->
             <div class="bg-white rounded-lg shadow-md overflow-hidden">
@@ -122,7 +123,7 @@
                         <!-- Contact Information -->
                         <div>
                             <h3 class="text-xl font-semibold text-gray-800 mb-4 border-b pb-2">Contact Information</h3>
-                            
+
                             <div class="space-y-4">
                                 <div class="flex items-center">
                                     <i class="bi bi-envelope text-gray-500 w-6"></i>
@@ -145,7 +146,7 @@
                         <!-- Professional Information -->
                         <div>
                             <h3 class="text-xl font-semibold text-gray-800 mb-4 border-b pb-2">Professional Information</h3>
-                            
+
                             <div class="space-y-4">
                                 <div class="flex items-center">
                                     <i class="bi bi-briefcase text-gray-500 w-6"></i>
@@ -171,15 +172,27 @@
                         <h3 class="text-xl font-semibold text-gray-800 mb-4 border-b pb-2">About Me</h3>
                         <div class="bg-gray-50 rounded-lg p-6">
                             @if($serviceProvider->bio)
-                                <p class="text-gray-700 leading-relaxed">{{ $serviceProvider->bio }}</p>
+                            <p class="text-gray-700 leading-relaxed">{{ $serviceProvider->bio }}</p>
                             @else
-                                <p class="text-gray-500 italic">No bio provided yet. Click "Edit Profile" to add your bio.</p>
+                            <p class="text-gray-500 italic">No bio provided yet. Click "Edit Profile" to add your bio.</p>
                             @endif
                         </div>
                     </div>
+
+                    <div class="mt-12">
+                        <h3 class="text-xl font-semibold text-gray-800 mb-4 border-b pb-2">Change Password</h3>
+
+                        @include('profile.partials.update-password-form')
+                    </div>
                 </div>
+
+
+
+
+
             </div>
         </div>
     </main>
 </body>
+
 </html>
