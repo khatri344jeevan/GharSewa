@@ -2,7 +2,7 @@
 use Illuminate\Support\Facades\Route; 
 use App\Http\Controllers\ServiceProvider\ServiceProviderDashboardController; 
 use App\Http\Controllers\ServiceProvider\ServiceProviderProfileController;   
-
+use App\Http\Controllers\ServiceProvider\TaskController;
 //main dashboard route 
 Route::get('/service_provider/dashboard', [ServiceProviderDashboardController::class, 'index'])     
     ->middleware(['auth', 'verified', 'rolemanager:service_provider'])     
@@ -22,6 +22,11 @@ Route::middleware(['auth', 'verified', 'rolemanager:service_provider'])->group(f
     Route::put('/service_provider/profile', [ServiceProviderProfileController::class, 'update'])
         ->name('service_provider.profile.update');
 });
+
+
+Route::get('/service_provider/tasks', [TaskController::class, 'index'])     
+    ->middleware(['auth', 'verified', 'rolemanager:service_provider'])     
+    ->name('service_provider.tasks'); 
 
 // Commented routes (keeping as requested)
 // Route::get('service-provider', function(){ 

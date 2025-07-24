@@ -1,4 +1,4 @@
-@extends('service_provider.layouts.sidenav')
+@extends('service_provider.layouts.sidebar')
 
 @section('content')
 <div class="ml-64 p-8">
