@@ -58,6 +58,12 @@ Route::middleware(['auth', 'verified', 'rolemanager:admin'])->group(function () 
                 Route::patch('/{id}/approve', [AdminBookingsController::class, 'approve'])->name('approve');
                 Route::patch('/{id}/reject', [AdminBookingsController::class, 'reject'])->name('reject');
             });
+            //! properties management
+             Route::get('/properties', [App\Http\Controllers\Admin\PropertyController::class, 'index'])->name('properties.index');
+            Route::get('/properties/{property}/edit', [App\Http\Controllers\Admin\PropertyController::class, 'edit'])->name('properties.edit');
+            Route::put('/properties/{property}', [App\Http\Controllers\Admin\PropertyController::class, 'update'])->name('properties.update');
+            Route::delete('/properties/{property}', [App\Http\Controllers\Admin\PropertyController::class, 'destroy'])->name('properties.destroy');
+
         });
     });
 });
