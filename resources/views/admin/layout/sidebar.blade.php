@@ -41,9 +41,9 @@
                 </a>
             </li>
             <li>
-                <a href=""
+                <a href="{{ route('admin.bookings.index') }}"
                     class="flex items-center gap-4 px-5 py-3 rounded-lg hover:bg-gray-400 hover:text-gray-900 transition font-semibold">
-                     <i class="bi bi-calendar-check mr-2"></i> Service Bookings
+                     <i class="bi bi-calendar-check mr-2"></i> Manage Bookings
                 </a>
             </li>
             <li>

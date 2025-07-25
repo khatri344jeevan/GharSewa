@@ -48,6 +48,13 @@ class Booking extends Model
 
 
 
+    protected function casts(): array
+    {
+    return [
+        'booking_date' => 'datetime',
+    ];
+    }
+
     //realtion with BookignPakage
     // public function bookingPackages()
     // {
