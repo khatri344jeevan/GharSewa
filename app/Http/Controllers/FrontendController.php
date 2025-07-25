@@ -73,9 +73,9 @@ class FrontendController extends Controller
         return view("auth.register");
     }
 
-    public function error(){
-        return view("error");
-    }
+    // public function error(){
+    //     return view("error");
+    // }
 
 
     // Contact us
