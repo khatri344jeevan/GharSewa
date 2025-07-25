@@ -94,7 +94,7 @@
       How do I contact GharSewa?
     </button>
     <div x-show="openIndex === 8" x-collapse class="mt-2 text-gray-700">
-      You can reach out via our contact form on the website, call our support number, or email us at support@gharsewa.com.
+      You can reach out via our contact form on the website, call our support number, or email us at gharsewa5@gmail.com.
     </div>
   </div>
 </div>
