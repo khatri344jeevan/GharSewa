@@ -29,6 +29,21 @@ class RoleManager
 
         // If user doesn't have permission, redirect to their appropriate dashboard
         // But since we now use unified dashboard, just redirect to dashboard
-        return redirect()->route('dashboard');
+
+
+        // return redirect()->route('dashboard');
+
+
+        // return redirect()->route('service_provider.dashboard');
+
+         if ($authUserRole === 'admin') {
+        return redirect()->route('admin.dashboard'); // if defined
+    } elseif ($authUserRole === 'customer') {
+        return redirect()->route('customer.dashboard'); // if defined
+    }
+
+    // Fallback
+    abort(403, 'Unauthorized');
+
     }
 }

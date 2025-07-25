@@ -33,7 +33,7 @@
                  </li>
 
                  <li>
-                     <a href="{{ route('service_provider.tasks') }}"
+                     <a href="{{ route('service_provider.index') }}"
                          class="flex items-center gap-4 px-5 py-3 rounded-lg hover:bg-gray-400 hover:text-gray-900 transition font-semibold">
                          <i class="bi bi-calendar-check text-lg"></i>
                          My Tasks

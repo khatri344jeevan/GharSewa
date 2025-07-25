@@ -27,12 +27,14 @@ class Task extends Model
 
     public function provider()
     {
-        return $this->belongsTo(ServiceProvider::class, 'provider_id');
+        return $this->belongsTo(related: ServiceProvider::class, 'provider_id');
     }
 
     public function service()
     {
-        return $this->belongsTo(Service::class);
+        // return $this->belongsTo(Provider::class);
+        return $this->belongsTo(ServiceProvider::class);
+
     }
 
     
