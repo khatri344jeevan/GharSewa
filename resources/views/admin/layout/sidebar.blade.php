@@ -35,7 +35,7 @@
                 </a>
             </li>
              <li>
-                <a href=""
+                <a href="{{ route('admin.properties.index') }}"
                     class="flex items-center gap-4 px-5 py-3 rounded-lg hover:bg-gray-400 hover:text-gray-900 transition font-semibold">
                    <i class="bi bi-building mr-2"></i> Manage Properties
                 </a>
@@ -56,7 +56,7 @@
              <li>
                 <a href="/payments"
                     class="flex items-center gap-4 px-5 py-3 rounded-lg hover:bg-gray-400 hover:text-gray-900 transition font-semibold">
-                           <i class="bi bi-credit-card mr-2"></i> Subscriptions & Payments
+                           <i class="bi bi-credit-card mr-2"></i>Payments
 
                 </a>
             </li>
