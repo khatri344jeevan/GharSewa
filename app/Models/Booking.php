@@ -41,4 +41,11 @@ class Booking extends Model
     {
         return $this->hasMany(Payment::class);
     }
+
+    public function index()
+    {
+        $bookings = Booking::with(['package', 'property'])->get();
+
+        return view('service_provider.tasks.index', compact('bookings'));
+    }
 }
