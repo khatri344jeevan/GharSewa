@@ -4,6 +4,8 @@
 
 @section('content')
 
+@include('toaster.toaster')
+
     <div class="flex items-center justify-between space-x-4 ">
         <!-- Add Record Button -->
         <button class="bg-gray-700 hover:bg-gray-800 text-white font-semibold px-6 py-3 rounded  shadow-md  mt-20">
