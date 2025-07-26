@@ -5,7 +5,7 @@ use App\Http\Controllers\ServiceProvider\ServiceProviderProfileController;
 use App\Http\Controllers\ServiceProvider\TaskController;
 
 //main dashboard route 
-Route::get('/service_provider/dashboard', [ServiceProviderDashboardController::class, 'index'])     
+Route::get('/service_provider/dashboard', [ServiceProviderDashboardController::class, 'myTask'])     
     ->middleware(['auth', 'verified', 'rolemanager:service_provider'])     
     ->name('service_provider.dashboard');   
 
