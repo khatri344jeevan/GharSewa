@@ -46,7 +46,7 @@ class UserPaymentController extends \App\Http\Controllers\Controller
 
         // Send request to Khalti
         $response = Http::withHeaders([
-            'Authorization' => 'Key ' . config('KHALTI_SECRET_KEY'),
+            'Authorization' => 'Key ' . config('services.khalti.secret'),
             'Content-Type' => 'application/json',
         ])->post($khaltiApiUrl, $payload);
 
