@@ -9,6 +9,7 @@ use Illuminate\Notifications\Notifiable;
 use Illuminate\Database\Eloquent\Relations\HasMany;
 
 
+
 class User extends Authenticatable
 {
     /** @use HasFactory<\Database\Factories\UserFactory> */
@@ -19,6 +20,11 @@ class User extends Authenticatable
      *
      * @var list<string>
      */
+
+    //notification system
+
+
+
     protected $fillable = [
         'name',
         'email',
@@ -70,6 +76,12 @@ public function payments()
 {
     return $this->hasMany(Payment::class);
 }
+
+    // Add notifications relationship if not present
+    public function notifications()
+    {
+        return $this->morphMany(\Illuminate\Notifications\DatabaseNotification::class, 'notifiable')->orderBy('created_at', 'desc');
+    }
 
 
 

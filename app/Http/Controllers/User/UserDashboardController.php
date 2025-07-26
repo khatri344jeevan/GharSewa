@@ -16,30 +16,72 @@ class UserDashboardController extends Controller
 
         $propertyCount = $user->properties()->count();
 
+        $confirmedBookings = $user->bookings()
+            ->where('status', 'confirmed')
+            ->count();
+
         // $upcomingServices = $user->booking_details()
         //     ->where('status', 'pending')
         //     ->count();
 
-        $upcomingServices = Task::whereHas('booking', function ($query) use ($user) {
-        $query->where('user_id', $user->id);
-         })
-           ->where('status', 'pending')
-           ->count();
+        // $upcomingServices = Task::whereHas('booking', function ($query) use ($user) {
+        // $query->where('user_id', $user->id);
+        //  })
+        //    ->where('status', 'pending')
+        //    ->count();
 
 
-        $pendingtask = Task::whereHas('booking', function($query) use ($user) {
+        //tasks count logic
+           $upcomingServices = Task::whereHas('booking', function ($query) use ($user) {
+              $query->where('user_id', $user->id)
+                ->where('status', 'pending');
+            })->count();
+
+            $totaltask = Task::whereHas('booking', function ($query) use ($user) {
                 $query->where('user_id', $user->id);
-            })
+            })->count();
+
+           $completedTasks = Task::whereHas('booking', function ($query) use ($user) {
+                $query->where('user_id', $user->id)
+                    ->where('status', 'completed');
+            })->count();
+
+
+
+            //bookings count logic
+
+        $totalBookings = $user->bookings()->count();
+
+        $approvedBookings = $user->bookings()
+            ->where('status', 'confirmed','approved')
+            ->count();
+
+
+        $pendingBookings = $user->bookings()
             ->where('status', 'pending')
             ->count();
 
+         // Payments count logic
+
         $pendingPayments = $user->payments()->count();
+
+        // Fetch all notifications, unread first
+        $notifications = $user->notifications()->take(10)->get();
+
+        // Optionally, mark as read when dashboard is visited
+        // $user->unreadNotifications->markAsRead();
 
         return view('user.dashboard', compact(
             'propertyCount',
+            'confirmedBookings',
             'upcomingServices',
-            'pendingtask',
-            'pendingPayments'
+            'totaltask',
+            'completedTasks',
+            'totalBookings',
+            'approvedBookings',
+            'pendingBookings',
+            'pendingPayments',
+            'notifications' ,
         ));
     }
 }

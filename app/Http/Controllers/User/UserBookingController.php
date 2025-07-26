@@ -91,4 +91,16 @@ class UserBookingController extends Controller
 
         return view('user.Bookings.show', compact('booking'));
     }
+
+    public function b_task($id)
+    {
+        $user = Auth::user();
+
+        $booking = Booking::with('bookingDetails.provider', 'package')
+            ->where('user_id', $user->id)
+            ->where('id', $id)
+            ->firstOrFail();
+
+        return view('user.Bookings.task', compact('booking'));
+    }
 }
