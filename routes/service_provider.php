@@ -25,13 +25,25 @@ Route::middleware(['auth', 'verified', 'rolemanager:service_provider'])->group(f
 });
 
 
-Route::get('/service_provider/tasks', [TaskController::class, 'index'])     
+Route::get('/service_provider/tasks', [TaskController::class, 't_index'])     
     ->middleware(['auth', 'verified', 'rolemanager:service_provider'])     
-    ->name('service_provider.index'); 
+    ->name('service_provider.tasks.index'); 
 
-Route::get('/service_provider/create', [TaskController::class, 'index'])     
+Route::get('/service_provider/tasks/create', [TaskController::class, 't_create'])     
     ->middleware(['auth', 'verified', 'rolemanager:service_provider'])     
     ->name('service_provider.tasks.create'); 
+
+Route::post('/service_provider/tasks', [TaskController::class, 't_store'])     
+    ->middleware(['auth', 'verified', 'rolemanager:service_provider'])     
+    ->name('service_provider.tasks.store'); 
+
+Route::get('/service_provider/tasks/{id}/edit', [TaskController::class, 't_edit'])     
+    ->middleware(['auth', 'verified', 'rolemanager:service_provider'])     
+    ->name('service_provider.tasks.edit'); 
+
+Route::put('/service_provider/tasks/{id}', [TaskController::class, 't_update'])     
+    ->middleware(['auth', 'verified', 'rolemanager:service_provider'])     
+    ->name('service_provider.tasks.update'); 
 
 
 //     Route::get('/dashboard', function () {
