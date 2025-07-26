@@ -75,6 +75,17 @@ Route::middleware('auth')->group(function () {
     Route::delete('/profile', [ProfileController::class, 'destroy'])->name('profile.destroy');
 });
 
+Route::post('/user/notifications/{id}/mark-read', function ($id) {
+    $notification = auth()->user()->notifications()->findOrFail($id);
+    $notification->markAsRead();
+    return back();
+})->name('user.notifications.markRead')->middleware('auth');
+
+Route::post('/user/notifications/mark-all-read', function () {
+    auth()->user()->unreadNotifications->markAsRead();
+    return back();
+})->name('user.notifications.markAllRead')->middleware('auth');
+
 require __DIR__.'/auth.php';
 require __DIR__.'/frontend.php';
 require __DIR__.'/user.php';
