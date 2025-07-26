@@ -16,7 +16,8 @@
             <p class="bg-red-200 mt-2">You services is <strong> Under approval </strong>, please Explore other Services!</p>
         @else
             @if ($booking->bookingDetails->isEmpty())
-                <p class="bg-red-200 mt-2">You will soon be<strong> Updated (Viewing Request) </strong>, please Explore other Services!
+                <p class="bg-red-200 mt-2">You will soon be<strong> Updated (Viewing Request) </strong>, please Explore other
+                    Services!
                 </p>
             @else
                 <table class="w-full mt-4 table-auto border border-collapse">
@@ -42,17 +43,21 @@
                                         <span class="text-gray-500">Not Assigned</span>
                                     @endif
                                 </td>
-                                <td class="p-2 border text-center">
+                                <td class="p-2 border text-center flex flex-col gap-2 items-center">
+                                    <a href='{{ route('user.Bookings.b_task', ['id' => $booking->id]) }}'
+                                        class="px-4 py-1 bg-gray-600 text-white rounded hover:bg-gray-700 text-sm w-full text-center">
+                                        View Task
+                                    </a>
                                     @if ($booking->status === 'confirmed')
-                                        <form action="/" method="POST">
+                                        <form action="/" method="POST" class="w-full">
                                             @csrf
                                             <button type="submit"
-                                                class="px-4 py-1 bg-green-600 text-white rounded hover:bg-green-700 text-sm">
-                                                Pay Now
+                                                class="px-4 py-1 bg-green-600 text-white rounded hover:bg-green-700 text-sm w-full">
+                                                Pay with Khalti
                                             </button>
                                         </form>
                                     @else
-                                        <span class="text-gray-400 text-sm">N/A</span>
+                                        <span class="text-gray-400 text-sm w-full text-center">N/A</span>
                                     @endif
                                 </td>
                             </tr>

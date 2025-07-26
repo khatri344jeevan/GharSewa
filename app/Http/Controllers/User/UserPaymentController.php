@@ -1,48 +1,65 @@
- <?php
+<?php
+
+namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Http;
-
+use Illuminate\Support\Facades\Auth;
+use App\Models\Booking;
 
 class UserPaymentController extends Controller
 {
-    public function index(): void
+    public function initiatePayment(Request $request)
     {
-        $apiURL = 'https://dev.khalti.com/api/v2/epayment/initiate/';
+        //fetch booking
+        $booking = Booking::with('package')->findOrFail($request->booking_id);
 
-        $postInput = [
+        //fetch order and amount
+        $amount = $booking->package->price * 100; // in paisa
+        $orderId = 'ORDER_' . $booking->id; // or generate a UUID
 
-            "return_url"=> route('user.Payment.index'),
-
-            "website_url"=>route('\\'),
-
-            "amount"=>999*100,
-                "phone"=>"9818586602",
-            ];
-
-
-
-
-
-
-
-
-
-
-
-
-
-        $headers = [
-            "Authorization"=> "Key 5206e172b2424b6b9de3c2b4b0ba2d0e",
+        // Payload for Khalti
+        $payload = [
+            "return_url" => route('user.dashboard'),
+            "website_url" => config('app.url'),
+            "amount" => $amount,
+            "purchase_order_id" => $orderId,
+            "purchase_order_name" => "GharSewa Booking",
+            "customer_info" => [
+                "name" => auth()->user()->name,
+                "email" => auth()->user()->email,
+                "phone" => auth()->user()->phone,
+            ],
+            "product_details" => [
+                [
+                    "identity" => "booking_" . $booking->id,
+                    "name" => $booking->package->title ?? 'Service',
+                    "total_price" => $amount,
+                    "quantity" => 1,
+                    "unit_price" => $amount,
+                ]
+            ]
         ];
 
-        $response = Http::withHeaders($headers)->post($apiURL, $postInput);
+        // Khalti API URL
+        $khaltiApiUrl = "https://dev.khalti.com/api/v2/epayment/initiate/";
 
-        $statusCode = $response->status();
-        $responseBody = json_decode($response->getBody(), true);
+        // Send request to Khalti
+        $response = Http::withHeaders([
+            'Authorization' => 'Key ' . env('KHALTI_SECRET_KEY'),
+            'Content-Type' => 'application/json',
+        ])->post($khaltiApiUrl, $payload);
 
-        echo "Status code: ". $statusCode;  // status code
+        // Handle Response
+        if ($response->successful()) {
+            $data = $response->json();
 
-        dd($responseBody); // body response
+            // Optionally store pidx or log payment attempt here
+            // $booking->update(['khalti_pidx' => $data['pidx']]);
+
+            return redirect($data['payment_url']); // Redirect user to Khalti checkout
+        } else {
+            return back()->with('error', 'Khalti payment initiation failed.');
+        }
     }
 }

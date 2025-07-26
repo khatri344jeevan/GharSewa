@@ -63,6 +63,9 @@ Route::get('/booking',[UserBookingController::class, 'b_index'])
  Route::get('/booking/{id}', [UserBookingController::class, 'b_show'])
  ->name('user.Bookings.b_show');
 
+ Route::get('/booking/task/{id}', [UserBookingController::class, 'b_task'])
+ ->name('user.Bookings.b_task');
+
  Route::get('/payment',[User\UserPaymentController::class,'p_index'])
  ->name('user.Payment.index');
 });
