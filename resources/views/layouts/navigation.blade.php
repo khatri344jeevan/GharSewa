@@ -5,14 +5,37 @@
             <div class="flex">
                 <!-- Logo -->
                 <div class="shrink-0 flex items-center">
-                    <a href="{{ route('dashboard') }}">
+                    @php
+                        $user = Auth::user();
+                        if ($user->role === 'admin') {
+                            $dashboardRoute = route('admin.dashboard');
+                        } elseif ($user->role === 'service_provider') {
+                            $dashboardRoute = route('service_provider.dashboard');
+                        } else {
+                            $dashboardRoute = route('user.dashboard');
+                        }
+                    @endphp
+                    <a href="{{ $dashboardRoute }}">
                         {{-- <x-application-logo class="block h-9 w-auto fill-current text-gray-800" /> --}}
                     </a>
                 </div>
 
                 <!-- Navigation Links -->
                 <div class="hidden space-x-8 sm:-my-px sm:ms-10 sm:flex">
-                    <x-nav-link :href="route('dashboard')" :active="request()->routeIs('dashboard')">
+                    @php
+                        $user = Auth::user();
+                        if ($user->role === 'admin') {
+                            $dashboardRoute = route('admin.dashboard');
+                            $dashboardActive = request()->routeIs('admin.dashboard');
+                        } elseif ($user->role === 'service_provider') {
+                            $dashboardRoute = route('service_provider.dashboard');
+                            $dashboardActive = request()->routeIs('service_provider.dashboard');
+                        } else {
+                            $dashboardRoute = route('user.dashboard');
+                            $dashboardActive = request()->routeIs('user.dashboard');
+                        }
+                    @endphp
+                    <x-nav-link :href="$dashboardRoute" :active="$dashboardActive">
                         {{ __('Dashboard') }}
                     </x-nav-link>
                 </div>
@@ -67,7 +90,20 @@
     <!-- Responsive Navigation Menu -->
     <div :class="{'block': open, 'hidden': ! open}" class="hidden sm:hidden">
         <div class="pt-2 pb-3 space-y-1">
-            <x-responsive-nav-link :href="route('dashboard')" :active="request()->routeIs('dashboard')">
+            @php
+                $user = Auth::user();
+                if ($user->role === 'admin') {
+                    $dashboardRoute = route('admin.dashboard');
+                    $dashboardActive = request()->routeIs('admin.dashboard');
+                } elseif ($user->role === 'service_provider') {
+                    $dashboardRoute = route('service_provider.dashboard');
+                    $dashboardActive = request()->routeIs('service_provider.dashboard');
+                } else {
+                    $dashboardRoute = route('user.dashboard');
+                    $dashboardActive = request()->routeIs('user.dashboard');
+                }
+            @endphp
+            <x-responsive-nav-link :href="$dashboardRoute" :active="$dashboardActive">
                 {{ __('Dashboard') }}
             </x-responsive-nav-link>
         </div>
