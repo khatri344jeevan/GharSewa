@@ -2,11 +2,12 @@
 
 namespace App\Http\Controllers\Admin;
 
-use App\Http\Controllers\Controller;
+use App\Models\Task;
 use App\Models\Booking;
-use App\Models\ServiceProvider;
-use App\Models\BookingDetail;
 use Illuminate\Http\Request;
+use App\Models\BookingDetail;
+use App\Models\ServiceProvider;
+use App\Http\Controllers\Controller;
 
 class AdminBookingsController extends Controller
 {
@@ -50,6 +51,13 @@ class AdminBookingsController extends Controller
             ]);
 
             $booking->update(['status' => 'confirmed']);
+
+            Task::create([
+                'booking_id' => $booking->id,
+                'provider_id' => $request->provider_id,
+                'scheduled_time' => $request->scheduled_date,
+                'status' => 'Pending',
+            ]);
 
             return redirect()->route('admin.bookings.index')
                 ->with('success', 'Service provider assigned successfully!');
