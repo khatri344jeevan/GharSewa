@@ -35,4 +35,11 @@ return [
         ],
     ],
 
+    //khalti payment gateway integration
+
+    'khalti' => [
+        'secret' => env('KHALTI_SECRET_KEY'),
+    ],
+
+
 ];

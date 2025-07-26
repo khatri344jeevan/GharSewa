@@ -16,6 +16,10 @@ class UserDashboardController extends Controller
 
         $propertyCount = $user->properties()->count();
 
+        $confirmedBookings = $user->bookings()
+            ->where('status', 'confirmed')
+            ->count();
+
         // $upcomingServices = $user->booking_details()
         //     ->where('status', 'pending')
         //     ->count();
@@ -26,18 +30,38 @@ class UserDashboardController extends Controller
         //    ->where('status', 'pending')
         //    ->count();
 
+
+        //tasks count logic
            $upcomingServices = Task::whereHas('booking', function ($query) use ($user) {
               $query->where('user_id', $user->id)
                 ->where('status', 'pending');
             })->count();
 
-
-
-        $pendingtask = Task::whereHas('booking', function($query) use ($user) {
+            $totaltask = Task::whereHas('booking', function ($query) use ($user) {
                 $query->where('user_id', $user->id);
-            })
+            })->count();
+
+           $completedTasks = Task::whereHas('booking', function ($query) use ($user) {
+                $query->where('user_id', $user->id)
+                    ->where('status', 'completed');
+            })->count();
+
+
+
+            //bookings count logic
+
+        $totalBookings = $user->bookings()->count();
+
+        $approvedBookings = $user->bookings()
+            ->where('status', 'confirmed','approved')
+            ->count();
+
+
+        $pendingBookings = $user->bookings()
             ->where('status', 'pending')
             ->count();
+
+         // Payments count logic
 
         $pendingPayments = $user->payments()->count();
 
@@ -49,8 +73,13 @@ class UserDashboardController extends Controller
 
         return view('user.dashboard', compact(
             'propertyCount',
+            'confirmedBookings',
             'upcomingServices',
-            'pendingtask',
+            'totaltask',
+            'completedTasks',
+            'totalBookings',
+            'approvedBookings',
+            'pendingBookings',
             'pendingPayments',
             'notifications' ,
         ));
