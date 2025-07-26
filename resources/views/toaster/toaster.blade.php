@@ -9,7 +9,7 @@
             setTimeout(function() {
                 let toast = document.getElementById('success-toast');
                 if (toast) toast.remove();
-            }, 3000);
+            }, 5000);
         </script>
 
         <style>
@@ -29,4 +29,4 @@
                 animation: fade-in 0.4s ease-out;
             }
         </style>
-    @endif 
+    @endif

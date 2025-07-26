@@ -23,36 +23,35 @@ class AuthenticatedSessionController extends Controller
      * Handle an incoming authentication request.
      */
     public function store(LoginRequest $request): RedirectResponse
-    {
-        $request->authenticate();
+{
+    $request->authenticate();
+    $request->session()->regenerate();
 
+    $authUserRole = Auth::user()->role;
 
-        $request->session()->regenerate();
+    // ✅ Flash message for successful login
+    session()->flash('success', 'You have logged in successfully.');
 
-
-
-        $authUserRole = Auth::user()->role;
-        // !Redirect based on user role
-        if ($authUserRole === 'admin') {
-            return redirect()->intended(route('admin.dashboard', absolute: false));
-        } elseif ($authUserRole === 'service_provider') {
-            return redirect()->intended(route('service_provider.dashboard', absolute: false));
-        }else{
-            return redirect()->intended(route('user.dashboard', absolute: false));
-        }
-
-        // if($request->user()->role === 'admin') {
-        //     return redirect('admin/dashboard');
-        //     // return redirect()->intended(route('admin.dashboard', absolute: false));
-        // }
-        // if ($request->user()->role === 'admin') {
-        //     return redirect()->intended(route('admin.dashboard', absolute: false));
-        // } elseif ($request->user()->role === 'service_provider') {
-        //     return redirect()->intended(route('service_provider.dashboard', absolute: false));
-        // }
-
-
+    // !Redirect based on user role
+    if ($authUserRole === 'admin') {
+        return redirect()->intended(route('admin.dashboard', absolute: false));
+    } elseif ($authUserRole === 'service_provider') {
+        return redirect()->intended(route('service_provider.dashboard', absolute: false));
+    } else {
+        return redirect()->intended(route('user.dashboard', absolute: false));
     }
+
+    // if($request->user()->role === 'admin') {
+    //     return redirect('admin/dashboard');
+    //     // return redirect()->intended(route('admin.dashboard', absolute: false));
+    // }
+    // if ($request->user()->role === 'admin') {
+    //     return redirect()->intended(route('admin.dashboard', absolute: false));
+    // } elseif ($request->user()->role === 'service_provider') {
+    //     return redirect()->intended(route('service_provider.dashboard', absolute: false));
+    // }
+}
+
 
     /**
      * Destroy an authenticated session.
@@ -65,6 +64,6 @@ class AuthenticatedSessionController extends Controller
 
         $request->session()->regenerateToken();
 
-        return redirect('/');
+        return redirect('/')->with('success', 'You have been logged out successfully.');
     }
 }
