@@ -1,6 +1,7 @@
 <?php
 
 namespace App\Http\Controllers\ServiceProvider;
+
 use App\Models\Task;
 use App\Http\Controllers\Controller;
 use Illuminate\Support\Facades\Auth;
@@ -17,11 +18,30 @@ class ServiceProviderDashboardController extends Controller
         return view('service_provider.dashboard', compact('user'));
     }
 
-    public function myTask(){
-        $providerId = Auth::id(); //we can also use auth()->users() not in this case but just saying
-        $tasks = Task::where('service_provider_id', $providerId)->get();
+    public function myTask()
+    {
+        $providerId = Auth::user()->id; 
 
-        return view('service_provider.tasks.task', compact('tasks')); //compact takes a variable named as string and converts it into array like ['tasks'(key)=>$tasks(value)]
+
+        $tasks = Task::where('provider_id', $providerId)->get();
+
+        $totalTasks = Task::where('provider_id', $providerId)->count();
+
+        $completedTasks = Task::where('provider_id', $providerId)
+            ->where('status', 'completed')
+            ->count();
+
+        $pendingTasks = Task::where('provider_id', $providerId)
+            ->where('status', 'pending')
+            ->count();
+
+
+        return view('service_provider.dashboard', compact(
+            'tasks',
+            'totalTasks',
+            'completedTasks',
+            'pendingTasks'
+        ));
     }
 }
 

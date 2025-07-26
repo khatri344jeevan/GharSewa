@@ -1,7 +1,7 @@
 @extends('service_provider.layouts.master')
 
 @section('content')
-<div class="ml-64 p-8 min-h-screen bg-gradient-to-br from-blue-50 via-white to-purple-100">
+<div class=" p-8 min-h-screen from-blue-50 -via-white to-purple-100">
     <div class="container mx-auto px-4">
         <!-- Task Statistics Boxes -->
         <div class="flex justify-start mb-8">
@@ -17,7 +17,7 @@
                         </div>
                         <div>
                             <h3 class="text-lg font-semibold text-gray-800 mb-1 break-words">Total Tasks</h3>
-                            <div class="text-4xl font-extrabold text-blue-700">{{ $totalTasks ?? 0 }}</div>
+                            <div class="text-4xl font-extrabold text-blue-700">{{ $totalTasks }}</div>
                         </div>
                     </div>
                 </div>
@@ -32,7 +32,7 @@
                         </div>
                         <div>
                             <h3 class="text-lg font-semibold text-gray-800 mb-1 break-words">Completed Tasks</h3>
-                            <div class="text-4xl font-extrabold text-green-700">{{ $completedTasks ?? 0 }}</div>
+                            <div class="text-4xl font-extrabold text-green-700">{{ $completedTasks }}</div>
                         </div>
                     </div>
                 </div>
@@ -48,7 +48,7 @@
                         </div>
                         <div>
                             <h3 class="text-lg font-semibold text-gray-800 mb-1 break-words">Pending Tasks</h3>
-                            <div class="text-4xl font-extrabold text-yellow-700">{{ $pendingTasks ?? 0 }}</div>
+                            <div class="text-4xl font-extrabold text-yellow-700">{{ $pendingTasks  }}</div>
                         </div>
                     </div>
                 </div>
