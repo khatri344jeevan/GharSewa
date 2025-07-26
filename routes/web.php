@@ -6,6 +6,7 @@ use App\Http\Controllers\ProfileController;
 use App\Http\Controllers\Admin\UsersController;
 use App\Http\Controllers\Admin\AdminMainController;
 use App\Http\Controllers\Admin\AdminBookingsController;
+use App\Http\Controllers\Admin\AdminDashboardController;
 use App\Http\Controllers\Admin\ServiceProvidersController;
 use App\Http\Controllers\Admin\MaintenancePackageController;
 
@@ -17,7 +18,7 @@ Route::get('/', function () {
 Route::middleware(['auth', 'verified', 'rolemanager:admin'])->group(function () {
     Route::controller(AdminMainController::class)->group(function () {
         Route::prefix('admin')->name('admin.')->group(function () {
-            Route::get('/dashboard', 'index')->name('dashboard');
+            Route::get('/dashboard', [AdminDashboardController::class, 'dashboard'])->name('dashboard');
 
             Route::prefix('/users')->name('users.')->group(function () {
                 Route::get('/', [UsersController::class, 'index'])->name('index');
