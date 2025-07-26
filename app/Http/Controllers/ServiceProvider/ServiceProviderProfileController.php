@@ -55,15 +55,25 @@ class ServiceProviderProfileController extends Controller
             abort(401, 'Please login first.');
         }
 
+        // return ServiceProvider::firstOrCreate(
+        //     ['user_id' => $user->id],
+        //     [
+        //         'name' => $user->name ?? 'Unknown',
+        //         'email' => $user->email ?? 'unknown@email.com',
+        //         'phone' => '',
+        //         'specialization' => '',
+        //         'bio' => '',
+        //     ]
+        // );
+
         return ServiceProvider::firstOrCreate(
-            ['user_id' => $user->id],
-            [
-                'name' => $user->name ?? 'Unknown',
-                'email' => $user->email ?? 'unknown@email.com',
-                'phone' => '',
-                'specialization' => '',
-                'bio' => '',
-            ]
-        );
+        ['email' => $user->email],
+        [
+            'name' => $user->name ?? 'Unknown',
+            'phone' => '',
+            'specialization' => '',
+            'bio' => '',
+        ]
+    );
     }
 }
