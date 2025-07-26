@@ -49,8 +49,17 @@
                                         View Task
                                     </a>
                                     @if ($booking->status === 'confirmed')
-                                        <form action="/" method="POST" class="w-full">
+                                        {{-- <form action="{{ route('user.khalti.initiate', ['id' => $booking->id]) }}" method="GET" class="w-full">
                                             @csrf
+                                            <button type="submit"
+                                                class="px-4 py-1 bg-green-600 text-white rounded hover:bg-green-700 text-sm w-full">
+                                                Pay with Khalti
+                                            </button>
+                                        </form> --}}
+
+                                        <form action="{{ route('user.khalti.initiate')}}"
+                                            method="GET" class="w-full">
+                                            <input type="hidden" name="booking_id" value="{{ $booking->id }}">
                                             <button type="submit"
                                                 class="px-4 py-1 bg-green-600 text-white rounded hover:bg-green-700 text-sm w-full">
                                                 Pay with Khalti

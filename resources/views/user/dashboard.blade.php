@@ -4,9 +4,9 @@
 
 @section('content')
     <div class="container mx-auto m-6">
-        <div class="grid grid-cols-1 md:grid-cols-3 gap-4">
+        <div class="grid grid-cols-1  gap-4">
             {{-- Notifications Box --}}
-            <div class="bg-white shadow rounded-xl border border-blue-200 p-4 md:col-span-1">
+            {{-- <div class="bg-white shadow rounded-xl border border-blue-200 p-4 md:col-span-1">
                 <h2 class="text-lg font-semibold text-gray-800 mb-2 flex items-center">
                     <i class="bi bi-bell-fill text-gray-800 mr-2"></i> Notifications
                 </h2>
@@ -36,13 +36,13 @@
                         <p class="text-gray-500 text-sm">You have no new notifications.</p>
                     @endforelse
                 </div>
-            </div>
+            </div> --}}
 
             {{-- Main Boxes --}}
             <div class="md:col-span-2 grid grid-cols-1 md:grid-cols-2 gap-4">
                 {{-- Box 1 --}}
                 <div
-                    class="bg-gradient-to-br from-green-100 via-green-200 to-green-300 shadow p-6 rounded-xl text-center border border-green-200 flex flex-col justify-between h-full">
+                    class="bg-gradient-to-br from-gray-200 via-gray-300 to-balck-500 shadow p-6 rounded-xl text-center border border-green-200 flex flex-col justify-between h-full">
                     <div>
                         <div class="flex items-center justify-center mb-4">
                             <i class="bi bi-house-fill text-gray-700 text-3xl"></i>
@@ -76,12 +76,12 @@
 
                 {{-- Box 2 --}}
                 <div
-                    class="bg-gradient-to-br from-green-100 via-green-200 to-green-300 shadow p-4 rounded-xl text-center border border-green-200">
+                    class="bg-gradient-to-br from-gray-100 via-gray-200 to-gray-300 shadow p-4 rounded-xl text-center border border-green-200">
                     <div class="flex items-center justify-center mb-2">
-                        <i class="bi bi-gear-fill text-green-700 text-3xl"></i>
+                        <i class="bi bi-gear-fill text-gray-700 text-3xl"></i>
                     </div>
                     <div class="flex flex-col gap-2">
-                        <div class="bg-white rounded-lg shadow px-3 py-2 border-t-4 border-green-400">
+                        <div class="bg-white rounded-lg shadow px-3 py-2 border-t-4 border-gray-700">
                             <span class="block text-green-600 text-xl font-bold">{{ $totaltask }}</span>
                             <span class="text-base font-semibold text-gray-700">Total</span>
                             <span class="italic block text-gray-500 text-xs">tasks</span>
@@ -101,9 +101,9 @@
 
                 {{-- Box 3 --}}
                 <div
-                    class="bg-gradient-to-br from-blue-100 via-blue-200 to-blue-300 shadow p-4 rounded-xl text-center border border-blue-200">
+                    class="bg-gradient-to-br from-gray-100 via-gray-200 to-gray-300 shadow p-4 rounded-xl text-center border border-green-200">
                     <div class="flex items-center justify-center mb-2">
-                        <i class="bi bi-calendar-event-fill text-blue-700 text-3xl"></i>
+                        <i class="bi bi-calendar-event-fill text-gray-700 text-3xl"></i>
                     </div>
                     <div class="flex flex-col gap-2">
                         <div class="bg-white rounded-lg shadow px-3 py-2 border-t-4 border-green-400">
@@ -126,7 +126,7 @@
 
                 {{-- Box 4 --}}
                 <div
-                    class="bg-gradient-to-br from-blue-100 via-blue-200 to-blue-300 shadow p-4 rounded-xl text-center border border-blue-200">
+                    class="bg-gradient-to-br from-gray-100 via-gray-200 to-gray-300 shadow p-4 rounded-xl text-center border border-green-200">
                     <div class="flex items-center justify-center mb-2">
                         <i class="bi bi-currency-dollar text-gray-700 text-3xl"></i>
                     </div>
