@@ -66,10 +66,23 @@ Route::get('/booking',[UserBookingController::class, 'b_index'])
  Route::get('/booking/task/{id}', [UserBookingController::class, 'b_task'])
  ->name('user.Bookings.b_task');
 
- Route::get('/payment',[User\UserPaymentController::class,'p_index'])
+ Route::get('/payment/index',[UserPaymentController::class,'p_index'])
  ->name('user.Payment.index');
+
+// Move this route inside the middleware group for authentication and role checking
+// Route::post('/payment/khalti/{id}', [UserPaymentController::class, 'khaltiPay'])
+//     ->name('user.Bookings.khalti_pay');
+
+// Route::post('/khalti/initiate', [UserPaymentController::class, 'initiatePayment'])
+//     ->name('user.khalti.initiate');
+
+// Route::get('/payment/verify', [UserPaymentController::class, 'verifyPayment'])
+//     ->name('user.khalti.verify');
+
+ Route::get('/payment', [\App\Http\Controllers\User\UserPaymentController::class, 'p_index'])->name('user.payment.index');
+    Route::get('/payment/khalti/{id}', [\App\Http\Controllers\User\UserPaymentController::class, 'khaltiPay'])->name('user.khalti.pay');
+    Route::get('/payment/initiate', [\App\Http\Controllers\User\UserPaymentController::class, 'initiatePayment'])->name('user.khalti.initiate');
+    Route::post('/payment/verify', [\App\Http\Controllers\User\UserPaymentController::class, 'verifyPayment'])->name('user.khalti.verify');
+    Route::get('/dashboard', [\App\Http\Controllers\User\UserDashboardController::class, 'index'])->name('user.dashboard');
+
 });
-
-
-
-

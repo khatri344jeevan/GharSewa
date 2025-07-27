@@ -36,7 +36,7 @@
                 </a>
             </li>
             <li>
-                <a href="/payments"
+                <a href="{{route('user.Payment.index')}}"
                     class="flex items-center gap-4 px-5 py-3 rounded-lg hover:bg-gray-400 hover:text-gray-900 transition font-semibold">
                     <i class="bi bi-credit-card text-lg"></i>
                     My Payments
@@ -63,14 +63,14 @@
                     Profile
                 </a>
             </li>
-            <li>
+            {{-- <li>
                 {{-- <a href="{{ route('contactus') }}" --}}
-                <a
+                {{-- <a
                     class="flex items-center gap-4 px-5 py-3 rounded-lg hover:bg-gray-400 hover:text-gray-900 transition font-semibold">
                     <i class="bi bi-life-preserver text-lg"></i>
                     Support
                 </a>
-            </li>
+            </li>  --}}
             <li>
                 <form method="POST" action="{{ route('logout') }}">
                     @csrf
