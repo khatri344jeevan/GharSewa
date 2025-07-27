@@ -57,6 +57,7 @@
                                             </button>
                                         </form> --}}
 
+
                                         <form action="{{ route('user.khalti.initiate')}}"
                                             method="GET" class="w-full">
                                             <input type="hidden" name="booking_id" value="{{ $booking->id }}">
