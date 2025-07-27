@@ -4,7 +4,7 @@
 
 @section('content')
 <div class="container mx-auto px-4 py-8">
-<h2 class="mb-8 text-3xl font-bold text-center text-gray-800">All About GharSewa</h2>
+<h2 class="mb-8 text-3xl font-bold text-center text-gray-800">GharSewa Statistics</h2>
     <div class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-6">
         <div class="bg-white rounded-xl shadow-lg p-6 flex flex-col items-center hover:scale-105 transition-transform border-t-4 border-cyan-600">
             <div class="mb-3">
