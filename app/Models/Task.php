@@ -30,10 +30,7 @@ class Task extends Model
         return $this->belongsTo(ServiceProvider::class, 'provider_id');
     }
 
-    public function service()
-    {
-        return $this->belongsTo(Service::class);
-    }
+   
 
-    
+
 }

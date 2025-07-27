@@ -79,10 +79,12 @@ Route::get('/booking',[UserBookingController::class, 'b_index'])
 // Route::get('/payment/verify', [UserPaymentController::class, 'verifyPayment'])
 //     ->name('user.khalti.verify');
 
- Route::get('/payment', [\App\Http\Controllers\User\UserPaymentController::class, 'p_index'])->name('user.payment.index');
+ //Route::get('/payment', [\App\Http\Controllers\User\UserPaymentController::class, 'p_index'])->name('user.payment.index');
     Route::get('/payment/khalti/{id}', [\App\Http\Controllers\User\UserPaymentController::class, 'khaltiPay'])->name('user.khalti.pay');
     Route::get('/payment/initiate', [\App\Http\Controllers\User\UserPaymentController::class, 'initiatePayment'])->name('user.khalti.initiate');
-    Route::post('/payment/verify', [\App\Http\Controllers\User\UserPaymentController::class, 'verifyPayment'])->name('user.khalti.verify');
-    Route::get('/dashboard', [\App\Http\Controllers\User\UserDashboardController::class, 'index'])->name('user.dashboard');
+    Route::match(['get', 'post'], '/payment/verify', [\App\Http\Controllers\User\UserPaymentController::class, 'verifyPayment'])->name('user.khalti.verify');
+
+ //   Route::get('/dashboard', [\App\Http\Controllers\User\UserDashboardController::class, 'index'])->name('user.dashboard');
+
 
 });

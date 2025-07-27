@@ -6,6 +6,7 @@ use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Http;
 use Illuminate\Support\Facades\Auth;
 use App\Models\Booking;
+use App\Models\Payment;
 
 class UserPaymentController extends \App\Http\Controllers\Controller
 {
@@ -14,13 +15,19 @@ class UserPaymentController extends \App\Http\Controllers\Controller
         //fetch booking
         $booking = Booking::with('package')->findOrFail($request->booking_id);
 
+        // Prevent payment if already paid
+        if ($booking->status === 'paid') {
+            return redirect()->route('user.dashboard')->with('error', 'This booking has already been paid.');
+        }
+
         //fetch order and amount
         $amount = $booking->package->price * 100; // in paisa
         $orderId = 'ORDER_' . $booking->id; // or generate a UUID
 
         // Payload for Khalti
         $payload = [
-            "return_url" => route('user.dashboard'),
+            // Set return_url to the verifyPayment route, which Khalti will redirect to after payment
+            "return_url" => route('user.khalti.verify'), // Make sure this route exists and points to verifyPayment
             "website_url" => config('app.url'),
             "amount" => $amount,
             "purchase_order_id" => $orderId,
@@ -64,9 +71,6 @@ class UserPaymentController extends \App\Http\Controllers\Controller
             // Show error from Khalti response for debugging
             return back()->with('error', 'Khalti payment initiation failed: ' . $response->body());
         }
-
-
-
     }
 
     //verify the payment
@@ -81,7 +85,7 @@ class UserPaymentController extends \App\Http\Controllers\Controller
         $pidx = $request->pidx;
 
         $response = Http::withHeaders([
-            'Authorization' => 'Key ' . config('services.khalti.secret'), // Use config/services.php for Khalti secret
+            'Authorization' => 'Key ' . config('services.khalti.secret'),
             'Content-Type' => 'application/json',
         ])->post("https://dev.khalti.com/api/v2/epayment/verify/", [
             'pidx' => $pidx,
@@ -100,29 +104,48 @@ class UserPaymentController extends \App\Http\Controllers\Controller
                     $booking->update([
                         'status' => 'paid',
                         'khalti_pidx' => $pidx, // for record keeping
-                        'paid_at' => now(), // Optional: record the payment time
+                        'paid_at' => now(),
                     ]);
-                    return redirect()->route('user.dashboard')->with('success', 'Payment successful.');
+
+                    // Store payment in payments table
+                    Payment::create([
+                        'booking_id'     => $booking->id,
+                        'user_id'        => $booking->user_id,
+                        'package_id'     => $booking->package_id,
+                        'amount'         => $data['total_amount'],
+                        'payment_method' => 'Khalti',
+                        'payment_status' => 'success',
+                        'payment_date'   => now(),
+                    ]);
+
+                    return redirect()->route('user.Payment.index')->with('success', 'Payment successful.');
                 } else {
-                    return redirect()->route('user.dashboard')->with('error', 'Booking not found.');
+                    return redirect()->route('user.Payment.index')->with('error', 'Booking not found.');
                 }
             } else {
-                return redirect()->route('user.dashboard')->with('error', 'Payment failed.');
+                return redirect()->route('user.Payment.index')->with('error', 'Payment failed.');
             }
         } else {
-            return redirect()->route('user.dashboard')->with('error', 'Payment verification failed.');
+            return redirect()->route('user.Payment.index')->with('error', 'Payment verification failed.');
         }
     }
 
     public function p_index()
     {
-        return view('user.Payment.index');
+
+         $payments = Payment::where('user_id', Auth::id())->latest()->get();
+
+        return view('user.Payment.index', compact('payments'));
     }
 
     public function khaltiPay($id)
-{
-    // Redirect internally to initiatePayment using booking_id
-    return redirect()->route('user.khalti.initiate', ['booking_id' => $id]);
-}
+    {
+        $booking = Booking::findOrFail($id);
 
+        if ($booking->status === 'paid') {
+            return redirect()->route('user.dashboard')->with('error', 'This booking has already been paid.');
+        }
+
+        return redirect()->route('user.khalti.initiate', ['booking_id' => $id]);
+    }
 }
