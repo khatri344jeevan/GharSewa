@@ -14,12 +14,13 @@ Route::get('/', function () {
     return view('welcome');
 });
 
-// admin routes
+//! admin routes
 Route::middleware(['auth', 'verified', 'rolemanager:admin'])->group(function () {
     Route::controller(AdminMainController::class)->group(function () {
         Route::prefix('admin')->name('admin.')->group(function () {
             Route::get('/dashboard', [AdminDashboardController::class, 'dashboard'])->name('dashboard');
 
+            //! user management
             Route::prefix('/users')->name('users.')->group(function () {
                 Route::get('/', [UsersController::class, 'index'])->name('index');
                 Route::get('/create', [UsersController::class, 'create'])->name('create');
@@ -30,7 +31,7 @@ Route::middleware(['auth', 'verified', 'rolemanager:admin'])->group(function () 
                 Route::delete('/{id}/destroy', [UsersController::class, 'destroy'])->name('destroy');
             });
 
-            //!maintenance packages
+            //! maintenance packages
             Route::prefix('/packages')->name('packages.')->group(function () {
                 Route::get('/', [MaintenancePackageController::class, 'index'])->name('index');
                 Route::get('/create', [MaintenancePackageController::class, 'create'])->name('create');
@@ -50,7 +51,7 @@ Route::middleware(['auth', 'verified', 'rolemanager:admin'])->group(function () 
                 Route::delete('/{serviceProvider}/destroy', [ServiceProvidersController::class, 'destroy'])->name('destroy');
             });
 
-            //! booking management - FIXED NAMING
+            //! booking management
             Route::prefix('/bookings')->name('bookings.')->group(function () {
                 Route::get('/', [AdminBookingsController::class, 'index'])->name('index');
                 Route::get('/{id}', [AdminBookingsController::class, 'show'])->name('show');
