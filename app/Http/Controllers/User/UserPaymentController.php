@@ -46,20 +46,23 @@ class UserPaymentController extends \App\Http\Controllers\Controller
 
         // Send request to Khalti
         $response = Http::withHeaders([
-            'Authorization' => 'Key ' . config('services.khalti.secret'),
+            'Authorization' => 'Key ' . config('services.khalti.secret'), // Use config/services.php for Khalti secret
             'Content-Type' => 'application/json',
         ])->post($khaltiApiUrl, $payload);
 
-        // Handle Response
+        // Handle Response with error checking
         if ($response->successful()) {
             $data = $response->json();
-
+            // Check if payment_url exists in response
+            if (!isset($data['payment_url'])) {
+                return back()->with('error', 'Khalti did not return a payment URL. Response: ' . json_encode($data));
+            }
             // Store pidx in booking
             $booking->update(['khalti_pidx' => $data['pidx']]);
-
             return redirect($data['payment_url']); // Redirect user to Khalti checkout
         } else {
-            return back()->with('error', 'Khalti payment initiation failed.');
+            // Show error from Khalti response for debugging
+            return back()->with('error', 'Khalti payment initiation failed: ' . $response->body());
         }
 
 
@@ -78,7 +81,7 @@ class UserPaymentController extends \App\Http\Controllers\Controller
         $pidx = $request->pidx;
 
         $response = Http::withHeaders([
-            'Authorization' => 'Key ' . config('KHALTI_SECRET_KEY'),
+            'Authorization' => 'Key ' . config('services.khalti.secret'), // Use config/services.php for Khalti secret
             'Content-Type' => 'application/json',
         ])->post("https://dev.khalti.com/api/v2/epayment/verify/", [
             'pidx' => $pidx,
