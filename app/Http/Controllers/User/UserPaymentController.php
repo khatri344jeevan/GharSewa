@@ -91,28 +91,40 @@ class UserPaymentController extends \App\Http\Controllers\Controller
             'pidx' => $pidx,
         ]);
 
-        if ($response->successful()) {
-            $data = $response->json();
+        // dd($response);
+
+
+        // if ($response->successful()) {
+        //     $data = $response->json();
+        // Khalti sends status via URL query parameters, not JSON
+        $data = [
+            'status' => $request->status,
+            'pidx' => $request->pidx,
+            'total_amount' => $request->amount ?? null, // If amount is sent in URL
+        ];
+        $user = Auth::user();
 
             // Check if the payment was successful
             if ($data['status'] === 'Completed') {
-                // Fetch the booking using pidx or other identifiers
-                $booking = Booking::where('khalti_pidx', $request->pidx)->first();
+                // Fetch the booking authenticated by other identifiers
+                $booking = Booking::where('user_id', Auth::id())
+                    ->latest()
+                    ->first();
 
                 if ($booking) {
                     // Update booking status to paid
                     $booking->update([
                         'status' => 'paid',
-                        'khalti_pidx' => $pidx, // for record keeping
-                        'paid_at' => now(),
-                    ]);
+                       'khalti_pidx' => $pidx, // for record keeping
+                    //   'paid_at' => now(),
+                     ]);
 
                     // Store payment in payments table
                     Payment::create([
                         'booking_id'     => $booking->id,
                         'user_id'        => $booking->user_id,
                         'package_id'     => $booking->package_id,
-                        'amount'         => $data['total_amount'],
+                        'amount'         => $data['total_amount']/100,
                         'payment_method' => 'Khalti',
                         'payment_status' => 'success',
                         'payment_date'   => now(),
@@ -122,12 +134,13 @@ class UserPaymentController extends \App\Http\Controllers\Controller
                 } else {
                     return redirect()->route('user.Payment.index')->with('error', 'Booking not found.');
                 }
-            } else {
-                return redirect()->route('user.Payment.index')->with('error', 'Payment failed.');
             }
-        } else {
-            return redirect()->route('user.Payment.index')->with('error', 'Payment verification failed.');
-        }
+            // } else {
+            //     return redirect()->route('user.Payment.index')->with('error', 'Payment failed.');
+            // }
+        // } else {
+        //     return redirect()->route('user.Payment.index')->with('error', 'Payment verification failed.');
+        // }
     }
 
     public function p_index()
@@ -149,3 +162,4 @@ class UserPaymentController extends \App\Http\Controllers\Controller
         return redirect()->route('user.khalti.initiate', ['booking_id' => $id]);
     }
 }
+

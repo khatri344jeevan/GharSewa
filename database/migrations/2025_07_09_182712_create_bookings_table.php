@@ -19,6 +19,7 @@ return new class extends Migration
             $table->foreignId('property_id')->constrained()->onDelete('cascade');
             $table->foreignId('package_id')->constrained()->onDelete('cascade');
             $table->string('status')->default('pending');
+            $table->string('khalti_pidx')->nullable(); // Khalti payment identifier for record keeping
 
 
             $table->dateTime('booking_date');
