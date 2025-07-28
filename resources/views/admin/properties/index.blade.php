@@ -11,11 +11,7 @@
             </a> --}}
         </div>
 
-        @if (session('success'))
-            <div class="bg-green-100 border border-green-400 text-green-700 px-4 py-3 rounded mb-4">
-                {{ session('success') }}
-            </div>
-        @endif
+
 
         <div class="bg-white rounded-xl shadow-lg overflow-x-auto">
             <table class="min-w-full divide-y divide-gray-200">
@@ -64,7 +60,7 @@
                                         <i class="bi bi-eye"></i> View
                                     </a> --}}
                                     <a href="{{ route('admin.properties.edit', $property->id) }}"
-                                        class="bg-yellow-600 hover:bg-yellow-700 text-white text-xs px-3 py-1 rounded shadow">
+                                        class="bg-yellow-600 hover:bg-yellow-700 text-white text-xs px-3 py-3 rounded shadow">
                                         <i class="bi bi-pencil-square"></i> Edit
                                     </a>
                                     <form method="POST" action="{{ route('admin.properties.destroy', $property->id) }}"
@@ -72,7 +68,7 @@
                                         @csrf
                                         @method('DELETE')
                                         <button type="submit"
-                                            class="bg-red-600 hover:bg-red-700 text-white text-xs px-3 py-1 rounded shadow">
+                                            class="bg-red-600 hover:bg-red-700 text-white text-xs px-3 py-3 rounded shadow">
                                             <i class="bi bi-trash"></i> Delete
                                         </button>
                                     </form>

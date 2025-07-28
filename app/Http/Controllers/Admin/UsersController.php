@@ -137,9 +137,9 @@ class UsersController extends Controller
 
 
         // Check if trying to delete the authenticated user
-        if ($user->id === auth()->id()) {
-            return redirect()->route('admin.users.index')->with('error', 'You cannot delete your own account.');
-        }
+        // if ($user->id === auth()->id()) {
+        //     return redirect()->route('admin.users.index')->with('error', 'You cannot delete your own account.');
+        // }
 
         // Delete the user
         $user->delete();

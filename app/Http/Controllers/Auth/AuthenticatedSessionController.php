@@ -34,6 +34,7 @@ class AuthenticatedSessionController extends Controller
 
     // !Redirect based on user role
     if ($authUserRole === 'admin') {
+        session()->flash('success', 'Welcome back, Admin!');
         return redirect()->intended(route('admin.dashboard', absolute: false));
     } elseif ($authUserRole === 'service_provider') {
         return redirect()->intended(route('service_provider.dashboard', absolute: false));
