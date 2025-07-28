@@ -7,11 +7,11 @@
             <h4 class="text-gray-900 font-extrabold text-3xl mb-4 md:mb-0">Bookings List</h4>
         </div>
 
-        @if (session('success'))
+        {{-- @if (session('success'))
             <div class="bg-green-100 border border-green-400 text-green-700 px-4 py-3 rounded mb-4">
                 {{ session('success') }}
             </div>
-        @endif
+        @endif --}}
 
         <div class="bg-white rounded-xl shadow-lg overflow-x-auto">
             <table class="min-w-full divide-y divide-gray-200">
