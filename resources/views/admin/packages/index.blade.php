@@ -8,7 +8,7 @@
         <div class="flex flex-col md:flex-row md:justify-between md:items-center mb-6 bg-white rounded-xl shadow-md p-6">
             <h4 class="text-gray-900 font-bold text-2xl mb-4 md:mb-0">Package List</h4>
             <a href="{{ route('admin.packages.create') }}"
-               class="inline-flex items-center gap-2 bg-gray-700 hover:bg-gray-800 text-white font-semibold rounded-lg px-5 py-2 shadow transition">
+                class="inline-flex items-center gap-2 bg-gray-700 hover:bg-gray-800 text-white font-semibold rounded-lg px-5 py-2 shadow transition">
                 <i class="bi bi-plus-lg"></i> Add Package
             </a>
         </div>
@@ -39,15 +39,15 @@
                             <td class="px-4 py-3 text-center">
                                 <div class="flex justify-center gap-2">
                                     <a href="{{ route('admin.packages.edit', $package->id) }}"
-                                       class="bg-blue-700 hover:bg-blue-800 text-white text-xs px-3 py-2 rounded shadow flex items-center gap-1 no-underline">
+                                        class="bg-blue-700 hover:bg-blue-800 text-white text-xs px-3 py-2 rounded shadow flex items-center gap-1 no-underline">
                                         <i class="bi bi-pencil-square"></i> Edit
                                     </a>
                                     <form method="POST" action="{{ route('admin.packages.destroy', $package->id) }}"
-                                          onsubmit="return confirm('Are you sure you want to delete this package?')">
+                                        onsubmit="return confirm('Are you sure you want to delete this package?')">
                                         @csrf
                                         @method('DELETE')
                                         <button type="submit"
-                                                class="bg-red-700 hover:bg-red-800 text-white text-xs px-3 py-2 rounded shadow flex items-center gap-1 no-underline">
+                                            class="bg-red-700 hover:bg-red-800 text-white text-xs px-3 py-2 rounded shadow flex items-center gap-1 no-underline">
                                             <i class="bi bi-trash"></i> Delete
                                         </button>
                                     </form>

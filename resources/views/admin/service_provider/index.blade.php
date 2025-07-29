@@ -46,21 +46,21 @@
                         <tbody>
                             @foreach ($serviceProviders as $serviceProvider)
                                 <tr>
-                                    <td class="text-center font-bold px-2 py-2">{{ $loop->iteration }}</td>
-                                    <td class="px-2 py-2">
+                                    <td class="text-center font-bold px-2 py-2 text-lg">{{ $loop->iteration }}</td>
+                                    <td class="px-2 py-2 text-lg">
                                         <div class="flex items-center gap-1">
                                             <span>{{ $serviceProvider->name }}</span>
                                         </div>
                                     </td>
-                                    <td class="px-2 py-2">{{ $serviceProvider->email }}</td>
-                                    <td class="px-2 py-2">{{ $serviceProvider->phone }}</td>
-                                    <td class="px-2 py-2">{{ $serviceProvider->specialization }}</td>
-                                    <td class="px-2 py-2">{{ $serviceProvider->user->address }}</td>
-                                    <td class="px-2 py-2">{{ $serviceProvider->bio }}</td>
+                                    <td class="px-2 py-2 text-lg">{{ $serviceProvider->email }}</td>
+                                    <td class="px-2 py-2 text-lg">{{ $serviceProvider->phone }}</td>
+                                    <td class="px-2 py-2 text-lg">{{ $serviceProvider->specialization }}</td>
+                                    <td class="px-2 py-2 text-lg">{{ $serviceProvider->user->address }}</td>
+                                    <td class="px-2 py-2 text-lg">{{ $serviceProvider->bio }}</td>
                                     <td class="text-center px-2 py-2">
                                         <div class="flex flex-row gap-2 justify-center">
                                             <a href="{{ route('admin.service_providers.edit', $serviceProvider) }}"
-                                                class="bg-blue-700 hover:bg-blue-800 text-white text-xs px-4 py-2 rounded shadow-sm flex items-center gap-1">
+                                                class="bg-blue-700 hover:bg-blue-800 text-white text-xs px-4 py-3 rounded shadow-sm flex items-center gap-1">
                                                 <i class="bi bi-pencil-square"></i> Edit
                                             </a>
                                             <form method="POST"
@@ -69,7 +69,7 @@
                                                 @csrf
                                                 @method('DELETE')
                                                 <button type="submit"
-                                                    class="bg-red-700 hover:bg-red-800 text-white text-xs px-4 py-2 rounded shadow-sm flex items-center gap-1">
+                                                    class="bg-red-700 hover:bg-red-800 text-white text-xs px-4 py-3 rounded shadow-sm flex items-center gap-1">
                                                     <i class="bi bi-trash"></i> Delete
                                                 </button>
                                             </form>

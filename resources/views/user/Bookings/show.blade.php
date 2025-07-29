@@ -13,10 +13,10 @@
         <h3 class="mt-6 text-xl font-bold">Scheduled Services</h3>
 
         @if ($booking->status === 'pending')
-            <p class="bg-red-200 mt-2">You services is <strong> Under approval </strong>, please Explore other Services!</p>
+            <p class="bg-red-200 mt-2 px-2 py-3 rounded-lg">You services is <strong> Under approval </strong>, please Explore other Services!</p>
         @else
             @if ($booking->bookingDetails->isEmpty())
-                <p class="bg-red-200 mt-2">You will soon be<strong> Updated (Viewing Request) </strong>, please Explore other
+                <p class="bg-red-200 mt-2 px-2 py-3 rounded-lg">You will soon be<strong> Updated (Viewing Request) </strong>, please Explore other
                     Services!
                 </p>
             @else
@@ -45,8 +45,8 @@
                                 </td>
                                 <td class="p-2 border text-center flex flex-col gap-2 items-center ">
                                     <a href='{{ route('user.Bookings.b_task', ['id' => $booking->id]) }}'
-                                        class="px-4 py-1 bg-gray-600 text-white rounded hover:bg-gray-700 text-sm w-full text-center">
-                                        View Task
+                                        class="px-2 py-2 bg-gray-600 text-white rounded hover:bg-gray-700 text-sm w-full text-center">
+                                        <i class="bi bi-eye mr-3"></i>View Task
                                     </a>
                                     @if ($booking->status === 'confirmed')
                                         {{-- <form action="{{ route('user.khalti.initiate', ['id' => $booking->id]) }}" method="GET" class="w-full">
@@ -60,12 +60,13 @@
                                         <form action="{{ route('user.khalti.initiate') }}" method="GET" class="w-full">
                                             <input type="hidden" name="booking_id" value="{{ $booking->id }}">
                                             <button type="submit"
-                                                class="px-4 py-1 bg-green-600 text-white rounded hover:bg-green-700 text-sm w-full">
-                                                Pay with Khalti
+                                                class="px-4 py-2 bg-purple-800 text-white rounded hover:bg-purple-900 text-sm w-full">
+                                                <i class="bi bi-send mr-2"></i>Pay with Khalti
                                             </button>
                                         </form>
                                     @elseif ($booking->status === 'paid')
-                                        <span class="px-4 py-1 bg-green-600 text-white rounded hover:bg-green-700 text-sm w-full">Paid</span>
+                                        <span class="px-4 py-2 bg-purple-800 text-white rounded hover:bg-purple-900 text-sm w-full">
+                                            <i class="bi bi-send mr-2"></i>Paid</span>
                                     @else
                                         <span class="text-gray-400 text-sm w-full text-center">N/A</span>
                                     @endif

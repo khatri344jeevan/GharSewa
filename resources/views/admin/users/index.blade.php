@@ -47,9 +47,11 @@
                                     </div>
                                 </td>
                                 <td class="px-6 py-4">{{ $user->email }}</td>
-                                <td class="px-6 py-6">
-                                    <span
-                                        class="bg-gray-600 text-white px-5 py-3 rounded-full text-xs">{{ $user->role }}</span>
+                                <td class="px-6 py-4">
+                                    <div class="ml-20">
+                                        <span
+                                        class="bg-gray-600 text-white px-6 py-3 rounded-lg text-xs">{{ $user->role }}</span>
+                                    </div>
                                 </td>
                                 <td class="text-center px-6 py-4">
                                     <a href="{{ route('admin.users.edit', $user->id) }}"

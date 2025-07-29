@@ -9,7 +9,7 @@
             <h2 class="text-2xl font-bold mb-6 text-gray-800">{{ Auth::user()->name }}'s Payments</h2>
 
         @endauth
-        <div class="overflow-x-auto">
+        <div>
             <table class="min-w-full divide-y divide-gray-200">
                 <thead class="bg-gray-50">
                     <tr>
