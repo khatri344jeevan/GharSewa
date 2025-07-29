@@ -8,8 +8,8 @@
 
         <!-- Add Record Button -->
         <a href="{{ route('user.Bookings.b_create') }}"
-            class="bg-gray-500 hover:bg-gray-600 text-white font-semibold px-6 py-3 rounded shadow-md mt-20">
-            Add Booking
+            class="bg-gray-700 hover:bg-gray-800 text-white font-semibold px-6 py-3 rounded shadow-md mt-20">
+            <i class="bi bi-plus-lg mr-3"></i>Add Booking
         </a>
     </div>
 
@@ -17,15 +17,15 @@
         <table class="min-w-full divide-y divide-gray-200 text-sm text-gray-700">
             <thead class="bg-gray-300 text-gray-700 uppercase text-xs">
                 <tr>
-                    <th class="px-6 py-3 text-left text-center">Id</th>
-                    <th class="px-6 py-3 text-left text-center">Package Name</th>
-                    <th class="px-6 py-3 text-left text-center">Property Title</th>
-                    <th class="px-6 py-3 text-left text-center">Price</th>
-                    <th class="px-6 py-3 text-left text-center">Total Days</th>
-                    <th class="px-6 py-3 text-left text-center">Status</th>
-                    <th class="px-6 py-3 text-left text-center">Number of visits</th>
-                    {{-- <th class="px-6 py-3 text-left text-center">Details</th> --}}
-                    <th class="px-6 py-3 text-left text-center">Action</th>
+                    <th class="px-6 py-3  text-center">Id</th>
+                    <th class="px-6 py-3  text-center">Package Name</th>
+                    <th class="px-6 py-3  text-center">Property Title</th>
+                    <th class="px-6 py-3  text-center">Price</th>
+                    <th class="px-6 py-3  text-center">Total Days</th>
+                    <th class="px-6 py-3  text-center">Status</th>
+                    <th class="px-6 py-3  text-center">Number of visits</th>
+                    {{-- <th class="px-6 py-3  text-center">Details</th> --}}
+                    <th class="px-6 py-3  text-center">Action</th>
 
                     {{-- <th class="px-6 py-3 text-left">Actions</th> --}}
                 </tr>
@@ -64,9 +64,10 @@
                                 </form>
                             </div> --}}
                         <td>
-                            <div class="border bg-gray-600 rounded px-5 py-2 text-white hover:bg-gray-700  ">
+                            <div class="border bg-gray-600 rounded px-3 py-2 mr-8 text-white hover:bg-gray-700  ">
                                 <a href="{{ route('user.Bookings.b_show', $booking->id) }}">
-                                    <button class="text-center  px-2">VIEW</button>
+                                    <button class="text-center  px-3">
+                                        <i class="bi bi-eye mr-3"></i>VIEW</button>
                                 </a>
                             </div>
                         </td>

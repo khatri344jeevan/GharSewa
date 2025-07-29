@@ -9,7 +9,8 @@
     <div class="flex items-center justify-between space-x-4 ">
         <!-- Add Record Button -->
         <button class="bg-gray-700 hover:bg-gray-800 text-white font-semibold px-6 py-3 rounded  shadow-md  mt-20">
-            <a href="{{ route('user.Properties.p_create') }}">Add Property</a>
+            <a href="{{ route('user.Properties.p_create') }}">
+                <i class="bi bi-plus-lg pr-3"></i>Add Property</a>
         </button>
 
         <!-- Search Bar -->
@@ -94,7 +95,7 @@
                                 <!-- Edit Button -->
                                 <a href="{{ route('user.Properties.p_edit', $property->id) }}"
                                     class="flex items-center justify-center space-x-2 text-white bg-blue-500 hover:bg-blue-600 px-4 py-2 rounded-lg shadow-md transition duration-200">
-                                    <i class="fas fa-edit"></i>
+                                    <i class="bi bi-pencil-square"></i>
                                     <span>Edit</span>
                                 </a>
 
@@ -104,8 +105,8 @@
                                     @csrf
                                     @method('DELETE')
                                     <button type="submit"
-                                        class="flex items-center justify-center space-x-2 text-white bg-red-600 hover:bg-red-700 px-4 py-2 rounded-lg shadow-md transition duration-200">
-                                        <i class="fas fa-trash-alt"></i>
+                                        class="flex items-center justify-center space-x-2 text-white bg-red-600 hover:bg-red-700 px-4 py-2 rounded-lg shadow-md transition duration-200 w-full">
+                                       <i class="bi bi-trash"></i>
                                         <span>Delete</span>
                                     </button>
                                 </form>

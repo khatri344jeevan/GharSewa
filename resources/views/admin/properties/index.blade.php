@@ -40,7 +40,7 @@
                             </td>
                             <td class="px-4 py-3 text-gray-600">{{ Str::limit($property->address, 50) }}</td>
                             <td class="px-4 py-3">
-                                <span class="px-2 py-1 text-xs font-semibold rounded-full
+                                <span class="px-4 py-3 text-xs font-semibold rounded-full
                                     {{ $property->type === 'Residential' ? 'bg-green-100 text-green-800' : 'bg-blue-100 text-blue-800' }}">
                                     {{ $property->type }}
                                 </span>
@@ -60,7 +60,7 @@
                                         <i class="bi bi-eye"></i> View
                                     </a> --}}
                                     <a href="{{ route('admin.properties.edit', $property->id) }}"
-                                        class="bg-yellow-600 hover:bg-yellow-700 text-white text-xs px-3 py-3 rounded shadow">
+                                        class="bg-gray-600 hover:bg-gray-700 text-white text-xs px-3 py-3 rounded shadow">
                                         <i class="bi bi-pencil-square"></i> Edit
                                     </a>
                                     <form method="POST" action="{{ route('admin.properties.destroy', $property->id) }}"
