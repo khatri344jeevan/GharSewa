@@ -10,7 +10,7 @@
     </div>
 
     {{-- Notification Dropdown --}}
-    <div x-data="{ showMessage: false }" class="relative inline-block">
+    {{-- <div x-data="{ showMessage: false }" class="relative inline-block">
         <button class="text-lg font-semibold text-gray-800 flex items-center" @click="showMessage = !showMessage"
             type="button" aria-haspopup="true">
             <i class="bi bi-bell-fill text-gray-800 mr-2 text-2xl"></i>
@@ -57,5 +57,5 @@
                 </div>
             @endif
         </div>
-    </div>
+    </div> --}}
 </header>
