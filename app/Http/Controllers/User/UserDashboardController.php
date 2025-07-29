@@ -63,7 +63,7 @@ class UserDashboardController extends Controller
 
          // Payments count logic
 
-        $pendingPayments = $user->payments()->count();
+        $totalPayments = $user->payments()->count();
 
         // Fetch all notifications, unread first
         $notifications = $user->notifications()->take(10)->get();
@@ -80,7 +80,7 @@ class UserDashboardController extends Controller
             'totalBookings',
             'approvedBookings',
             'pendingBookings',
-            'pendingPayments',
+            'totalPayments',
             'notifications' ,
         ));
     }

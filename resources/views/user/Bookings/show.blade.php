@@ -43,7 +43,7 @@
                                         <span class="text-gray-500">Not Assigned</span>
                                     @endif
                                 </td>
-                                <td class="p-2 border text-center flex flex-col gap-2 items-center">
+                                <td class="p-2 border text-center flex flex-col gap-2 items-center ">
                                     <a href='{{ route('user.Bookings.b_task', ['id' => $booking->id]) }}'
                                         class="px-4 py-1 bg-gray-600 text-white rounded hover:bg-gray-700 text-sm w-full text-center">
                                         View Task
@@ -57,17 +57,19 @@
                                             </button>
                                         </form> --}}
 
-                                        <form action="{{ route('user.khalti.initiate')}}"
-                                            method="GET" class="w-full">
+                                        <form action="{{ route('user.khalti.initiate') }}" method="GET" class="w-full">
                                             <input type="hidden" name="booking_id" value="{{ $booking->id }}">
                                             <button type="submit"
                                                 class="px-4 py-1 bg-green-600 text-white rounded hover:bg-green-700 text-sm w-full">
                                                 Pay with Khalti
                                             </button>
                                         </form>
+                                    @elseif ($booking->status === 'paid')
+                                        <span class="px-4 py-1 bg-green-600 text-white rounded hover:bg-green-700 text-sm w-full">Paid</span>
                                     @else
                                         <span class="text-gray-400 text-sm w-full text-center">N/A</span>
                                     @endif
+
                                 </td>
                             </tr>
                         @endforeach
