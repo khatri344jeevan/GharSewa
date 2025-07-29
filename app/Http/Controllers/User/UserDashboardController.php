@@ -81,7 +81,7 @@ class UserDashboardController extends Controller
             'approvedBookings',
             'pendingBookings',
             'totalPayments',
-            'notifications' ,
+            'notifications'
         ));
     }
 }
