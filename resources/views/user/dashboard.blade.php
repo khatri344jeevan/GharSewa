@@ -93,8 +93,8 @@
                         <i class="bi bi-cash-stack text-gray-700 text-4xl"></i>
                     </div>
                     <h2 class="text-xl font-extrabold text-gray-700 mb-2 tracking-wide">Payments</h2>
-                    <span class="block text-4xl font-black text-gray-700">{{ $totalPayments }}</span>
-                    <span class="text-base text-gray-500">Total Payments</span>
+                    <span class="block text-4xl font-black text-gray-700">{{ $pendingPayments }}</span>
+                    <span class="text-base text-gray-500">Pending Payments</span>
                 </div>
             </div>
         </div>

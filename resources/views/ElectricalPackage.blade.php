@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <title>Electrical Packages | GharSewa</title>
@@ -8,6 +9,7 @@
     <link href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.1/font/bootstrap-icons.css" rel="stylesheet">
     <script defer src="https://cdn.jsdelivr.net/npm/alpinejs@3.x.x/dist/cdn.min.js"></script>
 </head>
+
 <body class="bg-gray-100 font-sans text-gray-800">
 
     <x-navbar />
@@ -23,8 +25,10 @@
         <div class="grid grid-cols-1 md:grid-cols-3 gap-10">
 
             <!-- 1 Month Plan -->
-            <div class="bg-white rounded-3xl border border-gray-200 shadow-md hover:shadow-xl transform hover:-translate-y-1 transition duration-300 p-8 flex flex-col">
-                <img src="{{ asset('images/electrical1.jpeg') }}" alt="1 Month Plan" class="w-full h-40 object-cover rounded-xl mb-4" loading="lazy">
+            <div
+                class="bg-white rounded-3xl border border-gray-200 shadow-md hover:shadow-xl transform hover:-translate-y-1 transition duration-300 p-8 flex flex-col">
+                <img src="{{ asset('images/electrical1.jpeg') }}" alt="1 Month Plan"
+                    class="w-full h-40 object-cover rounded-xl mb-4" loading="lazy">
                 <h2 class="text-2xl font-bold text-gray-800 mb-1">1 Month Plan</h2>
                 <p class="text-sm text-gray-500 mb-4">Basic home electrical inspection and fixes.</p>
 
@@ -37,13 +41,18 @@
                     <li><i class="bi bi-check-circle-fill text-green-600 mr-2"></i>Basic wiring inspection</li>
                 </ul>
 
-                <p class="text-xs text-gray-500">SMS alert after inspection</p>
+                <p class="text-xs text-gray-500">Task uploaded to your dashboard</p>
+
             </div>
 
             <!-- 6 Month Plan -->
-            <div class="bg-white rounded-3xl border-2 border-yellow-400 shadow-xl relative transform hover:-translate-y-1 transition duration-300 p-8 flex flex-col">
-                <span class="absolute top-0 right-0 bg-yellow-400 text-white text-xs font-bold px-4 py-1 rounded-bl-2xl rounded-tr-2xl shadow-md">Most Popular</span>
-                <img src="{{ asset('images/electrical2.jpeg') }}" alt="6-Month Plan" class="w-full h-40 object-cover rounded-xl mb-4" loading="lazy">
+            <div
+                class="bg-white rounded-3xl border-2 border-yellow-400 shadow-xl relative transform hover:-translate-y-1 transition duration-300 p-8 flex flex-col">
+                <span
+                    class="absolute top-0 right-0 bg-yellow-400 text-white text-xs font-bold px-4 py-1 rounded-bl-2xl rounded-tr-2xl shadow-md">Most
+                    Popular</span>
+                <img src="{{ asset('images/electrical2.jpeg') }}" alt="6-Month Plan"
+                    class="w-full h-40 object-cover rounded-xl mb-4" loading="lazy">
                 <h2 class="text-2xl font-bold text-gray-800 mb-1">6 Month Plan</h2>
                 <p class="text-sm text-gray-500 mb-4">Routine checkups to prevent faults and improve safety.</p>
 
@@ -57,12 +66,15 @@
                     <li><i class="bi bi-check-circle-fill text-green-600 mr-2"></i>Appliance safety testing</li>
                 </ul>
 
-                <p class="text-xs text-gray-500">Progress reports with images</p>
+                <p class="text-xs text-gray-500">Task uploaded to your dashboard</p>
+
             </div>
 
             <!-- 12 Month Plan -->
-            <div class="bg-white rounded-3xl border border-gray-300 shadow-md hover:shadow-xl transform hover:-translate-y-1 transition duration-300 p-8 flex flex-col">
-                <img src="{{ asset('images/electrical3.jpeg') }}" alt="12 Month Plan" class="w-full h-40 object-cover rounded-xl mb-4" loading="lazy">
+            <div
+                class="bg-white rounded-3xl border border-gray-300 shadow-md hover:shadow-xl transform hover:-translate-y-1 transition duration-300 p-8 flex flex-col">
+                <img src="{{ asset('images/electrical3.jpeg') }}" alt="12 Month Plan"
+                    class="w-full h-40 object-cover rounded-xl mb-4" loading="lazy">
                 <h2 class="text-2xl font-bold text-gray-800 mb-1">12 Month Plan</h2>
                 <p class="text-sm text-gray-500 mb-4">Full-year support for large homes or commercial spaces.</p>
 
@@ -76,15 +88,17 @@
                     <li><i class="bi bi-check-circle-fill text-green-600 mr-2"></i>Emergency fault repair</li>
                 </ul>
 
-                <p class="text-xs text-gray-500">Technician-certified report with ratings</p>
+                <p class="text-xs text-gray-500">Task uploaded to your dashboard</p>
+
             </div>
         </div>
 
         <div class="pt-10 text-center">
             <a href="#">
-              <button class="bg-gray-700 hover:bg-gray-800 text-white font-semibold py-3 px-6 rounded-xl text-lg transition-all duration-300">
-                Book Maintenance Package
-              </button>
+                <button
+                    class="bg-gray-700 hover:bg-gray-800 text-white font-semibold py-3 px-6 rounded-xl text-lg transition-all duration-300">
+                    Book Maintenance Package
+                </button>
             </a>
         </div>
     </section>
@@ -92,4 +106,5 @@
     <x-footer />
 
 </body>
+
 </html>

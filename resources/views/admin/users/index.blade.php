@@ -17,10 +17,10 @@
             </div>
         @endif --}}
 
-        <div class="mb-3 bg-inherit rounded-lg shadow p-4 flex justify-between items-center">
+        <div class="mb-3 bg-white rounded-xl shadow-md p-6 flex justify-between items-center">
             <h4 class="text-gray-800 float-start text-bold text-2xl">Users List</h4>
             <a href="{{ route('admin.users.create') }}"
-                class="btn btn-primary  text-white bg-blue-700 float-end rounded px-4 py-2">
+                class="btn btn-primary  text-white bg-gray-700 float-end rounded px-4 py-2">
                 <i class="bi bi-plus-lg"></i> Add User
             </a>
         </div>
@@ -47,17 +47,17 @@
                                     </div>
                                 </td>
                                 <td class="px-6 py-4">{{ $user->email }}</td>
-                                <td class="px-6 py-4">
+                                <td class="px-6 py-6">
                                     <span
-                                        class="bg-gray-600 text-white px-2 py-1 rounded text-xs">{{ $user->role }}</span>
+                                        class="bg-gray-600 text-white px-5 py-3 rounded-full text-xs">{{ $user->role }}</span>
                                 </td>
                                 <td class="text-center px-6 py-4">
                                     <a href="{{ route('admin.users.edit', $user->id) }}"
-                                        class="bg-blue-700 hover:bg-blue-800 text-white text-xs px-3 py-1 rounded mr-2 shadow">
+                                        class="bg-blue-700 hover:bg-blue-800 text-white text-xs px-4 py-2 rounded mr-2 shadow">
                                         <i class="bi bi-pencil-square"></i> Edit
                                     </a>
                                     <a href="{{ route('admin.users.show', $user->id) }}"
-                                        class="bg-green-700 hover:bg-green-800 text-white text-xs px-3 py-1 rounded mr-2 shadow">
+                                        class="bg-green-700 hover:bg-green-800 text-white text-xs px-4 py-2 rounded mr-2 shadow">
                                         <i class="bi bi-eye"></i> Show
                                     </a>
                                     <form method="POST" action="{{ route('admin.users.destroy', $user->id) }}"
@@ -66,7 +66,7 @@
                                         @csrf
                                         @method('DELETE')
                                         <button type="submit"
-                                            class="bg-red-700 hover:bg-red-800 text-white text-xs px-3 py-1 rounded shadow">
+                                            class="bg-red-700 hover:bg-red-800 text-white text-xs px-4 py-2 rounded shadow">
                                             <i class="bi bi-trash"></i> Delete
                                         </button>
                                     </form>

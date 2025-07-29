@@ -6,7 +6,7 @@
         <div class="mb-3 bg-inherit rounded-lg shadow p-4 flex justify-between items-center">
             <h4 class="text-gray-800 float-start text-bold text-2xl">User Details</h4>
             <a href="{{ route('admin.users.index') }}"
-                class="btn btn-danger  text-white bg-red-700 float-end rounded px-4 py-2">
+                class="btn btn-danger  text-white bg-gray-700 float-end rounded px-4 py-2">
                 <i class="bi bi-arrow-left"></i> Back
             </a>
         </div>
@@ -56,7 +56,7 @@
 
             <div class="mt-6 flex gap-4">
                 <a href="{{ route('admin.users.edit', $user->id) }}"
-                    class="bg-blue-600 hover:bg-blue-700 text-white font-semibold py-2 px-6 rounded-lg transition duration-200">
+                    class="bg-gray-600 hover:bg-gray-700 text-white font-semibold py-2 px-6 rounded-lg transition duration-200">
                     <i class="bi bi-pencil-square"></i> Edit User
                 </a>
 

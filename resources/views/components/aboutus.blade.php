@@ -44,12 +44,15 @@
         </div>
 
         <!-- Right Image -->
-        <div class="relative group w-full max-w-md transform transition duration-300 hover:scale-105 ml-28 pt-7">
+        <div
+            class="relative group w-full max-w-md transform transition duration-300 hover:scale-105 pt-7
+         ml-0 sm:ml-0 md:ml-28">
             <div class="absolute -inset-2 bg-gray-200 rounded-3xl blur-xl opacity-50 group-hover:opacity-70 transition">
             </div>
             <img src="{{ asset('images/Aboutus.jpg') }}" alt="About Ghar Sewa"
                 class="relative z-10 rounded-3xl shadow-2xl border-4 border-white w-full object-cover" />
         </div>
+
 
         <!-- Decorative Background Elements (optional) -->
         <div class="absolute top-0 left-0 w-72 h-72 bg-gray-100 rounded-full opacity-30 blur-3xl animate-pulse -z-10">

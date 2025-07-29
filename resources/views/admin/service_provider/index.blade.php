@@ -18,10 +18,10 @@
             </div>
         @endif --}}
 
-        <div class="flex flex-col md:flex-row md:justify-between md:items-center mb-6 gap-4">
+        <div class="flex flex-col md:flex-row md:justify-between md:items-center mb-6 gap-4 bg-white rounded-xl shadow-md  p-6">
             <h4 class="text-gray-800 font-bold text-2xl">Service Providers List</h4>
             <a href="{{ route('admin.service_providers.create') }}"
-                class="btn btn-primary text-white bg-blue-700 rounded px-4 py-2 flex items-center gap-2 shadow">
+                class="btn btn-primary text-white bg-gray-700 rounded px-4 py-3 flex items-center gap-2 shadow">
                 <i class="bi bi-plus-lg"></i>
                 <span>Add Service Provider</span>
             </a>
@@ -60,7 +60,7 @@
                                     <td class="text-center px-2 py-2">
                                         <div class="flex flex-row gap-2 justify-center">
                                             <a href="{{ route('admin.service_providers.edit', $serviceProvider) }}"
-                                                class="bg-blue-700 hover:bg-blue-800 text-white text-xs px-2 py-1 rounded shadow-sm flex items-center gap-1">
+                                                class="bg-blue-700 hover:bg-blue-800 text-white text-xs px-4 py-2 rounded shadow-sm flex items-center gap-1">
                                                 <i class="bi bi-pencil-square"></i> Edit
                                             </a>
                                             <form method="POST"
@@ -69,7 +69,7 @@
                                                 @csrf
                                                 @method('DELETE')
                                                 <button type="submit"
-                                                    class="bg-red-700 hover:bg-red-800 text-white text-xs px-2 py-1 rounded shadow-sm flex items-center gap-1">
+                                                    class="bg-red-700 hover:bg-red-800 text-white text-xs px-4 py-2 rounded shadow-sm flex items-center gap-1">
                                                     <i class="bi bi-trash"></i> Delete
                                                 </button>
                                             </form>
