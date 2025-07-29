@@ -179,7 +179,7 @@
 
 
             {{-- image --}}
-            <div class="relative group w-full max-w-md transform transition duration-300 hover:scale-105 ml-20 pt-7">
+            <div class="relative group w-full max-w-md transform transition duration-300 hover:scale-105 ml-0 sm:ml-0 md:ml-20  pt-7">
                 <div
                     class="absolute -inset-2 bg-gray-200 rounded-3xl blur-xl opacity-50 group-hover:opacity-70 transition">
                 </div>

@@ -113,7 +113,7 @@
 
 
 
-    <div class="relative w-full min-h-[87vh] overflow-hidden">
+    <div class="relative w-full min-h-[88vh] overflow-hidden">
         <!-- Background Images -->
         <img src="{{ asset('images/1.png') }}"
             class="absolute inset-0 w-full h-full object-cover opacity-100 animate-fade" />
