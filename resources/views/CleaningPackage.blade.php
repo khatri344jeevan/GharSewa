@@ -37,7 +37,7 @@
           <li><i class="bi bi-check-circle-fill text-green-600 mr-2"></i>Wiping switches & handles</li>
         </ul>
 
-        <p class="text-xs text-gray-500">SMS update after each visit</p>
+         <p class="text-xs text-gray-500">Task uploaded to your dashboard</p>
       </div>
 
       <!-- 6 Month Package -->
@@ -57,7 +57,7 @@
           <li><i class="bi bi-check-circle-fill text-green-600 mr-2"></i>Monthly photo reports</li>
         </ul>
 
-        <p class="text-xs text-gray-500">Reports uploaded to your dashboard</p>
+        <p class="text-xs text-gray-500">Task uploaded to your dashboard</p>
       </div>
 
       <!-- 12 Month Package -->
@@ -76,7 +76,7 @@
           <li><i class="bi bi-check-circle-fill text-green-600 mr-2"></i>Mold prevention & priority scheduling</li>
         </ul>
 
-        <p class="text-xs text-gray-500">Final summary with photos & feedback</p>
+         <p class="text-xs text-gray-500">Task uploaded to your dashboard</p>
       </div>
     </div>
 
