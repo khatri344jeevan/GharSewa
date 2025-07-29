@@ -68,7 +68,6 @@ Route::get('/booking',[UserBookingController::class, 'b_index'])
 
  Route::get('/payment/index',[UserPaymentController::class,'p_index'])
  ->name('user.Payment.index');
-
 // Move this route inside the middleware group for authentication and role checking
 // Route::post('/payment/khalti/{id}', [UserPaymentController::class, 'khaltiPay'])
 //     ->name('user.Bookings.khalti_pay');

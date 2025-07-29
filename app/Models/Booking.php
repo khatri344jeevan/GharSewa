@@ -54,7 +54,10 @@ class Booking extends Model
         'booking_date' => 'datetime',
     ];
     }
-
+    public function tasks()
+{
+    return $this->hasMany(Task::class);
+}
     //realtion with BookignPakage
     // public function bookingPackages()
     // {
