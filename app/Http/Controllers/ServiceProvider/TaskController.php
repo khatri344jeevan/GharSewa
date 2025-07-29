@@ -16,7 +16,7 @@ class TaskController extends Controller{
 
     public function t_index(){
         $user = Auth::user();
-        
+
         // Find or create service provider record for current user
         $serviceProvider = \App\Models\ServiceProvider::firstOrCreate(
             ['email' => $user->email],
@@ -28,11 +28,11 @@ class TaskController extends Controller{
                 'bio' => 'Service provider'
             ]
         );
-        
+
         // Get tasks for the current service provider with nested relationships
         $tasks = Task::with([
             'booking.user',
-            'booking.package', 
+            'booking.package',
             'booking.property'
         ])->where('provider_id', $serviceProvider->id)->get();
 
@@ -42,31 +42,31 @@ class TaskController extends Controller{
     public function t_create(){
         // Get available bookings
         $bookings = Booking::with(['user', 'package', 'property'])->get();
-            
+
         return view('service_provider.tasks.create', compact('bookings'));
     }
 
     public function t_edit($id){
         $user = Auth::user();
-        
+
         // Find service provider record for current user
         $serviceProvider = \App\Models\ServiceProvider::where('email', $user->email)->first();
-        
+
         if (!$serviceProvider) {
             abort(403, 'Service provider not found');
         }
 
         $task = Task::with([
             'booking.user',
-            'booking.package', 
+            'booking.package',
             'booking.property'
         ])->findOrFail($id);
-        
+
         // Ensure the task belongs to the current service provider
         if ($task->provider_id !== $serviceProvider->id) {
             abort(403, 'Unauthorized');
         }
-        
+
         return view('service_provider.tasks.edit', compact('task'));
     }
 
@@ -79,7 +79,7 @@ class TaskController extends Controller{
         ]);
 
         $user = Auth::user();
-        
+
         // Find or create service provider record for current user
         $serviceProvider = \App\Models\ServiceProvider::firstOrCreate(
             ['email' => $user->email],
@@ -112,16 +112,16 @@ class TaskController extends Controller{
         ]);
 
         $user = Auth::user();
-        
+
         // Find service provider record for current user
         $serviceProvider = \App\Models\ServiceProvider::where('email', $user->email)->first();
-        
+
         if (!$serviceProvider) {
             abort(403, 'Service provider not found');
         }
 
         $task = Task::findOrFail($id);
-        
+
         // Ensure the task belongs to the current service provider
         if ($task->provider_id !== $serviceProvider->id) {
             abort(403, 'Unauthorized');
@@ -137,9 +137,9 @@ class TaskController extends Controller{
         return redirect()->route('service_provider.tasks.index')->with('success', 'Task updated successfully!');
     }
 
-    
+
         // public function t_show(){
-        
+
         // }
 
         // public function  t_show(){

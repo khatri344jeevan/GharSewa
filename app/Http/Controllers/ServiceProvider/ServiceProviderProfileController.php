@@ -50,7 +50,7 @@ class ServiceProviderProfileController extends Controller
     private function getOrCreateProfile()
     {
         $user = Auth::user();
-        
+
         if (!$user) {
             abort(401, 'Please login first.');
         }
@@ -65,10 +65,11 @@ class ServiceProviderProfileController extends Controller
         //         'bio' => '',
         //     ]
         // );
-
+        $user_id = Auth::id();
         return ServiceProvider::firstOrCreate(
         ['email' => $user->email],
         [
+            'user_id'=>$user_id,
             'name' => $user->name ?? 'Unknown',
             'phone' => '',
             'specialization' => '',
