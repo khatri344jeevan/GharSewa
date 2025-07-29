@@ -59,7 +59,7 @@
             <div class="mb-3">
                 <i class="bi bi-check-circle-fill text-5xl text-green-600"></i>
             </div>
-            <h6 class="text-gray-500 text-lg font-semibold">Approved Bookings</h6>
+            <h6 class="text-gray-500 font-semibold">Approved Bookings</h6>
             <p class="text-3xl font-bold text-green-700 mt-2">{{ $approvedBookings }}</p>
         </div>
     </div>

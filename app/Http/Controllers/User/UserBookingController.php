@@ -2,12 +2,13 @@
 
 namespace App\Http\Controllers\User;
 
-use App\Http\Controllers\Controller;
-use Illuminate\Http\Request;
-use Illuminate\Support\Facades\Auth;
+use App\Models\Task;
 use App\Models\Booking;
 use App\Models\Package;
 use App\Models\Property;
+use Illuminate\Http\Request;
+use App\Http\Controllers\Controller;
+use Illuminate\Support\Facades\Auth;
 
 class UserBookingController extends Controller
 {
@@ -78,29 +79,29 @@ class UserBookingController extends Controller
     /**
      * Show detailed view of a specific booking with provider info.
      */
+
     public function b_show($id)
-    {
-        $user = Auth::user();
+{
+    $user = Auth::user();
 
-
-
-        $booking = Booking::with('bookingDetails.provider', 'package') // eager loading
+    $booking = Booking::with(['package', 'property'])
         ->where('user_id', $user->id)
         ->where('id', $id)
         ->firstOrFail();
 
-        return view('user.Bookings.show', compact('booking'));
-    }
+    return view('user.Bookings.show', compact('booking'));
+}
+public function b_task($id)
+{
+    $user = Auth::user();
 
-    public function b_task($id)
-    {
-        $user = Auth::user();
+    $booking = Booking::with(['package', 'property', 'tasks.provider'])
+        ->where('user_id', $user->id)
+        ->where('id', $id)
+        ->firstOrFail();
 
-        $booking = Booking::with('bookingDetails.provider', 'package')
-            ->where('user_id', $user->id)
-            ->where('id', $id)
-            ->firstOrFail();
+    return view('user.Bookings.task', compact('booking'));
+}
 
-        return view('user.Bookings.task', compact('booking'));
-    }
+
 }

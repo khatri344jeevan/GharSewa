@@ -37,7 +37,7 @@ use Illuminate\Database\Eloquent\Model;
 
 //     }
 
-    
+
 // }
 
 namespace App\Models;
@@ -51,7 +51,7 @@ class Task extends Model
 
     protected $fillable = [
         'booking_id',
-        'provider_id', 
+        'provider_id',
         'scheduled_time',
         'completed_time',
         'status',
