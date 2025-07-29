@@ -5,6 +5,7 @@ use App\Http\Controllers\HomeController;
 use App\Http\Controllers\ProfileController;
 use App\Http\Controllers\Admin\UsersController;
 use App\Http\Controllers\Admin\AdminMainController;
+use App\Http\Controllers\Admin\AdminPaymentController;
 use App\Http\Controllers\Admin\AdminBookingsController;
 use App\Http\Controllers\Admin\AdminDashboardController;
 use App\Http\Controllers\Admin\ServiceProvidersController;
@@ -65,8 +66,12 @@ Route::middleware(['auth', 'verified', 'rolemanager:admin'])->group(function () 
             Route::get('/properties/{property}/edit', [App\Http\Controllers\Admin\PropertyController::class, 'edit'])->name('properties.edit');
             Route::put('/properties/{property}', [App\Http\Controllers\Admin\PropertyController::class, 'update'])->name('properties.update');
             Route::delete('/properties/{property}', [App\Http\Controllers\Admin\PropertyController::class, 'destroy'])->name('properties.destroy');
-
+            //!admin profile
             Route::get('/profile', [ProfileController::class, 'adminEdit'])->name('profile.edit');
+            //!payments
+            Route::get('/payments', [App\Http\Controllers\Admin\AdminPaymentController::class, 'index'])->name('payments.index');
+
+
         });
     });
 });
