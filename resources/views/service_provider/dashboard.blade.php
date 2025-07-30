@@ -4,9 +4,8 @@
 @section('content')
 <div class=" p-8 min-h-screen from-blue-50 -via-white to-purple-100">
     <div class="container mx-auto px-4 ml-48">
-
         <div class="flex justify-start mb-8">
-            <div class="grid grid-cols-1 md:grid-cols-3 gap-8 w-full">
+            <div class="grid grid-cols-1 md:grid-cols-3 gap-7">
                 <div class="bg-white border border-blue-200 rounded-2xl p-8 shadow-lg hover:shadow-2xl transition-shadow duration-300 transform hover:-translate-y-1">
                     <div class="flex items-center space-x-4">
                         <div class="bg-blue-100 p-4 rounded-full">
@@ -52,8 +51,6 @@
                 </div>
             </div>
         </div>
-
-
     </div>
 </div>
 @endsection

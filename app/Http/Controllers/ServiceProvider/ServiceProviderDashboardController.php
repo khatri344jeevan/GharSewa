@@ -3,6 +3,7 @@
 namespace App\Http\Controllers\ServiceProvider;
 
 use App\Models\Task;
+use App\Models\ServiceProvider;
 use App\Http\Controllers\Controller;
 use Illuminate\Support\Facades\Auth;
 
@@ -12,8 +13,20 @@ class ServiceProviderDashboardController extends Controller
    public function index()
     {
         $user = Auth::user();
-        $providerId = Auth::user()->id;
 
+        // Get or create service provider using the same logic as TaskController
+        $serviceProvider = ServiceProvider::firstOrCreate(
+            ['email' => $user->email],
+            [
+                'name' => $user->name,
+                'email' => $user->email,
+                'phone' => $user->phone ?? '',
+                'specialization' => 'General Services',
+                'bio' => 'Service provider'
+            ]
+        );
+
+        $providerId = $serviceProvider->id;
 
         $totalTasks = Task::where('provider_id', $providerId)->count();
 
@@ -35,8 +48,21 @@ class ServiceProviderDashboardController extends Controller
 
     public function myTask()
     {
-        $providerId = Auth::user()->id;
+        $user = Auth::user();
 
+        // Get or create service provider using the same logic as TaskController
+        $serviceProvider = ServiceProvider::firstOrCreate(
+            ['email' => $user->email],
+            [
+                'name' => $user->name,
+                'email' => $user->email,
+                'phone' => $user->phone ?? '',
+                'specialization' => 'General Services',
+                'bio' => 'Service provider'
+            ]
+        );
+
+        $providerId = $serviceProvider->id;
 
         $tasks = Task::where('provider_id', $providerId)->get();
 
