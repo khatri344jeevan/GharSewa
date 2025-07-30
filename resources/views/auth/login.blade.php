@@ -1,5 +1,5 @@
 <x-guest-layout>
-    <!-- Session Status -->
+
     <x-auth-session-status class="mb-4" :status="session('status')" />
 
     <div class="">
@@ -10,21 +10,20 @@
         <form method="POST" action="{{ route('login') }}" class="auth-form">
             @csrf
 
-            <!-- Email Address -->
+
             <div class="auth-input-group pb-4">
                 <x-text-input id="email" type="email" name="email" :value="old('email')" required autofocus
                     autocomplete="username" placeholder="Email" />
                 <x-input-error :messages="$errors->get('email')" class="mt-1" />
             </div>
 
-            <!-- Password -->
             <div class="auth-input-group">
                 <x-text-input id="password" type="password" name="password" required autocomplete="current-password"
                     placeholder="Password" />
                 <x-input-error :messages="$errors->get('password')" class="mt-1" />
             </div>
 
-            <!-- Remember Me & Forgot Password -->
+
             <div class="flex items-center justify-between mt-6">
                 <label for="remember_me" class="flex items-center">
                     <input id="remember_me" type="checkbox" class="h-4 w-4 border-gray-300 rounded"

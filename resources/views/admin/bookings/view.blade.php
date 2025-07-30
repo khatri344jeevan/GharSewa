@@ -12,7 +12,7 @@
         </div>
 
         <div class="grid grid-cols-1 lg:grid-cols-2 gap-6">
-            <!-- Booking Information -->
+
             <div class="bg-white rounded-xl shadow-lg p-6">
                 <h5 class="text-lg font-semibold mb-4">Booking Information</h5>
                 <div class="space-y-3">
@@ -34,7 +34,7 @@
                 </div>
             </div>
 
-            <!-- Customer Information -->
+
             <div class="bg-white rounded-xl shadow-lg p-6">
                 <h5 class="text-lg font-semibold mb-4">Customer Information</h5>
                 <div class="space-y-3">
@@ -45,7 +45,7 @@
                 </div>
             </div>
 
-            <!-- Property Information -->
+
             <div class="bg-white rounded-xl shadow-lg p-6">
                 <h5 class="text-lg font-semibold mb-4">Property Information</h5>
                 <div class="space-y-3">
@@ -55,7 +55,7 @@
                 </div>
             </div>
 
-            <!-- Package Information -->
+
             <div class="bg-white rounded-xl shadow-lg p-6">
                 <h5 class="text-lg font-semibold mb-4">Package Information</h5>
                 <div class="space-y-3">
@@ -67,7 +67,7 @@
             </div>
         </div>
 
-        <!-- Assigned Provider -->
+        
         @if ($booking->bookingDetails->isNotEmpty())
             <div class="bg-white rounded-xl shadow-lg p-6 mt-6">
                 <h5 class="text-lg font-semibold mb-4">Assigned Service Provider</h5>

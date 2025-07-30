@@ -7,13 +7,13 @@
         No problem. Just let us know your email address and we will email you a password reset link.
     </div>
 
-    <!-- Session Status -->
+
     <x-auth-session-status class="mb-4" :status="session('status')" />
 
     <form method="POST" action="{{ route('password.email') }}" class="auth-form">
         @csrf
 
-        <!-- Email Address -->
+
         <div class="auth-input-group mt-4 space-y-4">
             <x-input-label for="email" :value="__('Email address')"  />
             <x-text-input id="email" type="email" name="email" :value="old('email')" required autofocus placeholder="Enter your email address" />

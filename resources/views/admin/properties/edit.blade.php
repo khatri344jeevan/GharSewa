@@ -11,7 +11,6 @@
             </a>
         </div>
 
-        {{-- Validation Errors --}}
         @if ($errors->any())
             <div class="bg-red-50 border border-red-300 text-red-700 px-4 py-3 rounded mb-6">
                 <ul class="list-disc pl-5 space-y-1">
@@ -22,14 +21,13 @@
             </div>
         @endif
 
-        {{-- Edit Form --}}
         <div class="bg-white rounded-xl shadow-md p-6">
             <form action="{{ route('admin.properties.update', $property->id) }}" method="POST" enctype="multipart/form-data"
                 class="grid grid-cols-1 md:grid-cols-2 gap-6">
                 @csrf
                 @method('PUT')
 
-                {{-- Title --}}
+
                 <div>
                     <label for="title" class="block text-gray-700 font-semibold mb-1">Title</label>
                     <input type="text" name="title" id="title" value="{{ old('title', $property->title) }}"
@@ -37,7 +35,7 @@
                         required>
                 </div>
 
-                {{-- Owner --}}
+
                 <div>
                     <label for="user_id" class="block text-gray-700 font-semibold mb-1">Owner</label>
                     <select name="user_id" id="user_id"
@@ -53,7 +51,7 @@
                     </select>
                 </div>
 
-                {{-- Address --}}
+
                 <div>
                     <label for="address" class="block text-gray-700 font-semibold mb-1">Address</label>
                     <input type="text" name="address" id="address" value="{{ old('address', $property->address) }}"
@@ -61,7 +59,7 @@
                         required>
                 </div>
 
-                {{-- Type --}}
+
                 <div>
                     <label for="type" class="block text-gray-700 font-semibold mb-1">Type</label>
                     <select name="type" id="type"
@@ -76,7 +74,7 @@
                     </select>
                 </div>
 
-                {{-- Image --}}
+
                 <div>
                     <label for="image" class="block text-gray-700 font-semibold mb-1">Image</label>
                     @if ($property->image)
@@ -90,7 +88,7 @@
                     <small class="text-gray-500">Leave blank to keep existing image.</small>
                 </div>
 
-                {{-- Submit Button --}}
+               
                 <div class="md:col-span-2  ">
                     <button type="submit"
                         class="bg-gray-700 hover:bg-gray-800 text-white font-semibold px-8 py-2 rounded-lg shadow transition">

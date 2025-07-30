@@ -3,7 +3,7 @@
 
 @section('content')
     <div class="container mx-auto py-8 px-4">
-        <!-- Header -->
+
         <div class="flex items-center justify-between mb-6 bg-gray-100 rounded-lg shadow-sm px-6 py-4">
             <h4 class="text-2xl font-bold text-gray-800"> Add New User</h4>
             <a href="{{ route('admin.users.index') }}"
@@ -12,14 +12,14 @@
             </a>
         </div>
 
-        <!-- Form -->
+
         <div class="bg-white rounded-xl shadow-lg p-8">
             <form action="{{ route('admin.users.store') }}" method="POST">
                 @csrf
 
-                <!-- Grid Layout -->
+
                 <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
-                    <!-- Name -->
+
                     <div >
                         <label class="block text-xl font-medium text-gray-700 mb-1">Name</label>
                         <input type="text" name="name"
@@ -30,7 +30,6 @@
                         @enderror
                     </div>
 
-                    <!-- Email -->
                     <div >
                         <label class="block text-xl font-medium text-gray-700 mb-1">Email</label>
                         <input type="email" name="email"
@@ -41,7 +40,7 @@
                         @enderror
                     </div>
 
-                    <!-- Password -->
+
                     <div >
                         <label class="block text-xl font-medium text-gray-700 mb-1">Password</label>
                         <input type="password" name="password"
@@ -52,7 +51,7 @@
                         @enderror
                     </div>
 
-                    <!-- Confirm Password -->
+
                     <div >
                         <label class="block text-xl font-medium text-gray-700 mb-1">Confirm Password</label>
                         <input type="password" name="password_confirmation"
@@ -63,7 +62,7 @@
                         @enderror
                     </div>
 
-                    <!-- Address -->
+
                     <div >
                         <label class="block text-xl font-medium text-gray-700 mb-1">Address</label>
                         <input type="text" name="address"
@@ -74,7 +73,6 @@
                         @enderror
                     </div>
 
-                    <!-- Phone -->
                     <div >
                         <label class="block text-xl font-medium text-gray-700 mb-1">Phone</label>
                         <input type="text" name="phone"
@@ -85,7 +83,7 @@
                         @enderror
                     </div>
 
-                    <!-- Role -->
+
                     <div >
                         <label class="block text-xl font-medium text-gray-700 mb-1">Role</label>
                         <select name="role"
@@ -100,7 +98,7 @@
                     </div>
                 </div>
 
-                <!-- Submit -->
+             
                 <div class="mt-8">
                     <button type="submit"
                         class="w-full h-12 bg-gray-700 hover:bg-gray-800 text-white font-bold py-3 px-4 rounded-lg shadow transition duration-200">

@@ -10,7 +10,6 @@
     <form method="POST" action="{{ route('password.confirm') }}" class="auth-form">
         @csrf
 
-        <!-- Password -->
         <div class="auth-input-group">
             <x-input-label for="password" :value="__('Password')" />
             <x-text-input id="password" type="password" name="password" required autocomplete="current-password" placeholder="Enter your password" />

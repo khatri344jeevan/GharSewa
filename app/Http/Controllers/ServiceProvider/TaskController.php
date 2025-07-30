@@ -17,7 +17,6 @@ class TaskController extends Controller{
     public function t_index(){
         $user = Auth::user();
 
-        // Find or create service provider record for current user
         $serviceProvider = \App\Models\ServiceProvider::firstOrCreate(
             ['email' => $user->email],
             [   'name' => $user->name,
@@ -30,7 +29,7 @@ class TaskController extends Controller{
 
 
 
-        // Get tasks for the current service provider with nested relationships
+
         $tasks = Task::with([
             'booking.user',
             'booking.package',
@@ -41,7 +40,7 @@ class TaskController extends Controller{
     }
 
     public function t_create(){
-        // Get available bookings
+
         $bookings = Booking::with(['user', 'package', 'property'])->get();
 
         return view('service_provider.tasks.create', compact('bookings'));
@@ -50,7 +49,7 @@ class TaskController extends Controller{
     public function t_edit($id){
         $user = Auth::user();
 
-        // Find service provider record for current user
+
         $serviceProvider = \App\Models\ServiceProvider::where('email', $user->email)->first();
 
         if (!$serviceProvider) {
@@ -63,7 +62,7 @@ class TaskController extends Controller{
             'booking.property'
         ])->findOrFail($id);
 
-        // Ensure the task belongs to the current service provider
+
         if ($task->provider_id !== $serviceProvider->id) {
             abort(403, 'Unauthorized');
         }
@@ -81,7 +80,7 @@ class TaskController extends Controller{
 
         $user = Auth::user();
 
-        // Find or create service provider record for current user
+
         $serviceProvider = \App\Models\ServiceProvider::firstOrCreate(
             ['email' => $user->email],
             [
@@ -114,7 +113,7 @@ class TaskController extends Controller{
 
         $user = Auth::user();
 
-        // Find service provider record for current user
+
         $serviceProvider = \App\Models\ServiceProvider::where('email', $user->email)->first();
 
         if (!$serviceProvider) {
@@ -123,7 +122,7 @@ class TaskController extends Controller{
 
         $task = Task::findOrFail($id);
 
-        // Ensure the task belongs to the current service provider
+
         if ($task->provider_id !== $serviceProvider->id) {
             abort(403, 'Unauthorized');
         }
@@ -138,14 +137,6 @@ class TaskController extends Controller{
         return redirect()->route('service_provider.tasks.index')->with('success', 'Task updated successfully!');
     }
 
-
-        // public function t_show(){
-
-        // }
-
-        // public function  t_show(){
-
-        // }
 
 
 

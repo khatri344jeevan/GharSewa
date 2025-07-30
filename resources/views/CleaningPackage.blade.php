@@ -22,7 +22,7 @@
 
     <div class="grid grid-cols-1 md:grid-cols-3 gap-10">
 
-      <!-- 1 Month Package -->
+      {{-- 1 Month Package --}}
       <div class="bg-white rounded-3xl border border-gray-200 shadow-md hover:shadow-xl transform hover:-translate-y-1 transition-all duration-300 p-8 flex flex-col">
         <img src="{{ asset('images/cleaning1.jpg') }}" alt="1 Month Cleaning" class="w-full h-40 object-cover rounded-xl mb-4" loading="lazy">
         <h2 class="text-2xl font-bold text-gray-800 mb-1">1 Month Plan</h2>
@@ -40,7 +40,7 @@
          <p class="text-xs text-gray-500">Task uploaded to your dashboard</p>
       </div>
 
-      <!-- 6 Month Package -->
+      {{-- 6 Month Package --}}
       <div class="bg-white rounded-3xl border-2 border-yellow-400 shadow-xl relative p-8 transform hover:-translate-y-1 transition duration-300 flex flex-col">
         <span class="absolute top-0 right-0 bg-yellow-400 text-white text-xs font-bold px-4 py-1 rounded-bl-2xl rounded-tr-2xl shadow-md">Most Popular</span>
         <img src="{{ asset('images/cleaning2.jpg') }}" alt="6 Month Cleaning" class="w-full h-40 object-cover rounded-xl mb-4" loading="lazy">
@@ -60,7 +60,7 @@
         <p class="text-xs text-gray-500">Task uploaded to your dashboard</p>
       </div>
 
-      <!-- 12 Month Package -->
+      {{-- 12 Month Package --}}
       <div class="bg-white rounded-3xl border border-gray-300 shadow-md hover:shadow-xl transform hover:-translate-y-1 transition duration-300 p-8 flex flex-col">
         <img src="{{ asset('images/cleaning3.jpg') }}" alt="12 Month Cleaning" class="w-full h-40 object-cover rounded-xl mb-4" loading="lazy">
         <h2 class="text-2xl font-bold text-gray-800 mb-1">12 Month Plan</h2>
@@ -81,7 +81,7 @@
     </div>
 
     <div class="pt-10 text-center">
-      <a href="#">
+      <a href="{{route('user.Bookings.b_create')}}">
         <button class="bg-gray-700 hover:bg-gray-800 text-white font-semibold py-3 px-6 rounded-xl text-lg transition-all duration-300">
           Book Maintenance Package
         </button>

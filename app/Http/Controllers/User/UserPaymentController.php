@@ -12,22 +12,22 @@ class UserPaymentController extends \App\Http\Controllers\Controller
 {
     public function initiatePayment(Request $request)
     {
-        //fetch booking
+
         $booking = Booking::with('package')->findOrFail($request->booking_id);
 
-        // Prevent payment if already paid
+
         if ($booking->status === 'paid') {
             return redirect()->route('user.dashboard')->with('error', 'This booking has already been paid.');
         }
 
-        //fetch order and amount
-        $amount = $booking->package->price * 100; // in paisa
-        $orderId = 'ORDER_' . $booking->id; // or generate a UUID
 
-        // Payload for Khalti
+        $amount = $booking->package->price * 100;
+        $orderId = 'ORDER_' . $booking->id;
+
+
         $payload = [
-            // Set return_url to the verifyPayment route, which Khalti will redirect to after payment
-            "return_url" => route('user.khalti.verify'), // Make sure this route exists and points to verifyPayment
+
+            "return_url" => route('user.khalti.verify'),
             "website_url" => config('app.url'),
             "amount" => $amount,
             "purchase_order_id" => $orderId,
@@ -48,35 +48,35 @@ class UserPaymentController extends \App\Http\Controllers\Controller
             ]
         ];
 
-        // Khalti API URL
+
         $khaltiApiUrl = "https://dev.khalti.com/api/v2/epayment/initiate/";
 
-        // Send request to Khalti
+
         $response = Http::withHeaders([
-            'Authorization' => 'Key ' . config('services.khalti.secret'), // Use config/services.php for Khalti secret
+            'Authorization' => 'Key ' . config('services.khalti.secret'),
             'Content-Type' => 'application/json',
         ])->post($khaltiApiUrl, $payload);
 
-        // Handle Response with error checking
+
         if ($response->successful()) {
             $data = $response->json();
-            // Check if payment_url exists in response
+
             if (!isset($data['payment_url'])) {
                 return back()->with('error', 'Khalti did not return a payment URL. Response: ' . json_encode($data));
             }
-            // Store pidx in booking
+
             $booking->update(['khalti_pidx' => $data['pidx']]);
-            return redirect($data['payment_url']); // Redirect user to Khalti checkout
+            return redirect($data['payment_url']);
         } else {
-            // Show error from Khalti response for debugging
+
             return back()->with('error', 'Khalti payment initiation failed: ' . $response->body());
         }
     }
 
-    //verify the payment
+
     public function verifyPayment(Request $request)
     {
-        // Validate the request
+
         $request->validate([
             'pidx' => 'required|string',
             'status' => 'required|string',
@@ -91,35 +91,32 @@ class UserPaymentController extends \App\Http\Controllers\Controller
             'pidx' => $pidx,
         ]);
 
-        // dd($response);
 
 
-        // if ($response->successful()) {
-        //     $data = $response->json();
-        // Khalti sends status via URL query parameters, not JSON
+
         $data = [
             'status' => $request->status,
             'pidx' => $request->pidx,
-            'total_amount' => $request->amount ?? null, // If amount is sent in URL
+            'total_amount' => $request->amount ?? null,
         ];
         $user = Auth::user();
 
-            // Check if the payment was successful
+
             if ($data['status'] === 'Completed') {
-                // Fetch the booking authenticated by other identifiers
+
                 $booking = Booking::where('user_id', Auth::id())
                     ->latest()
                     ->first();
 
                 if ($booking) {
-                    // Update booking status to paid
+
                     $booking->update([
                         'status' => 'paid',
-                       'khalti_pidx' => $pidx, // for record keeping
-                    //   'paid_at' => now(),
+                       'khalti_pidx' => $pidx,
+
                      ]);
 
-                    // Store payment in payments table
+                   
                     Payment::create([
                         'booking_id'     => $booking->id,
                         'user_id'        => $booking->user_id,

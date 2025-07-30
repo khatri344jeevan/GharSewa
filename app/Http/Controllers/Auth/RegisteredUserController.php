@@ -14,9 +14,7 @@ use Illuminate\View\View;
 
 class RegisteredUserController extends Controller
 {
-    /**
-     * Display the registration view.
-     */
+
     public function create(): View
     {
         return view('auth.register');
@@ -50,7 +48,6 @@ class RegisteredUserController extends Controller
     Auth::login($user);
     $authUserRole = Auth::user()->role;
 
-    // Add ->with('success', 'message') to flash message to session
     if ($authUserRole === 'admin') {
         return redirect()
             ->intended(route('admin.dashboard', false))

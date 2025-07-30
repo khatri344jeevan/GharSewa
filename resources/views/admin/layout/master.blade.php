@@ -1,20 +1,18 @@
 @include('admin.layout.head')
 
 <body class="bg-gray-100 flex font-sans">
-    <!-- Sidebar -->
+
     @include('admin.layout.sidebar')
 
-    <!-- Main Content -->
     <div class="flex-1 ml-64 min-h-screen flex flex-col mt-10">
         @include('admin.layout.header')
 
-        <!-- Page Content -->
         <main class="flex-1 m-10">
             @yield('content')
         </main>
     </div>
 
-    <!-- ✅ Toast Message (top-right) -->
+    {{-- Toast Message --}}
     @if (session('success'))
         <div id="success-toast"
             class="fixed top-6 right-6 z-50 bg-green-600 text-white px-4 py-2 rounded shadow-md animate-fade-in">

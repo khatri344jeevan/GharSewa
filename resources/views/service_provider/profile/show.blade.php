@@ -1,7 +1,6 @@
 @extends('service_provider.layouts.master')
 
 <body class="bg-gray-100 flex font-sans min-h-screen">
-    <!-- Sidebar -->
     <aside class="bg-gray-300 text-gray-700 h-screen fixed top-0 left-0 flex flex-col shadow-lg z-30 w-64">
         <a href="/">
             <div class="py-4 px-6 flex items-center text-2xl font-extrabold text-gray-800">
@@ -46,10 +45,9 @@
         </nav>
     </aside>
 
-    <!-- Main Content -->
+
     <main class="flex-1 ml-64 pt-12 pb-8 px-8">
         <div class="max-w-4xl mx-auto">
-            <!-- Header Section -->
             <div class="bg-white rounded-lg shadow-md p-6 mb-8 flex justify-between items-center">
                 <div>
                     <h1 class="text-3xl font-bold text-gray-800">My Profile</h1>
@@ -61,7 +59,6 @@
                 </a>
             </div>
 
-            <!-- Success Message -->
             @if (session('success'))
             <div id="success-toast"
                 class="fixed top-6 right-6 z-50 bg-green-600 text-white px-4 py-2 rounded shadow-md animate-fade-in">
@@ -82,9 +79,9 @@
             </style>
             @endif
 
-            <!-- Profile Card -->
+
             <div class="bg-white rounded-lg shadow-md overflow-hidden">
-                <!-- Profile Header -->
+
                 <div class="bg-gray-700 p-8 text-white flex items-center gap-8">
                     <div class="w-24 h-24 bg-white bg-opacity-20 rounded-full flex items-center justify-center text-4xl font-bold">
                         {{ substr($serviceProvider->name, 0, 1) }}
@@ -95,10 +92,10 @@
                     </div>
                 </div>
 
-                <!-- Profile Details Grid -->
+
                 <div class="p-8">
                     <div class="grid grid-cols-1 md:grid-cols-2 gap-8">
-                        <!-- Contact Information -->
+
                         <div>
                             <h3 class="text-xl font-semibold text-gray-800 mb-4 border-b pb-2">Contact Information</h3>
                             <div class="space-y-4">
@@ -118,7 +115,7 @@
                                 </div>
                             </div>
                         </div>
-                        <!-- Professional Information -->
+
                         <div>
                             <h3 class="text-xl font-semibold text-gray-800 mb-4 border-b pb-2">Professional Information</h3>
                             <div class="space-y-4">
@@ -140,7 +137,7 @@
                         </div>
                     </div>
 
-                    <!-- Bio Section -->
+
                     <div class="mt-8">
                         <h3 class="text-xl font-semibold text-gray-800 mb-4 border-b pb-2">About Me</h3>
                         <div class="bg-gray-50 rounded-lg p-6">
@@ -152,7 +149,7 @@
                         </div>
                     </div>
 
-                    <!-- Change Password Section -->
+                
                     <div class="mt-12">
                         <h3 class="text-xl font-semibold text-gray-800 mb-4 border-b pb-2">Change Password</h3>
                         @include('profile.partials.update-password-form')

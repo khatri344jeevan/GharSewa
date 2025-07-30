@@ -4,7 +4,6 @@
 @section('content')
 <div class="container mx-auto px-4 py-6">
 
-    <!-- Success/Error Messages -->
     {{-- Uncomment if needed
     @if (session('success'))
         <div class="bg-green-100 border border-green-400 text-green-700 px-4 py-3 rounded-lg mb-6" role="alert">
@@ -26,7 +25,7 @@
         </a>
     </div>
 
-    <!-- Responsive Table Wrapper -->
+
     <div class="overflow-x-auto border border-gray-200 rounded-lg shadow">
         <table class="min-w-full border-collapse table-auto">
             <thead class="bg-gray-800 text-white">
@@ -77,7 +76,7 @@
         </table>
     </div>
 
-    <!-- Pagination -->
+    {{-- Pagination --}}
     <div class="mt-6">
         {{ $users->links() }}
     </div>

@@ -13,7 +13,7 @@ class ServiceProvider extends Model
         'phone',
         'specialization',
         'bio',
-        'user_id',        // Add this field - CRITICAL
+        'user_id',       
     ];
 
     public function bookingDetails()

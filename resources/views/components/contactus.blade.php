@@ -190,9 +190,9 @@
 <div class="text-gray-800 p-10">
     <div class="w-full flex flex-col lg:flex-row gap-x-32">
 
-        <!-- Left Side: Contact Info -->
+
         <div class="lg:w-1/2 space-y-10 px-4">
-            <!-- Contact Info -->
+
             <div>
                 <h2 class="text-4xl font-bold mb-4">Contact Us</h2>
                 <div class="space-y-2">
@@ -211,14 +211,13 @@
                 </div>
             </div>
 
-            <!-- Office Hours -->
             <div>
                 <h2 class="text-2xl font-bold mb-4">Office Hours</h2>
                 <p><span class="font-medium">Monday to Friday</span><br>9:00 am to 6:00 pm</p>
                 <p class="mt-2"><span class="font-medium">Sunday</span><br>9:00 am to 12 noon</p>
             </div>
 
-            <!-- Social Links -->
+
             <div>
                 <h2 class="text-2xl font-semibold mb-4">Follow us online</h2>
                 <div class="flex items-center space-x-4 mb-2 text-3xl">
@@ -233,13 +232,13 @@
             </div>
         </div>
 
-        <!-- Right Side: Contact Form -->
+
         <div class="lg:w-2/5" id="contact-form-section">
             <form method="POST" action="{{ route('landing.contact.submit') }}"
                 class="scroll-mt-24 px-6 sm:px-10 py-10 bg-white rounded-xl shadow-lg">
                 @csrf
 
-                <!-- ✅ Toast Message -->
+                {{-- Toast Message  --}}
                 @if (session('success'))
                     <div id="success-toast"
                         class="fixed top-6 right-6 z-50 bg-green-600 text-white px-4 py-2 rounded shadow-md animate-fade-in">

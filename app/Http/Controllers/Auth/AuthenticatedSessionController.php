@@ -11,17 +11,13 @@ use Illuminate\View\View;
 
 class AuthenticatedSessionController extends Controller
 {
-    /**
-     * Display the login view.
-     */
+
     public function create(): View
     {
         return view('auth.login');
     }
 
-    /**
-     * Handle an incoming authentication request.
-     */
+
     public function store(LoginRequest $request): RedirectResponse
 {
     $request->authenticate();
@@ -29,10 +25,10 @@ class AuthenticatedSessionController extends Controller
 
     $authUserRole = Auth::user()->role;
 
-    // ✅ Flash message for successful login
+
     session()->flash('success', 'You have logged in successfully.');
 
-    // !Redirect based on user role
+
     if ($authUserRole === 'admin') {
         session()->flash('success', 'Welcome back, Admin!');
         return redirect()->intended(route('admin.dashboard', absolute: false));
@@ -54,9 +50,7 @@ class AuthenticatedSessionController extends Controller
 }
 
 
-    /**
-     * Destroy an authenticated session.
-     */
+
     public function destroy(Request $request): RedirectResponse
     {
         Auth::guard('web')->logout();

@@ -2,7 +2,7 @@
     class=" relative bg-gradient-to-b from-white via-slate-50 to-white py-24 px-6 md:px-16 text-black overflow-hidden">
     <div class="max-w-7xl  flex flex-col md:flex-row items-center gap-20">
 
-        <!-- Left Content -->
+
         <div class="md:w-1/2 text-left relative z-10">
             <h2
                 class="text-5xl font-extrabold text-gray-700 mb-6 tracking-tight leading-tight border-l-8 border-gray-700 pl-5">
@@ -43,7 +43,7 @@
             </ul>
         </div>
 
-        <!-- Right Image -->
+
         <div
             class="relative group w-full max-w-md transform transition duration-300 hover:scale-105 pt-7
          ml-0 sm:ml-0 md:ml-28">
@@ -54,7 +54,7 @@
         </div>
 
 
-        <!-- Decorative Background Elements (optional) -->
+        
         <div class="absolute top-0 left-0 w-72 h-72 bg-gray-100 rounded-full opacity-30 blur-3xl animate-pulse -z-10">
         </div>
         <div

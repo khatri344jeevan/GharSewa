@@ -3,7 +3,7 @@
 
 @section('content')
     <div class="container mx-auto px-4 py-8">
-        {{-- Header Section --}}
+
         <div class="flex justify-between items-center mb-6 bg-white rounded-xl shadow-md p-6">
             <h2 class="text-3xl font-semibold text-gray-800">Edit User</h2>
             <a href="{{ route('admin.users.index') }}"
@@ -12,13 +12,11 @@
             </a>
         </div>
 
-        {{-- Form Card --}}
         <div class="bg-white rounded-xl shadow-md p-6">
             <form action="{{ route('admin.users.update', $user->id) }}" method="POST" class="grid grid-cols-1 md:grid-cols-2 gap-6">
                 @csrf
                 @method('PUT')
 
-                {{-- Name --}}
                 <div>
                     <label class="block text-xl font-medium text-gray-700 mb-1">Name</label>
                     <input type="text" name="name"
@@ -29,7 +27,6 @@
                     @enderror
                 </div>
 
-                {{-- Email --}}
                 <div>
                     <label class="block text-xl font-medium text-gray-700 mb-1">Email</label>
                     <input type="email" name="email"
@@ -40,7 +37,7 @@
                     @enderror
                 </div>
 
-                {{-- Password --}}
+
                 <div>
                     <label class="block text-xl font-medium text-gray-700 mb-1">Password</label>
                     <input type="password" name="password"
@@ -52,7 +49,7 @@
                     @enderror
                 </div>
 
-                {{-- Address --}}
+
                 <div>
                     <label class="block text-xl font-medium text-gray-700 mb-1">Address</label>
                     <input type="text" name="address"
@@ -63,7 +60,7 @@
                     @enderror
                 </div>
 
-                {{-- Phone --}}
+
                 <div>
                     <label class="block text-xl font-medium text-gray-700 mb-1">Phone</label>
                     <input type="text" name="phone"
@@ -74,7 +71,7 @@
                     @enderror
                 </div>
 
-                {{-- Role --}}
+
                 <div>
                     <label class="block text-xl font-medium text-gray-700 mb-1">Role</label>
                     <select name="role"
@@ -88,7 +85,7 @@
                     @enderror
                 </div>
 
-                {{-- Submit --}}
+              
                 <div class="mt-6">
                     <button type="submit"
                         class="w-full bg-gray-600 hover:bg-gray-700 text-white font-semibold py-3 px-5 rounded-lg transition duration-200 shadow">

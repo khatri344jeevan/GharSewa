@@ -1,7 +1,7 @@
 {{-- @include('user.layout.head');
 
 <body class="bg-gray-100 flex font-sans"> --}}
-<!-- Sidebar -->
+
 <aside class="w-64 bg-gray-300 text-gray-700 h-screen fixed top-0 left-0 flex flex-col shadow-lg z-30">
     <a href="/">
         <div class="py-3 px-4 flex items-center text-2xl font-extrabold text-gray-800">
@@ -99,12 +99,12 @@
 </aside>
 
 
-<!-- Main Content -->
+
 {{-- <div class="flex-1 ml-64 min-h-screen flex flex-col bg-gray-70 mt-10 ">
         @include('user.layout.header') --}}
 
 
-<!-- Page Content -->
+
 {{-- <main class="flex-1 p-2">
             @yield('content')
         </main>

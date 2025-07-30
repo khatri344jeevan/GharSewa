@@ -7,27 +7,20 @@ use Illuminate\Support\Facades\Auth;
 use Illuminate\Validation\Rule;
 class ServiceProviderProfileController extends Controller
 {
-    /**
-     * Display the service provider's profile.
-     */
     public function show()
     {
         $serviceProvider = $this->getOrCreateProfile();
         return view('service_provider.profile.show', compact('serviceProvider'));
     }
 
-    /**
-     * Show the form for editing the service provider's profile.
-     */
+
     public function edit()
     {
         $serviceProvider = $this->getOrCreateProfile();
         return view('service_provider.profile.edit', compact('serviceProvider'));
     }
 
-    /**
-     * Update the service provider's profile.
-     */
+
     public function update(Request $request)
     {
         $validated = $request->validate([
@@ -44,9 +37,7 @@ class ServiceProviderProfileController extends Controller
                         ->with('success', 'Profile updated successfully!');
     }
 
-    /**
-     * Get existing profile or create a new one for the authenticated user.
-     */
+
     private function getOrCreateProfile()
     {
         $user = Auth::user();

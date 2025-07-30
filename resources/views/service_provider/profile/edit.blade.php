@@ -1,7 +1,6 @@
 @extends('service_provider.layouts.master')
 
 <body class="bg-gray-100 flex font-sans">
-    <!-- Sidebar -->
     <aside class="w-64 bg-gray-300 text-gray-700 h-screen fixed top-0 left-0 flex flex-col shadow-lg z-30">
         <a href="/">
             <div class="py-3 px-4 flex items-center text-2xl font-extrabold text-gray-800">
@@ -50,10 +49,8 @@
         </nav>
     </aside>
 
-    <!-- Main Content -->
-<main class="flex-1 ml-64 pt-20 pb-8 px-8">  <!-- Changed p-8 to pt-20 pb-8 px-8 -->
+<main class="flex-1 ml-64 pt-20 pb-8 px-8">
     <div class="max-w-4xl mx-auto">
-            <!-- Header Section -->
             <div class="bg-white rounded-lg shadow-md p-6 mb-6">
                 <div class="flex justify-between items-center">
                     <div>
@@ -67,14 +64,13 @@
                 </div>
             </div>
 
-            <!-- Edit Form -->
             <div class="bg-white rounded-lg shadow-md p-8">
                 <form method="POST" action="{{ route('service_provider.profile.update') }}">
                     @csrf
                     @method('PUT')
 
                     <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
-                        <!-- Name Field -->
+
                         <div class="md:col-span-2">
                             <label for="name" class="block text-sm font-medium text-gray-700 mb-2">
                                 Full Name <span class="text-red-500">*</span>
@@ -90,7 +86,7 @@
                             @enderror
                         </div>
 
-                        <!-- Email Field (Read-only) -->
+
                         <div>
                             <label for="email" class="block text-sm font-medium text-gray-700 mb-2">
                                 Email Address
@@ -103,7 +99,7 @@
                             <p class="text-sm text-gray-500 mt-1">Email cannot be changed</p>
                         </div>
 
-                        <!-- Phone Field -->
+
                         <div>
                             <label for="phone" class="block text-sm font-medium text-gray-700 mb-2">
                                 Phone Number
@@ -119,7 +115,7 @@
                             @enderror
                         </div>
 
-                        <!-- Specialization Field -->
+
                         <div class="md:col-span-2">
                             <label for="specialization" class="block text-sm font-medium text-gray-700 mb-2">
                                 Specialization <span class="text-red-500">*</span>
@@ -131,20 +127,15 @@
                                 <option value="">Select your specialization</option>
                                 <option value="Plumbing Service" {{ old('specialization', $serviceProvider->specialization) == 'Plumbing' ? 'selected' : '' }}>Plumbing Service</option>
                                 <option value="Electrical Service" {{ old('specialization', $serviceProvider->specialization) == 'Electrical' ? 'selected' : '' }}>Electrical Service</option>
-                                <!-- <option value="Carpentry" {{ old('specialization', $serviceProvider->specialization) == 'Carpentry' ? 'selected' : '' }}>Carpentry</option> -->
-                                <!-- <option value="Painting" {{ old('specialization', $serviceProvider->specialization) == 'Painting' ? 'selected' : '' }}>Painting</option> -->
                                 <option value="Cleaning Service" {{ old('specialization', $serviceProvider->specialization) == 'Cleaning' ? 'selected' : '' }}>Cleaning Service</option>
-                                <!-- <option value="HVAC" {{ old('specialization', $serviceProvider->specialization) == 'HVAC' ? 'selected' : '' }}>HVAC</option> -->
-                                <!-- <option value="Gardening" {{ old('specialization', $serviceProvider->specialization) == 'Gardening' ? 'selected' : '' }}>Gardening</option> -->
                                 <option value="Device & Appliance" {{ old('specialization', $serviceProvider->specialization) == 'Appliance Repair' ? 'selected' : '' }}>Device & Appliance Support</option>
-                                <!-- <option value="Other" {{ old('specialization', $serviceProvider->specialization) == 'Other' ? 'selected' : '' }}>Other</option> -->
                             </select>
                             @error('specialization')
                                 <p class="text-red-500 text-sm mt-1">{{ $message }}</p>
                             @enderror
                         </div>
 
-                        <!-- Bio Field -->
+
                         <div class="md:col-span-2">
                             <label for="bio" class="block text-sm font-medium text-gray-700 mb-2">
                                 Bio / About Me
@@ -161,7 +152,7 @@
                         </div>
                     </div>
 
-                    <!-- Action Buttons -->
+                
                     <div class="flex items-center justify-end space-x-4 mt-8 pt-6 border-t">
                         <a href="{{ route('service_provider.profile') }}"
                            class="px-6 py-2 text-gray-600 border border-gray-300 rounded-lg hover:bg-gray-50 font-semibold transition">

@@ -84,7 +84,7 @@
             </table>
         </div>
 
-        <!-- Pagination -->
+        {{-- Pagination --}}
         <div class="mt-8 flex justify-center">
             {{ $properties->links() }}
         </div>

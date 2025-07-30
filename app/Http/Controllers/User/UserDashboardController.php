@@ -65,12 +65,6 @@ class UserDashboardController extends Controller
 
         $totalPayments = $user->payments()->count();
 
-        // Fetch all notifications, unread first
-        $notifications = $user->notifications()->take(10)->get();
-
-        // Optionally, mark as read when dashboard is visited
-        // $user->unreadNotifications->markAsRead();
-
         return view('user.dashboard', compact(
             'propertyCount',
             'confirmedBookings',
@@ -81,7 +75,6 @@ class UserDashboardController extends Controller
             'approvedBookings',
             'pendingBookings',
             'totalPayments',
-            'notifications'
         ));
     }
 }

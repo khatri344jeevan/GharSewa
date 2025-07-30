@@ -16,7 +16,7 @@
         <form action="{{ route('admin.packages.store') }}" method="POST" class="grid grid-cols-1 md:grid-cols-2 gap-6">
             @csrf
 
-            {{-- Package Name --}}
+
             <div class="mb-5">
                 <label for="name" class="block text-xl font-medium text-gray-700">Package Name</label>
                 <input type="text" name="name" id="name"
@@ -27,7 +27,7 @@
                 @enderror
             </div>
 
-            {{-- Price --}}
+
             <div class="mb-5">
                 <label for="price" class="block text-xl font-medium text-gray-700">Price</label>
                 <input type="text" name="price" id="price"
@@ -38,7 +38,6 @@
                 @enderror
             </div>
 
-            {{-- Duration Days --}}
             <div class="mb-5">
                 <label for="duration_days" class="block text-xl font-medium text-gray-700">Duration (in days)</label>
                 <input type="text" name="duration_days" id="duration_days"
@@ -49,7 +48,7 @@
                 @enderror
             </div>
 
-            {{-- Service Limit --}}
+
             <div class="mb-5">
                 <label for="service_limit" class="block text-xl font-medium text-gray-700">No. of Visits</label>
                 <input type="text" name="service_limit" id="service_limit"
@@ -60,7 +59,6 @@
                 @enderror
             </div>
 
-            {{-- Description --}}
             <div class="mb-5 md:col-span-2">
                 <label for="description" class="block text-xl font-medium text-gray-700">Description</label>
                 <textarea name="description" id="description" rows="4"
@@ -71,7 +69,7 @@
                 @enderror
             </div>
 
-            {{-- Submit Button --}}
+
             <div class="md:col-span-2">
                 <button type="submit"
                     class="w-full bg-gray-600 hover:bg-gray-700 text-white font-semibold py-2 px-4 rounded-lg transition duration-200">

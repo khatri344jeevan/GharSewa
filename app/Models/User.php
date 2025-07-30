@@ -57,7 +57,7 @@ class User extends Authenticatable
         ];
     }
 
-    //properties eloquent
+
         public function properties(): HasMany{
            return $this->hasMany(Property::class);
     }
@@ -67,21 +67,13 @@ class User extends Authenticatable
            return $this->hasMany(Booking::class);
     }
 
-    //for counting the task
-    // public function tasks(){
-    //        return $this->hasMany(Task::class);
-    // }
+
 
 public function payments()
 {
     return $this->hasMany(Payment::class);
 }
 
-    // Add notifications relationship if not present
-    public function notifications()
-    {
-        return $this->morphMany(\Illuminate\Notifications\DatabaseNotification::class, 'notifiable')->orderBy('created_at', 'desc');
-    }
 
 
 

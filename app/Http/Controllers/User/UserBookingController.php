@@ -12,14 +12,12 @@ use Illuminate\Support\Facades\Auth;
 
 class UserBookingController extends Controller
 {
-    /**
-     * Display a list of user bookings.
-     */
+
   public function b_index()
 {
     $user = Auth::user();
 
-    // Get all bookings of the logged-in user along with related models
+
     $bookings = Booking::with(['package', 'property'])
         ->where('user_id', $user->id)
         ->latest()
@@ -28,9 +26,6 @@ class UserBookingController extends Controller
     return view('user.Bookings.index', compact('bookings'));
 }
 
-    /**
-     * Show form to create a new booking.
-     */
     public function b_create()
     {
         $user = Auth::user();
@@ -47,9 +42,6 @@ class UserBookingController extends Controller
         return view('user.Bookings.create', compact('properties', 'packages'));
     }
 
-    /**
-     * Store a new booking.
-     */
     public function b_store(Request $request)
     {
         $request->validate([
@@ -76,9 +68,7 @@ class UserBookingController extends Controller
         return redirect()->route('user.Bookings.b_index')->with('success', 'Booking successfully created!');
     }
 
-    /**
-     * Show detailed view of a specific booking with provider info.
-     */
+
 
     public function b_show($id)
 {

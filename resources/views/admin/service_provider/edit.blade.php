@@ -11,7 +11,7 @@
             </a>
         </div>
         <div class="card-body bg-white rounded-xl shadow-md p-6">
-        <!-- Fixed: Changed route parameter to use model binding with 'serviceProvider' -->
+
         <form action="{{ route('admin.service_providers.update', $serviceProvider) }}" method="POST" class="grid grid-cols-1 md:grid-cols-2 gap-6">
 
                 @csrf
@@ -36,7 +36,7 @@
                         <div class="text-red-600 text-sm mt-1">{{ $message }}</div>
                     @enderror
                 </div>
-                <!-- Fixed: Added proper label for password field -->
+                
                 <div class="mb-4">
                     <label class="block text-xl font-medium text-gray-700 mb-1">Password</label>
                     <input type="password" name="password"

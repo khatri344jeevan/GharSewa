@@ -9,16 +9,15 @@
     <title>GharSewa</title>
     <link rel="icon" href="{{ asset('images/Gharsewa.jpg') }}" type="image/jpeg" />
 
-    <!-- Fonts -->
+
     <link rel="preconnect" href="https://fonts.bunny.net">
     <link href="https://fonts.bunny.net/css?family=figtree:400,500,600&display=swap" rel="stylesheet" />
 
-    <!-- Scripts -->
-    {{-- @vite(['resources/css/app.css', 'resources/js/app.js']) --}}
 
-    <!-- Fallback styles for browser compatibility -->
+
+
     <style>
-        /* Ensure basic styling works even if Tailwind fails to load */
+
         .browser-fallback {
             font-family: 'Figtree', sans-serif;
             background-color: #f9fafb;
@@ -38,7 +37,7 @@
         }
     </style>
 </head>
-<!-- ✅ Toast Message (top-right) -->
+
 @if (session('success'))
     <div id="success-toast"
         class="fixed top-6 right-6 z-50 bg-green-600 text-white px-4 py-2 rounded shadow-md animate-fade-in">
@@ -76,7 +75,7 @@
         <div class="mb-8">
             <a href="/" class="flex items-center space-x-3">
                 <x-application-logo class="w-10 h-10 fill-current" style="color: #1F284F;" />
-                {{-- <h1 class="text-xl font-semibold text-gray-900">GharSewa</h1> --}}
+                
                 <img src="{{ asset('images/Gharsewaicon.jpg') }}" alt="image of gharsewa" class="w-28 mb-2 mt-10 ">
             </a>
         </div>

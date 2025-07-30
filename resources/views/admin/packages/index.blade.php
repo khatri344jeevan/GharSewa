@@ -4,7 +4,6 @@
 
 @section('content')
     <div class="container py-8">
-        {{-- Header & Add Button --}}
         <div class="flex flex-col md:flex-row md:justify-between md:items-center mb-6 bg-white rounded-xl shadow-md p-6">
             <h4 class="text-gray-900 font-bold text-2xl mb-4 md:mb-0">Package List</h4>
             <a href="{{ route('admin.packages.create') }}"
@@ -13,7 +12,7 @@
             </a>
         </div>
 
-        {{-- Table --}}
+
         <div class="bg-white rounded-xl shadow overflow-x-auto">
             <table class="min-w-full table-auto">
                 <thead class="bg-gray-800 text-white">

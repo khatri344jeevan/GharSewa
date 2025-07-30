@@ -58,10 +58,6 @@ class Booking extends Model
 {
     return $this->hasMany(Task::class);
 }
-    //realtion with BookignPakage
-    // public function bookingPackages()
-    // {
-    // return $this->hasMany(BookingPackage::class);
-    // }
+  
 
 }

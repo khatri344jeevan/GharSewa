@@ -24,7 +24,7 @@
 
         <div class="grid grid-cols-1 md:grid-cols-3 gap-10">
 
-            <!-- 1 Month Plan -->
+            {{-- 1 Month Package --}}
             <div
                 class="bg-white rounded-3xl border border-gray-200 shadow-md hover:shadow-xl transform hover:-translate-y-1 transition duration-300 p-8 flex flex-col">
                 <img src="{{ asset('images/electrical1.jpeg') }}" alt="1 Month Plan"
@@ -45,7 +45,7 @@
 
             </div>
 
-            <!-- 6 Month Plan -->
+             {{-- 6 Month Package --}}
             <div
                 class="bg-white rounded-3xl border-2 border-yellow-400 shadow-xl relative transform hover:-translate-y-1 transition duration-300 p-8 flex flex-col">
                 <span
@@ -70,7 +70,7 @@
 
             </div>
 
-            <!-- 12 Month Plan -->
+            {{-- 12 Month Package --}}
             <div
                 class="bg-white rounded-3xl border border-gray-300 shadow-md hover:shadow-xl transform hover:-translate-y-1 transition duration-300 p-8 flex flex-col">
                 <img src="{{ asset('images/electrical3.jpeg') }}" alt="12 Month Plan"
@@ -94,7 +94,7 @@
         </div>
 
         <div class="pt-10 text-center">
-            <a href="#">
+            <a href="{{route('user.Bookings.b_create')}}">
                 <button
                     class="bg-gray-700 hover:bg-gray-800 text-white font-semibold py-3 px-6 rounded-xl text-lg transition-all duration-300">
                     Book Maintenance Package

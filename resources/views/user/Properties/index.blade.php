@@ -7,13 +7,11 @@
 @include('toaster.toaster')
 
     <div class="flex items-center justify-between space-x-4 ">
-        <!-- Add Record Button -->
         <button class="bg-gray-700 hover:bg-gray-800 text-white font-semibold px-6 py-3 rounded  shadow-md  mt-20">
             <a href="{{ route('user.Properties.p_create') }}">
                 <i class="bi bi-plus-lg pr-3"></i>Add Property</a>
         </button>
 
-        <!-- Search Bar -->
         {{-- <div class="flex items-center bg-gray-100 rounded-lg">
         <input
             type="text"
@@ -59,47 +57,14 @@
                             @endif
                         </td>
 
-
-                        {{-- <td class="px-6 py-4 flex space-x-3 pt-16">
-                            <div class="flex mb-3">
-                                <a href="{{ route('user.Properties.p_edit', $property->id) }}"
-                                    class="flex items-center justify-center space-x-2 text-white bg-blue-500 hover:bg-blue-600 px-4 py-2 rounded-lg shadow-md transition duration-200">
-                                    <i class="fas fa-edit"></i>
-                                    <span>Edit</span>
-                                </a>
-                            </div>
-
-                            <div>
-                                <form action="{{ route('user.Properties.destroy', $property->id) }}" method="POST"
-                                    onsubmit="return confirm('Are you sure you want to delete this property?');">
-                                    @csrf
-                                    @method('DELETE')
-                                    <button type="submit"
-                                        class="flex items-center justify-center space-x-2 text-white bg-red-600 hover:bg-red-700 px-4 py-2 rounded-lg shadow-md transition duration-200">
-                                        <i class="fas fa-trash-alt"></i>
-                                        <span>Delete</span>
-                                    </button>
-                                </form>
-                            </div>
-
-                            <div>
-                                <a href="{{ route('user.Bookings.b_create') }}"
-                                    class="flex items-center justify-center space-x-2 text-white bg-gray-600 hover:bg-gray-700 px-4 py-2 rounded-lg shadow-md transition duration-200">
-                                    <i class="fas fa-calendar-check"></i>
-                                    <span>Book Package</span>
-                                </a>
-                            </div>
-                        </td> --}}
                         <td class="px-6 py-4">
                             <div class="flex flex-col space-y-3">
-                                <!-- Edit Button -->
                                 <a href="{{ route('user.Properties.p_edit', $property->id) }}"
                                     class="flex items-center justify-center space-x-2 text-white bg-blue-500 hover:bg-blue-600 px-4 py-2 rounded-lg shadow-md transition duration-200">
                                     <i class="bi bi-pencil-square"></i>
                                     <span>Edit</span>
                                 </a>
 
-                                <!-- Delete Button -->
                                 <form action="{{ route('user.Properties.destroy', $property->id) }}" method="POST"
                                     onsubmit="return confirm('Are you sure you want to delete this property?');">
                                     @csrf
@@ -111,7 +76,6 @@
                                     </button>
                                 </form>
 
-                                <!-- Book Button -->
                                 <a href="{{ route('user.Bookings.b_create') }}"
                                     class="flex items-center justify-center space-x-2 text-white bg-gray-600 hover:bg-gray-700 px-4 py-2 rounded-lg shadow-md transition duration-200">
                                     <i class="fas fa-calendar-check"></i>

@@ -4,10 +4,9 @@
 @section('content')
 <div class=" p-8 min-h-screen from-blue-50 -via-white to-purple-100">
     <div class="container mx-auto px-4 ml-48">
-        <!-- Task Statistics Boxes -->
+
         <div class="flex justify-start mb-8">
             <div class="grid grid-cols-1 md:grid-cols-3 gap-8 w-full">
-                <!-- Total Tasks Box -->
                 <div class="bg-white border border-blue-200 rounded-2xl p-8 shadow-lg hover:shadow-2xl transition-shadow duration-300 transform hover:-translate-y-1">
                     <div class="flex items-center space-x-4">
                         <div class="bg-blue-100 p-4 rounded-full">
@@ -23,7 +22,6 @@
                     </div>
                 </div>
 
-                <!-- Completed Tasks Box -->
                 <div class="bg-white border border-green-200 rounded-2xl p-8 shadow-lg hover:shadow-2xl transition-shadow duration-300 transform hover:-translate-y-1">
                     <div class="flex items-center space-x-4">
                         <div class="bg-green-100 p-4 rounded-full">
@@ -38,7 +36,6 @@
                     </div>
                 </div>
 
-                <!-- Pending Tasks Box -->
                 <div class="bg-white border border-yellow-200 rounded-2xl p-8 shadow-lg hover:shadow-2xl transition-shadow duration-300 transform hover:-translate-y-1">
                     <div class="flex items-center space-x-4">
                         <div class="bg-yellow-100 p-4 rounded-full">
@@ -56,7 +53,6 @@
             </div>
         </div>
 
-        <!-- Rest of your dashboard content goes here -->
 
     </div>
 </div>

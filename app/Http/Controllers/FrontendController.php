@@ -78,7 +78,7 @@ class FrontendController extends Controller
     // }
 
 
-    // Contact us
+
     public function submitContact(Request $request)
     {
         $validated = $request->validate([
@@ -95,7 +95,7 @@ class FrontendController extends Controller
         return redirect()->back()->with('success', 'Your message has been sent and saved successfully!');
     }
 
-    //  Landing page contact us
+
     public function submitLandingForm(Request $request)
     {
         $validated = $request->validate([

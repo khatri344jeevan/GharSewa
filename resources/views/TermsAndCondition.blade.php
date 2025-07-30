@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -12,6 +13,7 @@
     <link href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.1/font/bootstrap-icons.css" rel="stylesheet">
     <script defer src="https://cdn.jsdelivr.net/npm/alpinejs@3.x.x/dist/cdn.min.js"></script>
 </head>
+
 <body class="bg-gray-100 text-gray-800">
 
     <x-navbar />
@@ -20,17 +22,21 @@
     <div class="max-w-5xl mx-auto px-6 py-12">
         <div class="bg-white shadow-md rounded-2xl p-8">
             <h1 class="text-4xl font-bold mb-4 text-gray-800 border-b pb-2">Terms & Conditions – GharSewa</h1>
+            <p class="text-sm text-gray-500 mt-3 mb-3 font-semibold">Last Updated: July 30, 2025</p>
             <!-- <p class="text-sm text-gray-500 mb-8">Effective Date: <strong>July 1, 2025</strong></p> -->
             <div class="space-y-10 leading-relaxed text-[17px]">
 
                 <div>
                     <h2 class="text-2xl font-semibold text-gray-800 mb-2">1. Acceptance of Terms</h2>
-                    <p>By using GharSewa’s services, you agree to comply with and be bound by these Terms and Conditions, our Privacy Policy, and any other legal notices or guidelines we may publish.</p>
+                    <p>By using GharSewa’s services, you agree to comply with and be bound by these Terms and
+                        Conditions, our Privacy Policy, and any other legal notices or guidelines we may publish.</p>
                 </div>
 
                 <div>
                     <h2 class="text-2xl font-semibold text-gray-800 mb-2">2. Services Offered</h2>
-                    <p>GharSewa provides property maintenance services including but not limited to cleaning, plumbing, and electrical services. These services are offered through verified third-party professionals.</p>
+                    <p>GharSewa provides property maintenance services including but not limited to cleaning, plumbing,
+                        and electrical services. These services are offered through verified third-party professionals.
+                    </p>
                 </div>
 
                 <div>
@@ -62,27 +68,28 @@
 
                 <div>
                     <h2 class="text-2xl font-semibold text-gray-800 mb-2">6. Service Quality & Liability</h2>
-                    <p>GharSewa verifies service providers but does not directly employ them. We are not liable for service damages unless caused by platform-level negligence. Users can review and rate providers after completion.</p>
+                    <p>GharSewa verifies service providers but does not directly employ them. We are not liable for
+                        service damages unless caused by platform-level negligence. Users can review and rate providers
+                        after completion.</p>
                 </div>
 
                 <div>
                     <h2 class="text-2xl font-semibold text-gray-800 mb-2">7. Intellectual Property</h2>
-                    <p>All content on the GharSewa platform is owned by GharSewa and may not be reused without written consent.</p>
+                    <p>All content on the GharSewa platform is owned by GharSewa and may not be reused without written
+                        consent.</p>
                 </div>
 
                 <div>
                     <h2 class="text-2xl font-semibold text-gray-800 mb-2">8. Modifications</h2>
-                    <p>We reserve the right to update these Terms. Changes will be communicated through the platform or email notifications.</p>
+                    <p>We reserve the right to update these Terms. Changes will be communicated through the platform or
+                        email notifications.</p>
                 </div>
 
-                {{-- <div>
-                    <h2 class=" text-2xl font-semibold text-gray-800 mb-2">9. Governing Law</h2>
-                    <p>These Terms are governed by the laws of Nepal. Disputes shall be handled in the courts of Kathmandu.</p>
-                </div> --}}
             </div>
         </div>
     </div>
 
     <x-footer />
 </body>
+
 </html>

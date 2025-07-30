@@ -10,9 +10,7 @@ use Illuminate\Support\Facades\Auth;
 
 class UserPropertyController extends Controller
 {
-    /**
-     * Show a list of properties for the logged-in user.
-     */
+
     public function p_index()
     {
         $user = Auth::user();
@@ -23,17 +21,13 @@ class UserPropertyController extends Controller
         ]);
     }
 
-    /**
-     * Show the property creation form.
-     */
+
     public function p_create()
     {
         return view('user.Properties.create');
     }
 
-    /**
-     * Store a newly created property.
-     */
+
     public function p_store(Request $request)
     {
         $request->validate([
@@ -62,9 +56,7 @@ class UserPropertyController extends Controller
         return redirect()->route('user.Properties.p_index')->with('success', 'Property registered successfully!');
     }
 
-    /**
-     * Show the form to edit an existing property.
-     */
+
     public function p_edit(Property $property)
     {
         if ($property->user_id !== Auth::id()) {
@@ -74,9 +66,7 @@ class UserPropertyController extends Controller
         return view('user.Properties.edit', compact('property'));
     }
 
-    /**
-     * Update the specified property.
-     */
+
     public function update(Request $request, Property $property)
     {
         if ($property->user_id !== Auth::id()) {
@@ -91,10 +81,10 @@ class UserPropertyController extends Controller
             'image' => 'nullable|image|mimes:jpeg,png,jpg,gif|max:2048',
         ]);
 
-        $imageName = $property->image; // Keep old image if not changed
+        $imageName = $property->image;
 
         if ($request->hasFile('image')) {
-            // Delete old image
+
             if ($property->image && file_exists(public_path('uploads/properties/' . $property->image))) {
                 unlink(public_path('uploads/properties/' . $property->image));
             }
@@ -114,9 +104,7 @@ class UserPropertyController extends Controller
         return redirect()->route('user.Properties.p_index')->with('success', 'Property updated successfully!');
     }
 
-    /**
-     * Delete the specified property.
-     */
+
     public function destroy(Property $property)
     {
         if ($property->user_id !== Auth::id()) {

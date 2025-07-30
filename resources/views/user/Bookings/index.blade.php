@@ -6,7 +6,6 @@
 
     <div class="flex items-center justify-between space-x-4 ">
 
-        <!-- Add Record Button -->
         <a href="{{ route('user.Bookings.b_create') }}"
             class="bg-gray-700 hover:bg-gray-800 text-white font-semibold px-6 py-3 rounded shadow-md mt-20">
             <i class="bi bi-plus-lg mr-3"></i>Add Booking
@@ -24,10 +23,7 @@
                     <th class="px-6 py-3  text-center">Total Days</th>
                     <th class="px-6 py-3  text-center">Status</th>
                     <th class="px-6 py-3  text-center">Number of visits</th>
-                    {{-- <th class="px-6 py-3  text-center">Details</th> --}}
                     <th class="px-6 py-3  text-center">Action</th>
-
-                    {{-- <th class="px-6 py-3 text-left">Actions</th> --}}
                 </tr>
             </thead>
 
@@ -41,28 +37,6 @@
                         <td class="px-6 py-4 text-center">{{ $booking->package->duration_days }}</td>
                         <td class="px-6 py-4 text-center">{{ ucfirst($booking->status) }}</td>
                         <td class="px-6 py-4 text-center">{{ $booking->package->service_limit }}</td>
-                        {{-- <td class="px-6 py-4">{{ $booking->package->description }}</td> --}}
-                        {{-- <td class="px-6 py-4 flex space-x-3">
-                            <!-- Edit -->
-                            <div>
-                                {{-- <a href="//{{ route('user.Bookings.b_edit', $booking->id) }}" --}}
-                        {{-- <a href="/"
-                                    class="hover:underline hover:bg-blue-600 font-medium border bg-blue-500 text-white py-2 px-6 rounded transition duration-200">
-                                    Edit
-                                </a>
-                            </div>  --}}
-                        <!-- Delete -->
-                        {{-- <div>
-                                <form action="{{ route('user.Bookings.destroy', $booking->id) }}" method="POST"
-                                      onsubmit="return confirm('Are you sure you want to delete this booking?');">
-                                    @csrf
-                                    @method('DELETE')
-                                    <button type="submit"
-                                        class="hover:underline hover:bg-red-700 font-medium border bg-red-600 text-white py-2 px-4 rounded transition duration-200">
-                                        Delete
-                                    </button>
-                                </form>
-                            </div> --}}
                         <td>
                             <div class="border bg-gray-600 rounded px-3 py-2 mr-8 text-white hover:bg-gray-700  ">
                                 <a href="{{ route('user.Bookings.b_show', $booking->id) }}">

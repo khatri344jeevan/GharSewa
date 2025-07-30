@@ -9,7 +9,6 @@
         </p>
         <div class="grid grid-cols-1 md:grid-cols-3 gap-12 text-lg">
 
-            {{-- Properties Card --}}
             <div
                 class="bg-white rounded-3xl shadow-md p-10 border border-gray-300 flex flex-col items-center hover:scale-105 hover:shadow-lg transition-transform duration-300">
                 <div class="flex items-center justify-center mb-6">
@@ -30,7 +29,6 @@
                 </div>
             </div>
 
-            {{-- Bookings Card --}}
             <div
                 class="bg-white rounded-3xl shadow-md p-10 border border-gray-300 flex flex-col items-center hover:scale-105 hover:shadow-lg transition-transform duration-300">
                 <div class="flex items-center justify-center mb-6">
@@ -61,9 +59,7 @@
                 </a>
             </div>
 
-            {{-- Tasks & Payments Card --}}
             <div class="flex flex-col gap-8">
-                {{-- Tasks --}}
                 <div
                     class="bg-gray-900 rounded-3xl shadow-md p-10 border border-gray-700 hover:scale-105 hover:shadow-lg transition-transform duration-300">
                     <div class="flex items-center justify-center mb-6">

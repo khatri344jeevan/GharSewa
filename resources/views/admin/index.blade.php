@@ -64,6 +64,6 @@
         </div>
     </div>
 </div>
-<!-- Add Bootstrap Icons CDN if not already included -->
+
 <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.10.5/font/bootstrap-icons.css">
 @endsection

@@ -28,7 +28,7 @@
             </p>
 
             <div class="pb-6 text-center ">
-                <a href="/BookPackage">
+                <a href="{{route('user.Bookings.b_create')}}">
                     <button
                         class="bg-gray-700 hover:bg-gray-800 text-white font-semibold py-3 px-6 rounded-xl text-lg transition-all duration-300">
                         Book Maintenance Package
@@ -37,7 +37,7 @@
             </div>
 
             <div class="grid grid-cols-1 lg:grid-cols-2 gap-16">
-                <!-- Cleaning Service -->
+                 {{-- Cleaning Service  --}}
                 <div
                     class="bg-white rounded-3xl shadow-lg p-10 flex flex-col gap-10 transition-transform hover:scale-[1.03] duration-300">
                     <div class="w-full">
@@ -66,7 +66,7 @@
                     </div>
                 </div>
 
-                <!-- Electrical Service -->
+                {{-- Electrical Service --}}
                 <div
                     class="bg-white rounded-3xl shadow-lg p-10 flex flex-col gap-10 transition-transform hover:scale-[1.03] duration-300">
                     <div class="w-full">
@@ -94,7 +94,7 @@
                     </div>
                 </div>
 
-                <!-- Plumbing Service -->
+                 {{-- Plumbing Service --}}
                 <div
                     class="bg-white rounded-3xl shadow-lg p-10 flex flex-col gap-10 transition-transform hover:scale-[1.03] duration-300">
                     <div class="w-full">
@@ -122,7 +122,7 @@
                     </div>
                 </div>
 
-                <!-- Device & Appliance Support -->
+                {{-- Device & Appliance Support --}}
                 <div
                     class="bg-white rounded-3xl shadow-lg p-10 flex flex-col gap-10 transition-transform hover:scale-[1.03] duration-300">
                     <div class="w-full">

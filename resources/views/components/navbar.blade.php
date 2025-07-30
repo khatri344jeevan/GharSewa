@@ -1,12 +1,11 @@
 <nav x-data="{ open: false }" class="bg-white shadow-md px-6 py-3 sticky top-0 z-50">
     <div class="flex justify-between items-center">
-        <!-- Logo -->
         <a href="/" class="flex items-center">
             <img src="{{ asset('images/Gharsewaicon.jpg') }}" alt="GharSewa Logo" class="w-24 h-20 rounded-full" />
             <span class="text-2xl md:text-3xl font-extrabold text-gray-700 ml-2">GharSewa</span>
         </a>
 
-        <!-- Hamburger Icon (mobile) -->
+         {{-- Hamburger Icon  --}}
         <button @click="open = !open" class="md:hidden text-gray-700 focus:outline-none">
             <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                 <path x-show="!open" stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
@@ -19,7 +18,7 @@
             </svg>
         </button>
 
-        <!-- Main Menu (desktop) -->
+
         <div class="hidden md:flex space-x-10 text-lg font-medium text-gray-700">
             <a href="/" class="hover:text-gray-500 transition-colors duration-300">Home</a>
             <a href="/Aboutus" class="hover:text-gray-500 transition-colors duration-300">About Us</a>
@@ -27,7 +26,7 @@
             <a href="/Contactus" class="hover:text-gray-500 transition-colors duration-300">Contact Us</a>
         </div>
 
-        <!-- Auth Buttons (desktop) -->
+
         <div class="hidden md:flex space-x-4 items-center">
             @if (Route::has('login'))
                 @auth
@@ -77,7 +76,7 @@
         </div>
     </div>
 
-    <!-- Mobile Menu (toggle) -->
+    
     <div x-show="open" class="md:hidden mt-3 space-y-2">
         <a href="/" class="block text-gray-700 hover:text-gray-500">Home</a>
         <a href="/Aboutus" class="block text-gray-700 hover:text-gray-500">About Us</a>
