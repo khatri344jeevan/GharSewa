@@ -10,7 +10,7 @@ class MaintenancePackageController extends Controller
 {
     public function index()
     {
-        // Fetch all maintenance packages
+
         $packages = Package::paginate(5);
         return view('admin.packages.index', compact('packages'));
     }
@@ -22,7 +22,7 @@ class MaintenancePackageController extends Controller
     }
     public function store(Request $request)
     {
-        // Validate the request data
+
         $request->validate([
             'name' => 'required|string|max:255',
             'price' => 'required|numeric|min:0',
@@ -31,7 +31,7 @@ class MaintenancePackageController extends Controller
             'description' => 'nullable|string|max:1000',
         ]);
 
-        // Create a new package
+
        Package::create([
             'name' => $request->name,
             'price' => $request->price,
@@ -52,7 +52,7 @@ class MaintenancePackageController extends Controller
 
     public function update(Request $request, $id)
     {
-        // Validate the request data
+
         $request->validate([
             'name' => 'required|string|max:255',
             'price' => 'required|numeric|min:0',
@@ -61,7 +61,7 @@ class MaintenancePackageController extends Controller
             'description' => 'nullable|string|max:1000',
         ]);
 
-        // Find the package and update its details
+
         $package = Package::findOrFail($id);
         $package->update([
             'name' => $request->name,
@@ -76,7 +76,6 @@ class MaintenancePackageController extends Controller
 
     public function destroy($id)
     {
-        // Find the package and delete it
         $package = Package::findOrFail($id);
         $package->delete();
 

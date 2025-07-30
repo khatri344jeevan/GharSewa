@@ -1,4 +1,5 @@
 @extends('service_provider.layouts.master')
+@section('title', 'Service Provider Dashboard')
 
 @section('content')
 <div class=" p-8 min-h-screen from-blue-50 -via-white to-purple-100">

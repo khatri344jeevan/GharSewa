@@ -1,4 +1,5 @@
-@extends('service_provider.layouts.layout')
+@extends('service_provider.layouts.master')
+
 @section('title', 'My Profile')
 
 @section('content')

@@ -36,7 +36,7 @@ class ServiceProvidersController extends Controller
 
     try {
         DB::transaction(function () use ($validated) {
-            // 1. Create User first
+
             $user = User::create([
                 'name' => $validated['name'],
                 'email' => $validated['email'],
@@ -46,7 +46,7 @@ class ServiceProvidersController extends Controller
                 'role' => 'service_provider',
             ]);
 
-            // 2. Create Service Provider with user_id
+
             ServiceProvider::create([
                 'name' => $validated['name'],
                 'email' => $validated['email'],
@@ -73,53 +73,6 @@ class ServiceProvidersController extends Controller
         return view('admin.service_provider.edit', compact('serviceProvider'));
     }
 
-    // public function update(Request $request, ServiceProvider $serviceProvider)
-    // {
-    //     $validated = $request->validate([
-    //         'name' => 'required|string|max:255',
-    //         'email' => 'required|email|unique:users,email,' . $serviceProvider->user_id,
-    //         'password' => ['nullable', Password::min(8)],
-    //         'phone' => 'required|string|max:20',
-    //         'address' => 'required|string|max:500',
-    //         'specialization' => 'required|string|max:255',
-    //         'bio' => 'nullable|string|max:1000',
-    //     ]);
-
-    //     try {
-    //         DB::transaction(function () use ($validated, $serviceProvider) {
-    //             // 1. Update Service Provider
-    //             $serviceProvider->update([
-    //                 'name' => $validated['name'],
-    //                 'email' => $validated['email'],
-    //                 'phone' => $validated['phone'],
-    //                 'specialization' => $validated['specialization'],
-    //                 'bio' => $validated['bio'],
-    //             ]);
-
-    //             // 2. Update associated User
-    //             $userUpdateData = [
-    //                 'name' => $validated['name'],
-    //                 'email' => $validated['email'],
-    //                 'address' => $validated['address'],
-    //                 'phone' => $validated['phone'],
-    //             ];
-
-    //             // Only update password if provided
-    //             if (!empty($validated['password'])) {
-    //                 $userUpdateData['password'] = Hash::make($validated['password']);
-    //             }
-
-    //             $serviceProvider->user->update($userUpdateData);
-    //         });
-
-    //         return redirect()->route('admin.service_providers.index')
-    //             ->with('success', 'Service provider updated successfully');
-
-    //     } catch (\Exception $e) {
-    //         return back()->withErrors(['error' => 'Failed to update service provider: ' . $e->getMessage()])
-    //             ->withInput();
-    //     }
-    // }
 
     public function update(Request $request, ServiceProvider $serviceProvider)
 {
@@ -135,7 +88,6 @@ class ServiceProvidersController extends Controller
 
     try {
         DB::transaction(function () use ($validated, $serviceProvider) {
-            // 1. Update Service Provider (without address)
             $serviceProvider->update([
                 'name' => $validated['name'],
                 'email' => $validated['email'],
@@ -144,15 +96,13 @@ class ServiceProvidersController extends Controller
                 'bio' => $validated['bio'],
             ]);
 
-            // 2. Update associated User (address goes here)
             $userUpdateData = [
                 'name' => $validated['name'],
                 'email' => $validated['email'],
-                'address' => $validated['address'], // Address only in user table
+                'address' => $validated['address'],
                 'phone' => $validated['phone'],
             ];
 
-            // Only update password if provided
             if (!empty($validated['password'])) {
                 $userUpdateData['password'] = Hash::make($validated['password']);
             }
@@ -173,10 +123,8 @@ class ServiceProvidersController extends Controller
     {
         try {
             DB::transaction(function () use ($serviceProvider) {
-                // Delete Service Provider first
                 $serviceProvider->delete();
 
-                // Then delete associated User
                 $serviceProvider->user->delete();
             });
 

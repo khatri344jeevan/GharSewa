@@ -9,13 +9,28 @@ use Illuminate\Support\Facades\Auth;
 class ServiceProviderDashboardController extends Controller
 {
 
-    public function index()
+   public function index()
     {
-
         $user = Auth::user();
+        $providerId = Auth::user()->id;
 
+        // Calculate task counts
+        $totalTasks = Task::where('provider_id', $providerId)->count();
 
-        return view('service_provider.dashboard', compact('user'));
+        $completedTasks = Task::where('provider_id', $providerId)
+            ->where('status', 'completed')
+            ->count();
+
+        $pendingTasks = Task::where('provider_id', $providerId)
+            ->where('status', 'pending')
+            ->count();
+
+        return view('service_provider.dashboard', compact(
+            'user',
+            'totalTasks',
+            'completedTasks',
+            'pendingTasks'
+        ));
     }
 
     public function myTask()

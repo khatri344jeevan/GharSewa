@@ -11,11 +11,8 @@ class UsersController extends Controller
     //
     public function index()
     {
-        // Fetch all users
-        // $users = User::paginate(5);
 
 
-        // Fetch all users except the currently logged-in admin
         $users = User::where('id', '!=', auth()->id())->paginate(5);
         return view('admin.users.index', compact('users'));
     }
@@ -28,19 +25,18 @@ class UsersController extends Controller
 
     function store(Request $request)
     {
-        // Validate the request data
         $request->validate([
             'name' => 'required|string|max:255',
             'email' => 'required|string|email|max:255|unique:users,email',
             'password' => 'required|string|min:8|confirmed',
-            'role' => 'required|in:admin,user,service_provider', // Adjust roles as needed
+            'role' => 'required|in:admin,user,service_provider',
             'address' => 'required|string|max:255',
             'phone' => 'nullable|string|max:20',
         ]);
         User::create([
             'name' => $request->name,
             'email' => $request->email,
-            'password' => bcrypt($request->password), // Hash the password
+            'password' => bcrypt($request->password),
             'role' => $request->role,
             'address' => $request->address,
             'phone' => $request->phone,
@@ -109,12 +105,10 @@ class UsersController extends Controller
             'phone' => $request->phone,
         ];
 
-        // Only update password if provided
         if ($request->filled('password')) {
             $updateData['password'] = bcrypt($request->password);
         }
 
-        // Update the user
         $user->update($updateData);
         // $request->user()->create([
         //     'name' => $request->name,
@@ -131,7 +125,6 @@ class UsersController extends Controller
 
     function destroy($id)
     {
-        // Find the user by ID
         $user = User::findOrFail($id);
 
 
@@ -141,7 +134,6 @@ class UsersController extends Controller
         //     return redirect()->route('admin.users.index')->with('error', 'You cannot delete your own account.');
         // }
 
-        // Delete the user
         $user->delete();
 
         return redirect()->route('admin.users.index')->with('success', 'User deleted successfully.');

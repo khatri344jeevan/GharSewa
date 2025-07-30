@@ -1,5 +1,4 @@
-@include('user.layout.header')
-@include('user.layout.head')
+@extends('service_provider.layouts.master')
 
 <body class="bg-gray-100 flex font-sans">
     <!-- Sidebar -->
@@ -61,7 +60,7 @@
                         <h1 class="text-3xl font-bold text-gray-800">Edit Profile</h1>
                         <p class="text-gray-600 mt-2">Update your service provider information</p>
                     </div>
-                    <a href="{{ route('service_provider.profile') }}" 
+                    <a href="{{ route('service_provider.profile') }}"
                        class="bg-gray-600 hover:bg-gray-700 text-white px-6 py-2 rounded-lg font-semibold transition">
                         <i class="bi bi-arrow-left mr-2"></i>Back to Profile
                     </a>
@@ -80,9 +79,9 @@
                             <label for="name" class="block text-sm font-medium text-gray-700 mb-2">
                                 Full Name <span class="text-red-500">*</span>
                             </label>
-                            <input type="text" 
-                                   id="name" 
-                                   name="name" 
+                            <input type="text"
+                                   id="name"
+                                   name="name"
                                    value="{{ old('name', $serviceProvider->name) }}"
                                    class="w-full px-4 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-transparent @error('name') border-red-500 @enderror"
                                    required>
@@ -96,8 +95,8 @@
                             <label for="email" class="block text-sm font-medium text-gray-700 mb-2">
                                 Email Address
                             </label>
-                            <input type="email" 
-                                   id="email" 
+                            <input type="email"
+                                   id="email"
                                    value="{{ $serviceProvider->email }}"
                                    class="w-full px-4 py-2 border border-gray-300 rounded-lg bg-gray-100 cursor-not-allowed"
                                    readonly>
@@ -109,9 +108,9 @@
                             <label for="phone" class="block text-sm font-medium text-gray-700 mb-2">
                                 Phone Number
                             </label>
-                            <input type="tel" 
-                                   id="phone" 
-                                   name="phone" 
+                            <input type="tel"
+                                   id="phone"
+                                   name="phone"
                                    value="{{ old('phone', $serviceProvider->phone) }}"
                                    class="w-full px-4 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-transparent @error('phone') border-red-500 @enderror"
                                    placeholder="e.g., +977-9841234567">
@@ -125,8 +124,8 @@
                             <label for="specialization" class="block text-sm font-medium text-gray-700 mb-2">
                                 Specialization <span class="text-red-500">*</span>
                             </label>
-                            <select id="specialization" 
-                                    name="specialization" 
+                            <select id="specialization"
+                                    name="specialization"
                                     class="w-full px-4 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-transparent @error('specialization') border-red-500 @enderror"
                                     required>
                                 <option value="">Select your specialization</option>
@@ -150,8 +149,8 @@
                             <label for="bio" class="block text-sm font-medium text-gray-700 mb-2">
                                 Bio / About Me
                             </label>
-                            <textarea id="bio" 
-                                      name="bio" 
+                            <textarea id="bio"
+                                      name="bio"
                                       rows="5"
                                       class="w-full px-4 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-transparent @error('bio') border-red-500 @enderror"
                                       placeholder="Tell us about yourself, your experience, and what makes you special...">{{ old('bio', $serviceProvider->bio) }}</textarea>
@@ -164,11 +163,11 @@
 
                     <!-- Action Buttons -->
                     <div class="flex items-center justify-end space-x-4 mt-8 pt-6 border-t">
-                        <a href="{{ route('service_provider.profile') }}" 
+                        <a href="{{ route('service_provider.profile') }}"
                            class="px-6 py-2 text-gray-600 border border-gray-300 rounded-lg hover:bg-gray-50 font-semibold transition">
                             Cancel
                         </a>
-                        <button type="submit" 
+                        <button type="submit"
                                 class="px-6 py-2 bg-gray-700 hover:bg-gray-800 text-white rounded-lg font-semibold transition">
                             <i class="bi bi-check-circle mr-2"></i>Update Profile
                         </button>

@@ -12,13 +12,13 @@ class AdminBookingController extends Controller
 {
     public function verifyBooking($id)
     {
-        $booking = Booking::with('user')->findOrFail($id); // Eager load the user
+        $booking = Booking::with('user')->findOrFail($id);
         $booking->status = 'approved';
         $booking->save();
 
-        $booking->refresh(); // Refresh model and relationships
+        $booking->refresh();
 
-        // Notify user
+        // Notify user about booking verification
         if ($booking->user) {
             $booking->user->notify(new BookingVerified($booking));
         }

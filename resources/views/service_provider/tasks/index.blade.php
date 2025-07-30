@@ -6,7 +6,7 @@
 
     <div class="flex items-center justify-between space-x-4 ">
 
-       
+
         <a href="{{ route('service_provider.tasks.create') }}"
             class="bg-gray-500 hover:bg-gray-600 text-white font-semibold px-6 py-3 rounded shadow-md mt-20">
             Add Task
@@ -39,7 +39,7 @@
                         <td class="px-6 py-4 text-center">{{ ucfirst($task->status) }}</td>
                         <td class="px-6 py-4 text-center">{{ $task->booking->package->service_limit ?? 'N/A' }}</td>
                         <td class="px-6 py-4 text-center">
-                            <div class="border bg-blue-600 rounded px-5 py-2 text-white hover:bg-blue-700">
+                            <div class="border bg-gray-600 rounded px-5 py-2 text-white hover:bg-gray-700">
                                 <a href="{{ route('service_provider.tasks.edit', $task->id) }}">
                                     <button class="text-center px-2">EDIT</button>
                                 </a>

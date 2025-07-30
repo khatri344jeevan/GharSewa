@@ -20,7 +20,7 @@ class AdminBookingsController extends Controller
         return view('admin.bookings.index', compact('bookings'));
     }
 
-    // Display a specific booking
+    
     public function show($id)
     {
         $booking = Booking::with(['user', 'property', 'package', 'bookingDetails.provider'])

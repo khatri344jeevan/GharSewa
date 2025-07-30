@@ -20,14 +20,15 @@ class TaskController extends Controller{
         // Find or create service provider record for current user
         $serviceProvider = \App\Models\ServiceProvider::firstOrCreate(
             ['email' => $user->email],
-            [
-                'name' => $user->name,
+            [   'name' => $user->name,
                 'email' => $user->email,
                 'phone' => $user->phone ?? '',
                 'specialization' => 'General Services',
                 'bio' => 'Service provider'
             ]
         );
+
+
 
         // Get tasks for the current service provider with nested relationships
         $tasks = Task::with([
