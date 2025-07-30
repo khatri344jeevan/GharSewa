@@ -6,7 +6,7 @@
     @include('service_provider.layouts.sidebar')
 
     <!-- Main Content -->
-    <div class="flex-1 ml-64 min-h-screen flex flex-col mt-10">
+    <div class=" flex flex-col mt-10">
         @include('service_provider.layouts.header')
 
         <!-- Page Content -->

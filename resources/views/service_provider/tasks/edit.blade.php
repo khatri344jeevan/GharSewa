@@ -3,8 +3,8 @@
 @section('title', 'Edit Task')
 
 @section('content')
-<div class="max-w-2xl mx-auto mt-8">
-    <div class="bg-white shadow-lg rounded-lg p-6">
+<div class=" mx-auto mt-8">
+    <div class="bg-white shadow-lg rounded-lg p-6 w-full ml-96">
         <h2 class="text-2xl font-bold text-gray-800 mb-6">Edit Task</h2>
 
         <form action="{{ route('service_provider.tasks.update', $task->id) }}" method="POST">
