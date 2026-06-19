@@ -1,4 +1,4 @@
-@extends('user.Layout.master')
+@extends('user.layout.master')
 
 @section('title', 'User Payments')
 
