@@ -30,12 +30,6 @@
 | Dev Tools | VS Code, Git, Composer |
 
 
-👨‍💻 Team Members – Group JAAM (Joint Alliance for Achieving Mastery)
--Jiban Khatri
--Aabhash Sharma
--Aayush Neupane
--Mandip Joshi 
-
 ---
 
 ## ⚙️ Getting Started
